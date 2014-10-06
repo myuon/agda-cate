@@ -1,0 +1,524 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Categories.Nat</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Keyword"
+      >module</a
+      ><a name="7"
+      > </a
+      ><a name="8" href="Categories.Nat.html#1" class="Module"
+      >Categories.Nat</a
+      ><a name="22"
+      > </a
+      ><a name="23" class="Keyword"
+      >where</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >open</a
+      ><a name="34"
+      > </a
+      ><a name="35" class="Keyword"
+      >import</a
+      ><a name="41"
+      > </a
+      ><a name="42" href="Level.html#1" class="Module"
+      >Level</a
+      ><a name="47"
+      >
+</a
+      ><a name="48" class="Keyword"
+      >open</a
+      ><a name="52"
+      > </a
+      ><a name="53" class="Keyword"
+      >import</a
+      ><a name="59"
+      > </a
+      ><a name="60" href="Categories.Category.html#1" class="Module"
+      >Categories.Category</a
+      ><a name="79"
+      >
+</a
+      ><a name="80" class="Keyword"
+      >open</a
+      ><a name="84"
+      > </a
+      ><a name="85" class="Keyword"
+      >import</a
+      ><a name="91"
+      > </a
+      ><a name="92" href="Categories.Functor.html#1" class="Module"
+      >Categories.Functor</a
+      ><a name="110"
+      >
+
+</a
+      ><a name="112" class="Keyword"
+      >open</a
+      ><a name="116"
+      > </a
+      ><a name="117" href="Categories.Category.html#161" class="Module"
+      >Category</a
+      ><a name="125"
+      >
+</a
+      ><a name="126" class="Keyword"
+      >open</a
+      ><a name="130"
+      > </a
+      ><a name="131" href="Categories.Functor.html#107" class="Module"
+      >Functor</a
+      ><a name="138"
+      >
+
+</a
+      ><a name="140" class="Keyword"
+      >record</a
+      ><a name="146"
+      > </a
+      ><a name="147" href="Categories.Nat.html#147" class="Record"
+      >Nat</a
+      ><a name="150"
+      >
+  </a
+      ><a name="153" class="Symbol"
+      >{</a
+      ><a name="154" href="Categories.Nat.html#154" class="Bound"
+      >C&#8320;</a
+      ><a name="156"
+      > </a
+      ><a name="157" href="Categories.Nat.html#157" class="Bound"
+      >C&#8321;</a
+      ><a name="159"
+      > </a
+      ><a name="160" href="Categories.Nat.html#160" class="Bound"
+      >&#8467;</a
+      ><a name="161"
+      > </a
+      ><a name="162" href="Categories.Nat.html#162" class="Bound"
+      >D&#8320;</a
+      ><a name="164"
+      > </a
+      ><a name="165" href="Categories.Nat.html#165" class="Bound"
+      >D&#8321;</a
+      ><a name="167"
+      > </a
+      ><a name="168" href="Categories.Nat.html#168" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="170" class="Symbol"
+      >}</a
+      ><a name="171"
+      > </a
+      ><a name="172" class="Symbol"
+      >{</a
+      ><a name="173" href="Categories.Nat.html#173" class="Bound"
+      >C</a
+      ><a name="174"
+      > </a
+      ><a name="175" class="Symbol"
+      >:</a
+      ><a name="176"
+      > </a
+      ><a name="177" href="Categories.Category.html#161" class="Record"
+      >Category</a
+      ><a name="185"
+      > </a
+      ><a name="186" href="Categories.Nat.html#154" class="Bound"
+      >C&#8320;</a
+      ><a name="188"
+      > </a
+      ><a name="189" href="Categories.Nat.html#157" class="Bound"
+      >C&#8321;</a
+      ><a name="191"
+      > </a
+      ><a name="192" href="Categories.Nat.html#160" class="Bound"
+      >&#8467;</a
+      ><a name="193" class="Symbol"
+      >}</a
+      ><a name="194"
+      > </a
+      ><a name="195" class="Symbol"
+      >{</a
+      ><a name="196" href="Categories.Nat.html#196" class="Bound"
+      >D</a
+      ><a name="197"
+      > </a
+      ><a name="198" class="Symbol"
+      >:</a
+      ><a name="199"
+      > </a
+      ><a name="200" href="Categories.Category.html#161" class="Record"
+      >Category</a
+      ><a name="208"
+      > </a
+      ><a name="209" href="Categories.Nat.html#162" class="Bound"
+      >D&#8320;</a
+      ><a name="211"
+      > </a
+      ><a name="212" href="Categories.Nat.html#165" class="Bound"
+      >D&#8321;</a
+      ><a name="214"
+      > </a
+      ><a name="215" href="Categories.Nat.html#168" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="217" class="Symbol"
+      >}</a
+      ><a name="218"
+      >
+  </a
+      ><a name="221" class="Symbol"
+      >(</a
+      ><a name="222" href="Categories.Nat.html#222" class="Bound"
+      >F</a
+      ><a name="223"
+      > </a
+      ><a name="224" href="Categories.Nat.html#224" class="Bound"
+      >G</a
+      ><a name="225"
+      > </a
+      ><a name="226" class="Symbol"
+      >:</a
+      ><a name="227"
+      > </a
+      ><a name="228" href="Categories.Functor.html#107" class="Record"
+      >Functor</a
+      ><a name="235"
+      > </a
+      ><a name="236" href="Categories.Nat.html#173" class="Bound"
+      >C</a
+      ><a name="237"
+      > </a
+      ><a name="238" href="Categories.Nat.html#196" class="Bound"
+      >D</a
+      ><a name="239" class="Symbol"
+      >)</a
+      ><a name="240"
+      >
+  </a
+      ><a name="243" class="Symbol"
+      >:</a
+      ><a name="244"
+      > </a
+      ><a name="245" class="PrimitiveType"
+      >Set</a
+      ><a name="248"
+      > </a
+      ><a name="249" class="Symbol"
+      >(</a
+      ><a name="250" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="253"
+      > </a
+      ><a name="254" class="Symbol"
+      >(</a
+      ><a name="255" href="Categories.Nat.html#154" class="Bound"
+      >C&#8320;</a
+      ><a name="257"
+      > </a
+      ><a name="258" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="259"
+      > </a
+      ><a name="260" href="Categories.Nat.html#157" class="Bound"
+      >C&#8321;</a
+      ><a name="262"
+      > </a
+      ><a name="263" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="264"
+      > </a
+      ><a name="265" href="Categories.Nat.html#160" class="Bound"
+      >&#8467;</a
+      ><a name="266"
+      > </a
+      ><a name="267" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="268"
+      > </a
+      ><a name="269" href="Categories.Nat.html#162" class="Bound"
+      >D&#8320;</a
+      ><a name="271"
+      > </a
+      ><a name="272" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="273"
+      > </a
+      ><a name="274" href="Categories.Nat.html#165" class="Bound"
+      >D&#8321;</a
+      ><a name="276"
+      > </a
+      ><a name="277" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="278"
+      > </a
+      ><a name="279" href="Categories.Nat.html#168" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="281" class="Symbol"
+      >))</a
+      ><a name="283"
+      > </a
+      ><a name="284" class="Keyword"
+      >where</a
+      ><a name="289"
+      >
+  </a
+      ><a name="292" class="Keyword"
+      >field</a
+      ><a name="297"
+      >
+    </a
+      ><a name="302" href="Categories.Nat.html#302" class="Field"
+      >component</a
+      ><a name="311"
+      > </a
+      ><a name="312" class="Symbol"
+      >:</a
+      ><a name="313"
+      > </a
+      ><a name="314" class="Symbol"
+      >(</a
+      ><a name="315" href="Categories.Nat.html#315" class="Bound"
+      >r</a
+      ><a name="316"
+      > </a
+      ><a name="317" class="Symbol"
+      >:</a
+      ><a name="318"
+      > </a
+      ><a name="319" href="Categories.Category.html#262" class="Field"
+      >Obj</a
+      ><a name="322"
+      > </a
+      ><a name="323" href="Categories.Nat.html#173" class="Bound"
+      >C</a
+      ><a name="324" class="Symbol"
+      >)</a
+      ><a name="325"
+      > </a
+      ><a name="326" class="Symbol"
+      >&#8594;</a
+      ><a name="327"
+      > </a
+      ><a name="328" href="Categories.Nat.html#196" class="Bound"
+      >D</a
+      ><a name="329"
+      > </a
+      ><a name="330" href="Categories.Category.html#1300" class="Function Operator"
+      >[</a
+      ><a name="331"
+      > </a
+      ><a name="332" href="Categories.Functor.html#256" class="Field"
+      >fobj</a
+      ><a name="336"
+      > </a
+      ><a name="337" href="Categories.Nat.html#222" class="Bound"
+      >F</a
+      ><a name="338"
+      > </a
+      ><a name="339" href="Categories.Nat.html#315" class="Bound"
+      >r</a
+      ><a name="340"
+      > </a
+      ><a name="341" href="Categories.Category.html#1300" class="Function Operator"
+      >~&gt;</a
+      ><a name="343"
+      > </a
+      ><a name="344" href="Categories.Functor.html#256" class="Field"
+      >fobj</a
+      ><a name="348"
+      > </a
+      ><a name="349" href="Categories.Nat.html#224" class="Bound"
+      >G</a
+      ><a name="350"
+      > </a
+      ><a name="351" href="Categories.Nat.html#315" class="Bound"
+      >r</a
+      ><a name="352"
+      > </a
+      ><a name="353" href="Categories.Category.html#1300" class="Function Operator"
+      >]</a
+      ><a name="354"
+      >
+
+  </a
+      ><a name="358" class="Keyword"
+      >field</a
+      ><a name="363"
+      >
+    </a
+      ><a name="368" href="Categories.Nat.html#368" class="Field"
+      >naturality</a
+      ><a name="378"
+      > </a
+      ><a name="379" class="Symbol"
+      >:</a
+      ><a name="380"
+      > </a
+      ><a name="381" class="Symbol"
+      >{</a
+      ><a name="382" href="Categories.Nat.html#382" class="Bound"
+      >a</a
+      ><a name="383"
+      > </a
+      ><a name="384" href="Categories.Nat.html#384" class="Bound"
+      >b</a
+      ><a name="385"
+      > </a
+      ><a name="386" class="Symbol"
+      >:</a
+      ><a name="387"
+      > </a
+      ><a name="388" href="Categories.Category.html#262" class="Field"
+      >Obj</a
+      ><a name="391"
+      > </a
+      ><a name="392" href="Categories.Nat.html#173" class="Bound"
+      >C</a
+      ><a name="393" class="Symbol"
+      >}</a
+      ><a name="394"
+      > </a
+      ><a name="395" class="Symbol"
+      >{</a
+      ><a name="396" href="Categories.Nat.html#396" class="Bound"
+      >f</a
+      ><a name="397"
+      > </a
+      ><a name="398" class="Symbol"
+      >:</a
+      ><a name="399"
+      > </a
+      ><a name="400" href="Categories.Nat.html#173" class="Bound"
+      >C</a
+      ><a name="401"
+      > </a
+      ><a name="402" href="Categories.Category.html#1300" class="Function Operator"
+      >[</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="Categories.Nat.html#382" class="Bound"
+      >a</a
+      ><a name="405"
+      > </a
+      ><a name="406" href="Categories.Category.html#1300" class="Function Operator"
+      >~&gt;</a
+      ><a name="408"
+      > </a
+      ><a name="409" href="Categories.Nat.html#384" class="Bound"
+      >b</a
+      ><a name="410"
+      > </a
+      ><a name="411" href="Categories.Category.html#1300" class="Function Operator"
+      >]</a
+      ><a name="412" class="Symbol"
+      >}</a
+      ><a name="413"
+      >
+      </a
+      ><a name="420" class="Symbol"
+      >&#8594;</a
+      ><a name="421"
+      > </a
+      ><a name="422" href="Categories.Nat.html#196" class="Bound"
+      >D</a
+      ><a name="423"
+      > </a
+      ><a name="424" href="Categories.Category.html#1519" class="Function Operator"
+      >[</a
+      ><a name="425"
+      > </a
+      ><a name="426" href="Categories.Nat.html#196" class="Bound"
+      >D</a
+      ><a name="427"
+      > </a
+      ><a name="428" href="Categories.Category.html#1397" class="Function Operator"
+      >[</a
+      ><a name="429"
+      > </a
+      ><a name="430" href="Categories.Nat.html#302" class="Bound"
+      >component</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="Categories.Nat.html#384" class="Bound"
+      >b</a
+      ><a name="441"
+      > </a
+      ><a name="442" href="Categories.Category.html#1397" class="Function Operator"
+      >&#8728;</a
+      ><a name="443"
+      > </a
+      ><a name="444" href="Categories.Functor.html#281" class="Field"
+      >fmap</a
+      ><a name="448"
+      > </a
+      ><a name="449" href="Categories.Nat.html#222" class="Bound"
+      >F</a
+      ><a name="450"
+      > </a
+      ><a name="451" href="Categories.Nat.html#396" class="Bound"
+      >f</a
+      ><a name="452"
+      > </a
+      ><a name="453" href="Categories.Category.html#1397" class="Function Operator"
+      >]</a
+      ><a name="454"
+      > </a
+      ><a name="455" href="Categories.Category.html#1519" class="Function Operator"
+      >&#8776;</a
+      ><a name="456"
+      > </a
+      ><a name="457" href="Categories.Nat.html#196" class="Bound"
+      >D</a
+      ><a name="458"
+      > </a
+      ><a name="459" href="Categories.Category.html#1397" class="Function Operator"
+      >[</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="Categories.Functor.html#281" class="Field"
+      >fmap</a
+      ><a name="465"
+      > </a
+      ><a name="466" href="Categories.Nat.html#224" class="Bound"
+      >G</a
+      ><a name="467"
+      > </a
+      ><a name="468" href="Categories.Nat.html#396" class="Bound"
+      >f</a
+      ><a name="469"
+      > </a
+      ><a name="470" href="Categories.Category.html#1397" class="Function Operator"
+      >&#8728;</a
+      ><a name="471"
+      > </a
+      ><a name="472" href="Categories.Nat.html#302" class="Bound"
+      >component</a
+      ><a name="481"
+      > </a
+      ><a name="482" href="Categories.Nat.html#382" class="Bound"
+      >a</a
+      ><a name="483"
+      > </a
+      ><a name="484" href="Categories.Category.html#1397" class="Function Operator"
+      >]</a
+      ><a name="485"
+      > </a
+      ><a name="486" href="Categories.Category.html#1519" class="Function Operator"
+      >]</a
+      ><a name="487"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
