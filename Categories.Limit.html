@@ -1,0 +1,2576 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Categories.Limit</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Keyword"
+      >module</a
+      ><a name="7"
+      > </a
+      ><a name="8" href="Categories.Limit.html#1" class="Module"
+      >Categories.Limit</a
+      ><a name="24"
+      > </a
+      ><a name="25" class="Keyword"
+      >where</a
+      ><a name="30"
+      >
+
+</a
+      ><a name="32" class="Keyword"
+      >open</a
+      ><a name="36"
+      > </a
+      ><a name="37" class="Keyword"
+      >import</a
+      ><a name="43"
+      > </a
+      ><a name="44" href="Level.html#1" class="Module"
+      >Level</a
+      ><a name="49"
+      >
+</a
+      ><a name="50" class="Keyword"
+      >open</a
+      ><a name="54"
+      > </a
+      ><a name="55" class="Keyword"
+      >import</a
+      ><a name="61"
+      > </a
+      ><a name="62" href="Relation.Binary.Core.html#1" class="Module"
+      >Relation.Binary.Core</a
+      ><a name="82"
+      > </a
+      ><a name="83" class="Keyword"
+      >using</a
+      ><a name="88"
+      > </a
+      ><a name="89" class="Symbol"
+      >(</a
+      ><a name="90"
+      >Rel</a
+      ><a name="93" class="Symbol"
+      >;</a
+      ><a name="94"
+      > </a
+      ><a name="95" class="Keyword"
+      >module</a
+      ><a name="101"
+      > IsEquivalence</a
+      ><a name="115" class="Symbol"
+      >)</a
+      ><a name="116"
+      >
+</a
+      ><a name="117" class="Keyword"
+      >open</a
+      ><a name="121"
+      > </a
+      ><a name="122" class="Keyword"
+      >import</a
+      ><a name="128"
+      > </a
+      ><a name="129" href="Categories.Category.html#1" class="Module"
+      >Categories.Category</a
+      ><a name="148"
+      >
+</a
+      ><a name="149" class="Keyword"
+      >open</a
+      ><a name="153"
+      > </a
+      ><a name="154" class="Keyword"
+      >import</a
+      ><a name="160"
+      > </a
+      ><a name="161" href="Categories.Functor.html#1" class="Module"
+      >Categories.Functor</a
+      ><a name="179"
+      >
+</a
+      ><a name="180" class="Keyword"
+      >open</a
+      ><a name="184"
+      > </a
+      ><a name="185" class="Keyword"
+      >import</a
+      ><a name="191"
+      > </a
+      ><a name="192" href="Categories.Nat.html#1" class="Module"
+      >Categories.Nat</a
+      ><a name="206"
+      >
+</a
+      ><a name="207" class="Keyword"
+      >open</a
+      ><a name="211"
+      > </a
+      ><a name="212" class="Keyword"
+      >import</a
+      ><a name="218"
+      > </a
+      ><a name="219" href="Categories.FunctorCategory.html#1" class="Module"
+      >Categories.FunctorCategory</a
+      ><a name="245"
+      >
+</a
+      ><a name="246" class="Keyword"
+      >open</a
+      ><a name="250"
+      > </a
+      ><a name="251" class="Keyword"
+      >import</a
+      ><a name="257"
+      > </a
+      ><a name="258" href="Categories.Reasoning.html#1" class="Module"
+      >Categories.Reasoning</a
+      ><a name="278"
+      >
+
+</a
+      ><a name="280" class="Keyword"
+      >open</a
+      ><a name="284"
+      > </a
+      ><a name="285" href="Categories.Category.html#128" class="Module"
+      >Category</a
+      ><a name="293"
+      >
+</a
+      ><a name="294" class="Keyword"
+      >open</a
+      ><a name="298"
+      > </a
+      ><a name="299" href="Categories.Functor.html#107" class="Module"
+      >Functor</a
+      ><a name="306"
+      >
+</a
+      ><a name="307" class="Keyword"
+      >open</a
+      ><a name="311"
+      > </a
+      ><a name="312" href="Categories.Nat.html#147" class="Module"
+      >Nat</a
+      ><a name="315"
+      >
+</a
+      ><a name="316" class="Keyword"
+      >open</a
+      ><a name="320"
+      > </a
+      ><a name="321" href="Relation.Binary.Core.html#5084" class="Module"
+      >IsEquivalence</a
+      ><a name="334"
+      >
+
+</a
+      ><a name="336" href="Categories.Limit.html#336" class="Function"
+      >Diagonal</a
+      ><a name="344"
+      > </a
+      ><a name="345" class="Symbol"
+      >:</a
+      ><a name="346"
+      >
+  </a
+      ><a name="349" class="Symbol"
+      >&#8704;{</a
+      ><a name="351" href="Categories.Limit.html#351" class="Bound"
+      >S&#8320;</a
+      ><a name="353"
+      > </a
+      ><a name="354" href="Categories.Limit.html#354" class="Bound"
+      >S&#8321;</a
+      ><a name="356"
+      > </a
+      ><a name="357" href="Categories.Limit.html#357" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="359"
+      > </a
+      ><a name="360" href="Categories.Limit.html#360" class="Bound"
+      >C&#8320;</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="Categories.Limit.html#363" class="Bound"
+      >C&#8321;</a
+      ><a name="365"
+      > </a
+      ><a name="366" href="Categories.Limit.html#366" class="Bound"
+      >&#8467;</a
+      ><a name="367" class="Symbol"
+      >}</a
+      ><a name="368"
+      > </a
+      ><a name="369" class="Symbol"
+      >(</a
+      ><a name="370" href="Categories.Limit.html#370" class="Bound"
+      >J</a
+      ><a name="371"
+      > </a
+      ><a name="372" class="Symbol"
+      >:</a
+      ><a name="373"
+      > </a
+      ><a name="374" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="382"
+      > </a
+      ><a name="383" href="Categories.Limit.html#351" class="Bound"
+      >S&#8320;</a
+      ><a name="385"
+      > </a
+      ><a name="386" href="Categories.Limit.html#354" class="Bound"
+      >S&#8321;</a
+      ><a name="388"
+      > </a
+      ><a name="389" href="Categories.Limit.html#357" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="391" class="Symbol"
+      >)</a
+      ><a name="392"
+      > </a
+      ><a name="393" class="Symbol"
+      >(</a
+      ><a name="394" href="Categories.Limit.html#394" class="Bound"
+      >C</a
+      ><a name="395"
+      > </a
+      ><a name="396" class="Symbol"
+      >:</a
+      ><a name="397"
+      > </a
+      ><a name="398" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="406"
+      > </a
+      ><a name="407" href="Categories.Limit.html#360" class="Bound"
+      >C&#8320;</a
+      ><a name="409"
+      > </a
+      ><a name="410" href="Categories.Limit.html#363" class="Bound"
+      >C&#8321;</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="Categories.Limit.html#366" class="Bound"
+      >&#8467;</a
+      ><a name="414" class="Symbol"
+      >)</a
+      ><a name="415"
+      >
+  </a
+      ><a name="418" class="Symbol"
+      >(</a
+      ><a name="419" href="Categories.Limit.html#419" class="Bound"
+      >r</a
+      ><a name="420"
+      > </a
+      ><a name="421" class="Symbol"
+      >:</a
+      ><a name="422"
+      > </a
+      ><a name="423" href="Categories.Category.html#229" class="Field"
+      >Obj</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="Categories.Limit.html#394" class="Bound"
+      >C</a
+      ><a name="428" class="Symbol"
+      >)</a
+      ><a name="429"
+      > </a
+      ><a name="430" class="Symbol"
+      >&#8594;</a
+      ><a name="431"
+      > </a
+      ><a name="432" href="Categories.Functor.html#107" class="Record"
+      >Functor</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="Categories.Limit.html#370" class="Bound"
+      >J</a
+      ><a name="441"
+      > </a
+      ><a name="442" href="Categories.Limit.html#394" class="Bound"
+      >C</a
+      ><a name="443"
+      >
+</a
+      ><a name="444" href="Categories.Limit.html#336" class="Function"
+      >Diagonal</a
+      ><a name="452"
+      > </a
+      ><a name="453" class="Symbol"
+      >_</a
+      ><a name="454"
+      > </a
+      ><a name="455" href="Categories.Limit.html#455" class="Bound"
+      >C</a
+      ><a name="456"
+      > </a
+      ><a name="457" href="Categories.Limit.html#457" class="Bound"
+      >r</a
+      ><a name="458"
+      > </a
+      ><a name="459" class="Symbol"
+      >=</a
+      ><a name="460"
+      > </a
+      ><a name="461" class="Keyword"
+      >record</a
+      ><a name="467"
+      >
+  </a
+      ><a name="470" class="Symbol"
+      >{</a
+      ><a name="471"
+      > </a
+      ><a name="472" class="Field"
+      >fobj</a
+      ><a name="476"
+      > </a
+      ><a name="477" class="Symbol"
+      >=</a
+      ><a name="478"
+      > </a
+      ><a name="479" class="Symbol"
+      >\</a
+      ><a name="480" href="Categories.Limit.html#480" class="Bound"
+      >_</a
+      ><a name="481"
+      > </a
+      ><a name="482" class="Symbol"
+      >&#8594;</a
+      ><a name="483"
+      > </a
+      ><a name="484" href="Categories.Limit.html#457" class="Bound"
+      >r</a
+      ><a name="485"
+      >
+  </a
+      ><a name="488" class="Symbol"
+      >;</a
+      ><a name="489"
+      > </a
+      ><a name="490" class="Field"
+      >fmap</a
+      ><a name="494"
+      > </a
+      ><a name="495" class="Symbol"
+      >=</a
+      ><a name="496"
+      > </a
+      ><a name="497" class="Symbol"
+      >\</a
+      ><a name="498" href="Categories.Limit.html#498" class="Bound"
+      >_</a
+      ><a name="499"
+      > </a
+      ><a name="500" class="Symbol"
+      >&#8594;</a
+      ><a name="501"
+      > </a
+      ><a name="502" href="Categories.Category.html#366" class="Field"
+      >id</a
+      ><a name="504"
+      > </a
+      ><a name="505" href="Categories.Limit.html#455" class="Bound"
+      >C</a
+      ><a name="506"
+      > </a
+      ><a name="507" class="Symbol"
+      >{</a
+      ><a name="508" href="Categories.Limit.html#457" class="Bound"
+      >r</a
+      ><a name="509" class="Symbol"
+      >}</a
+      ><a name="510"
+      >
+
+  </a
+      ><a name="514" class="Symbol"
+      >;</a
+      ><a name="515"
+      > </a
+      ><a name="516" class="Field"
+      >&#8776;-cong</a
+      ><a name="522"
+      > </a
+      ><a name="523" class="Symbol"
+      >=</a
+      ><a name="524"
+      > </a
+      ><a name="525" class="Symbol"
+      >\</a
+      ><a name="526" href="Categories.Limit.html#526" class="Bound"
+      >_</a
+      ><a name="527"
+      > </a
+      ><a name="528" class="Symbol"
+      >&#8594;</a
+      ><a name="529"
+      > </a
+      ><a name="530" href="Relation.Binary.Core.html#5185" class="Field"
+      >refl</a
+      ><a name="534"
+      > </a
+      ><a name="535" class="Symbol"
+      >(</a
+      ><a name="536" href="Categories.Category.html#619" class="Field"
+      >equivalence</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="Categories.Limit.html#455" class="Bound"
+      >C</a
+      ><a name="549" class="Symbol"
+      >)</a
+      ><a name="550"
+      >
+  </a
+      ><a name="553" class="Symbol"
+      >;</a
+      ><a name="554"
+      > </a
+      ><a name="555" class="Field"
+      >preserveId</a
+      ><a name="565"
+      > </a
+      ><a name="566" class="Symbol"
+      >=</a
+      ><a name="567"
+      > </a
+      ><a name="568" href="Relation.Binary.Core.html#5185" class="Field"
+      >refl</a
+      ><a name="572"
+      > </a
+      ><a name="573" class="Symbol"
+      >(</a
+      ><a name="574" href="Categories.Category.html#619" class="Field"
+      >equivalence</a
+      ><a name="585"
+      > </a
+      ><a name="586" href="Categories.Limit.html#455" class="Bound"
+      >C</a
+      ><a name="587" class="Symbol"
+      >)</a
+      ><a name="588"
+      >
+  </a
+      ><a name="591" class="Symbol"
+      >;</a
+      ><a name="592"
+      > </a
+      ><a name="593" class="Field"
+      >covariant</a
+      ><a name="602"
+      > </a
+      ><a name="603" class="Symbol"
+      >=</a
+      ><a name="604"
+      > </a
+      ><a name="605" href="Relation.Binary.Core.html#5211" class="Field"
+      >sym</a
+      ><a name="608"
+      > </a
+      ><a name="609" class="Symbol"
+      >(</a
+      ><a name="610" href="Categories.Category.html#619" class="Field"
+      >equivalence</a
+      ><a name="621"
+      > </a
+      ><a name="622" href="Categories.Limit.html#455" class="Bound"
+      >C</a
+      ><a name="623" class="Symbol"
+      >)</a
+      ><a name="624"
+      > </a
+      ><a name="625" class="Symbol"
+      >(</a
+      ><a name="626" href="Relation.Binary.Core.html#5237" class="Field"
+      >trans</a
+      ><a name="631"
+      > </a
+      ><a name="632" class="Symbol"
+      >(</a
+      ><a name="633" href="Categories.Category.html#619" class="Field"
+      >equivalence</a
+      ><a name="644"
+      > </a
+      ><a name="645" href="Categories.Limit.html#455" class="Bound"
+      >C</a
+      ><a name="646" class="Symbol"
+      >)</a
+      ><a name="647"
+      > </a
+      ><a name="648" class="Symbol"
+      >(</a
+      ><a name="649" href="Categories.Category.html#403" class="Field"
+      >leftIdentity</a
+      ><a name="661"
+      > </a
+      ><a name="662" href="Categories.Limit.html#455" class="Bound"
+      >C</a
+      ><a name="663" class="Symbol"
+      >)</a
+      ><a name="664"
+      > </a
+      ><a name="665" class="Symbol"
+      >(</a
+      ><a name="666" href="Relation.Binary.Core.html#5185" class="Field"
+      >refl</a
+      ><a name="670"
+      > </a
+      ><a name="671" class="Symbol"
+      >(</a
+      ><a name="672" href="Categories.Category.html#619" class="Field"
+      >equivalence</a
+      ><a name="683"
+      > </a
+      ><a name="684" href="Categories.Limit.html#455" class="Bound"
+      >C</a
+      ><a name="685" class="Symbol"
+      >)))</a
+      ><a name="688"
+      >
+  </a
+      ><a name="691" class="Symbol"
+      >}</a
+      ><a name="692"
+      >
+
+</a
+      ><a name="694" href="Categories.Limit.html#694" class="Function Operator"
+      >&#916;[_]</a
+      ><a name="698"
+      > </a
+      ><a name="699" class="Symbol"
+      >:</a
+      ><a name="700"
+      > </a
+      ><a name="701" class="Symbol"
+      >&#8704;{</a
+      ><a name="703" href="Categories.Limit.html#703" class="Bound"
+      >S&#8320;</a
+      ><a name="705"
+      > </a
+      ><a name="706" href="Categories.Limit.html#706" class="Bound"
+      >S&#8321;</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="Categories.Limit.html#709" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="711"
+      > </a
+      ><a name="712" href="Categories.Limit.html#712" class="Bound"
+      >C&#8320;</a
+      ><a name="714"
+      > </a
+      ><a name="715" href="Categories.Limit.html#715" class="Bound"
+      >C&#8321;</a
+      ><a name="717"
+      > </a
+      ><a name="718" href="Categories.Limit.html#718" class="Bound"
+      >&#8467;</a
+      ><a name="719" class="Symbol"
+      >}</a
+      ><a name="720"
+      > </a
+      ><a name="721" class="Symbol"
+      >{</a
+      ><a name="722" href="Categories.Limit.html#722" class="Bound"
+      >J</a
+      ><a name="723"
+      > </a
+      ><a name="724" class="Symbol"
+      >:</a
+      ><a name="725"
+      > </a
+      ><a name="726" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="734"
+      > </a
+      ><a name="735" href="Categories.Limit.html#703" class="Bound"
+      >S&#8320;</a
+      ><a name="737"
+      > </a
+      ><a name="738" href="Categories.Limit.html#706" class="Bound"
+      >S&#8321;</a
+      ><a name="740"
+      > </a
+      ><a name="741" href="Categories.Limit.html#709" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="743" class="Symbol"
+      >}</a
+      ><a name="744"
+      > </a
+      ><a name="745" class="Symbol"
+      >{</a
+      ><a name="746" href="Categories.Limit.html#746" class="Bound"
+      >C</a
+      ><a name="747"
+      > </a
+      ><a name="748" class="Symbol"
+      >:</a
+      ><a name="749"
+      > </a
+      ><a name="750" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="758"
+      > </a
+      ><a name="759" href="Categories.Limit.html#712" class="Bound"
+      >C&#8320;</a
+      ><a name="761"
+      > </a
+      ><a name="762" href="Categories.Limit.html#715" class="Bound"
+      >C&#8321;</a
+      ><a name="764"
+      > </a
+      ><a name="765" href="Categories.Limit.html#718" class="Bound"
+      >&#8467;</a
+      ><a name="766" class="Symbol"
+      >}</a
+      ><a name="767"
+      > </a
+      ><a name="768" class="Symbol"
+      >(</a
+      ><a name="769" href="Categories.Limit.html#769" class="Bound"
+      >r</a
+      ><a name="770"
+      > </a
+      ><a name="771" class="Symbol"
+      >:</a
+      ><a name="772"
+      > </a
+      ><a name="773" href="Categories.Category.html#229" class="Field"
+      >Obj</a
+      ><a name="776"
+      > </a
+      ><a name="777" href="Categories.Limit.html#746" class="Bound"
+      >C</a
+      ><a name="778" class="Symbol"
+      >)</a
+      ><a name="779"
+      > </a
+      ><a name="780" class="Symbol"
+      >&#8594;</a
+      ><a name="781"
+      > </a
+      ><a name="782" href="Categories.Functor.html#107" class="Record"
+      >Functor</a
+      ><a name="789"
+      > </a
+      ><a name="790" href="Categories.Limit.html#722" class="Bound"
+      >J</a
+      ><a name="791"
+      > </a
+      ><a name="792" href="Categories.Limit.html#746" class="Bound"
+      >C</a
+      ><a name="793"
+      >
+</a
+      ><a name="794" href="Categories.Limit.html#694" class="Function Operator"
+      >&#916;[_]</a
+      ><a name="798"
+      > </a
+      ><a name="799" class="Symbol"
+      >{_}</a
+      ><a name="802"
+      > </a
+      ><a name="803" class="Symbol"
+      >{_}</a
+      ><a name="806"
+      > </a
+      ><a name="807" class="Symbol"
+      >{_}</a
+      ><a name="810"
+      > </a
+      ><a name="811" class="Symbol"
+      >{_}</a
+      ><a name="814"
+      > </a
+      ><a name="815" class="Symbol"
+      >{_}</a
+      ><a name="818"
+      > </a
+      ><a name="819" class="Symbol"
+      >{_}</a
+      ><a name="822"
+      > </a
+      ><a name="823" class="Symbol"
+      >{</a
+      ><a name="824" href="Categories.Limit.html#824" class="Bound"
+      >J</a
+      ><a name="825" class="Symbol"
+      >}</a
+      ><a name="826"
+      > </a
+      ><a name="827" class="Symbol"
+      >{</a
+      ><a name="828" href="Categories.Limit.html#828" class="Bound"
+      >C</a
+      ><a name="829" class="Symbol"
+      >}</a
+      ><a name="830"
+      > </a
+      ><a name="831" href="Categories.Limit.html#831" class="Bound"
+      >r</a
+      ><a name="832"
+      > </a
+      ><a name="833" class="Symbol"
+      >=</a
+      ><a name="834"
+      > </a
+      ><a name="835" href="Categories.Limit.html#336" class="Function"
+      >Diagonal</a
+      ><a name="843"
+      > </a
+      ><a name="844" href="Categories.Limit.html#824" class="Bound"
+      >J</a
+      ><a name="845"
+      > </a
+      ><a name="846" href="Categories.Limit.html#828" class="Bound"
+      >C</a
+      ><a name="847"
+      > </a
+      ><a name="848" href="Categories.Limit.html#831" class="Bound"
+      >r</a
+      ><a name="849"
+      >
+
+</a
+      ><a name="851" href="Categories.Limit.html#851" class="Function"
+      >DiagonalLift</a
+      ><a name="863"
+      > </a
+      ><a name="864" class="Symbol"
+      >:</a
+      ><a name="865"
+      > </a
+      ><a name="866" class="Symbol"
+      >&#8704;{</a
+      ><a name="868" href="Categories.Limit.html#868" class="Bound"
+      >S&#8320;</a
+      ><a name="870"
+      > </a
+      ><a name="871" href="Categories.Limit.html#871" class="Bound"
+      >S&#8321;</a
+      ><a name="873"
+      > </a
+      ><a name="874" href="Categories.Limit.html#874" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="876"
+      > </a
+      ><a name="877" href="Categories.Limit.html#877" class="Bound"
+      >C&#8320;</a
+      ><a name="879"
+      > </a
+      ><a name="880" href="Categories.Limit.html#880" class="Bound"
+      >C&#8321;</a
+      ><a name="882"
+      > </a
+      ><a name="883" href="Categories.Limit.html#883" class="Bound"
+      >&#8467;</a
+      ><a name="884" class="Symbol"
+      >}</a
+      ><a name="885"
+      > </a
+      ><a name="886" class="Symbol"
+      >(</a
+      ><a name="887" href="Categories.Limit.html#887" class="Bound"
+      >J</a
+      ><a name="888"
+      > </a
+      ><a name="889" class="Symbol"
+      >:</a
+      ><a name="890"
+      > </a
+      ><a name="891" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="Categories.Limit.html#868" class="Bound"
+      >S&#8320;</a
+      ><a name="902"
+      > </a
+      ><a name="903" href="Categories.Limit.html#871" class="Bound"
+      >S&#8321;</a
+      ><a name="905"
+      > </a
+      ><a name="906" href="Categories.Limit.html#874" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="908" class="Symbol"
+      >)</a
+      ><a name="909"
+      > </a
+      ><a name="910" class="Symbol"
+      >(</a
+      ><a name="911" href="Categories.Limit.html#911" class="Bound"
+      >C</a
+      ><a name="912"
+      > </a
+      ><a name="913" class="Symbol"
+      >:</a
+      ><a name="914"
+      > </a
+      ><a name="915" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="923"
+      > </a
+      ><a name="924" href="Categories.Limit.html#877" class="Bound"
+      >C&#8320;</a
+      ><a name="926"
+      > </a
+      ><a name="927" href="Categories.Limit.html#880" class="Bound"
+      >C&#8321;</a
+      ><a name="929"
+      > </a
+      ><a name="930" href="Categories.Limit.html#883" class="Bound"
+      >&#8467;</a
+      ><a name="931" class="Symbol"
+      >)</a
+      ><a name="932"
+      >
+  </a
+      ><a name="935" class="Symbol"
+      >{</a
+      ><a name="936" href="Categories.Limit.html#936" class="Bound"
+      >a</a
+      ><a name="937"
+      > </a
+      ><a name="938" href="Categories.Limit.html#938" class="Bound"
+      >b</a
+      ><a name="939"
+      > </a
+      ><a name="940" class="Symbol"
+      >:</a
+      ><a name="941"
+      > </a
+      ><a name="942" href="Categories.Category.html#229" class="Field"
+      >Obj</a
+      ><a name="945"
+      > </a
+      ><a name="946" href="Categories.Limit.html#911" class="Bound"
+      >C</a
+      ><a name="947" class="Symbol"
+      >}</a
+      ><a name="948"
+      > </a
+      ><a name="949" class="Symbol"
+      >&#8594;</a
+      ><a name="950"
+      > </a
+      ><a name="951" class="Symbol"
+      >(</a
+      ><a name="952" href="Categories.Limit.html#952" class="Bound"
+      >h</a
+      ><a name="953"
+      > </a
+      ><a name="954" class="Symbol"
+      >:</a
+      ><a name="955"
+      > </a
+      ><a name="956" href="Categories.Limit.html#911" class="Bound"
+      >C</a
+      ><a name="957"
+      > </a
+      ><a name="958" href="Categories.Category.html#1267" class="Function Operator"
+      >[</a
+      ><a name="959"
+      > </a
+      ><a name="960" href="Categories.Limit.html#936" class="Bound"
+      >a</a
+      ><a name="961"
+      > </a
+      ><a name="962" href="Categories.Category.html#1267" class="Function Operator"
+      >~&gt;</a
+      ><a name="964"
+      > </a
+      ><a name="965" href="Categories.Limit.html#938" class="Bound"
+      >b</a
+      ><a name="966"
+      > </a
+      ><a name="967" href="Categories.Category.html#1267" class="Function Operator"
+      >]</a
+      ><a name="968" class="Symbol"
+      >)</a
+      ><a name="969"
+      > </a
+      ><a name="970" class="Symbol"
+      >&#8594;</a
+      ><a name="971"
+      > </a
+      ><a name="972" href="Categories.Nat.html#147" class="Record"
+      >Nat</a
+      ><a name="975"
+      > </a
+      ><a name="976" class="Symbol"
+      >{</a
+      ><a name="977" href="Categories.Limit.html#868" class="Bound"
+      >S&#8320;</a
+      ><a name="979" class="Symbol"
+      >}</a
+      ><a name="980"
+      > </a
+      ><a name="981" class="Symbol"
+      >{</a
+      ><a name="982" href="Categories.Limit.html#871" class="Bound"
+      >S&#8321;</a
+      ><a name="984" class="Symbol"
+      >}</a
+      ><a name="985"
+      > </a
+      ><a name="986" class="Symbol"
+      >{</a
+      ><a name="987" href="Categories.Limit.html#874" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="989" class="Symbol"
+      >}</a
+      ><a name="990"
+      > </a
+      ><a name="991" class="Symbol"
+      >{</a
+      ><a name="992" href="Categories.Limit.html#877" class="Bound"
+      >C&#8320;</a
+      ><a name="994" class="Symbol"
+      >}</a
+      ><a name="995"
+      > </a
+      ><a name="996" class="Symbol"
+      >{</a
+      ><a name="997" href="Categories.Limit.html#880" class="Bound"
+      >C&#8321;</a
+      ><a name="999" class="Symbol"
+      >}</a
+      ><a name="1000"
+      > </a
+      ><a name="1001" class="Symbol"
+      >{</a
+      ><a name="1002" href="Categories.Limit.html#883" class="Bound"
+      >&#8467;</a
+      ><a name="1003" class="Symbol"
+      >}</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" class="Symbol"
+      >{</a
+      ><a name="1006" href="Categories.Limit.html#887" class="Bound"
+      >J</a
+      ><a name="1007" class="Symbol"
+      >}</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" class="Symbol"
+      >{</a
+      ><a name="1010" href="Categories.Limit.html#911" class="Bound"
+      >C</a
+      ><a name="1011" class="Symbol"
+      >}</a
+      ><a name="1012"
+      > </a
+      ><a name="1013" class="Symbol"
+      >(</a
+      ><a name="1014" href="Categories.Limit.html#336" class="Function"
+      >Diagonal</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" href="Categories.Limit.html#887" class="Bound"
+      >J</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" href="Categories.Limit.html#911" class="Bound"
+      >C</a
+      ><a name="1026"
+      > </a
+      ><a name="1027" href="Categories.Limit.html#936" class="Bound"
+      >a</a
+      ><a name="1028" class="Symbol"
+      >)</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" class="Symbol"
+      >(</a
+      ><a name="1031" href="Categories.Limit.html#336" class="Function"
+      >Diagonal</a
+      ><a name="1039"
+      > </a
+      ><a name="1040" href="Categories.Limit.html#887" class="Bound"
+      >J</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" href="Categories.Limit.html#911" class="Bound"
+      >C</a
+      ><a name="1043"
+      > </a
+      ><a name="1044" href="Categories.Limit.html#938" class="Bound"
+      >b</a
+      ><a name="1045" class="Symbol"
+      >)</a
+      ><a name="1046"
+      >
+</a
+      ><a name="1047" href="Categories.Limit.html#851" class="Function"
+      >DiagonalLift</a
+      ><a name="1059"
+      > </a
+      ><a name="1060" href="Categories.Limit.html#1060" class="Bound"
+      >J</a
+      ><a name="1061"
+      > </a
+      ><a name="1062" href="Categories.Limit.html#1062" class="Bound"
+      >C</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" class="Symbol"
+      >{</a
+      ><a name="1065" href="Categories.Limit.html#1065" class="Bound"
+      >a</a
+      ><a name="1066" class="Symbol"
+      >}</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" class="Symbol"
+      >{</a
+      ><a name="1069" href="Categories.Limit.html#1069" class="Bound"
+      >b</a
+      ><a name="1070" class="Symbol"
+      >}</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" href="Categories.Limit.html#1072" class="Bound"
+      >h</a
+      ><a name="1073"
+      > </a
+      ><a name="1074" class="Symbol"
+      >=</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" class="Keyword"
+      >record</a
+      ><a name="1082"
+      >
+  </a
+      ><a name="1085" class="Symbol"
+      >{</a
+      ><a name="1086"
+      > </a
+      ><a name="1087" class="Field"
+      >component</a
+      ><a name="1096"
+      > </a
+      ><a name="1097" class="Symbol"
+      >=</a
+      ><a name="1098"
+      > </a
+      ><a name="1099" class="Symbol"
+      >\</a
+      ><a name="1100" href="Categories.Limit.html#1100" class="Bound"
+      >_</a
+      ><a name="1101"
+      > </a
+      ><a name="1102" class="Symbol"
+      >&#8594;</a
+      ><a name="1103"
+      > </a
+      ><a name="1104" href="Categories.Limit.html#1072" class="Bound"
+      >h</a
+      ><a name="1105"
+      >
+  </a
+      ><a name="1108" class="Symbol"
+      >;</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" class="Field"
+      >naturality</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >=</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" class="Symbol"
+      >\{</a
+      ><a name="1125" href="Categories.Limit.html#1125" class="Bound"
+      >i</a
+      ><a name="1126" class="Symbol"
+      >}</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" class="Symbol"
+      >{</a
+      ><a name="1129" href="Categories.Limit.html#1129" class="Bound"
+      >j</a
+      ><a name="1130" class="Symbol"
+      >}</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" class="Symbol"
+      >{</a
+      ><a name="1133" href="Categories.Limit.html#1133" class="Bound"
+      >f</a
+      ><a name="1134" class="Symbol"
+      >}</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" class="Symbol"
+      >&#8594;</a
+      ><a name="1137"
+      > </a
+      ><a name="1138" class="Keyword"
+      >let</a
+      ><a name="1141"
+      > </a
+      ><a name="1142" class="Keyword"
+      >open</a
+      ><a name="1146"
+      > </a
+      ><a name="1147" href="Categories.Reasoning.html#136" class="Module"
+      >&#8776;-Reasoning</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="Categories.Limit.html#1062" class="Bound"
+      >C</a
+      ><a name="1160"
+      > </a
+      ><a name="1161" class="Keyword"
+      >in</a
+      ><a name="1163"
+      >
+    </a
+      ><a name="1168" href="Categories.Reasoning.html#666" class="Function Operator"
+      >begin</a
+      ><a name="1173"
+      >
+      </a
+      ><a name="1180" href="Categories.Limit.html#1062" class="Bound"
+      >C</a
+      ><a name="1181"
+      > </a
+      ><a name="1182" href="Categories.Category.html#1364" class="Function Operator"
+      >[</a
+      ><a name="1183"
+      > </a
+      ><a name="1184" href="Categories.Limit.html#1072" class="Bound"
+      >h</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" href="Categories.Category.html#1364" class="Function Operator"
+      >&#8728;</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" href="Categories.Functor.html#281" class="Field"
+      >fmap</a
+      ><a name="1192"
+      > </a
+      ><a name="1193" class="Symbol"
+      >(</a
+      ><a name="1194" href="Categories.Limit.html#336" class="Function"
+      >Diagonal</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" href="Categories.Limit.html#1060" class="Bound"
+      >J</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" href="Categories.Limit.html#1062" class="Bound"
+      >C</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" href="Categories.Limit.html#1065" class="Bound"
+      >a</a
+      ><a name="1208" class="Symbol"
+      >)</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" href="Categories.Limit.html#1133" class="Bound"
+      >f</a
+      ><a name="1211"
+      > </a
+      ><a name="1212" href="Categories.Category.html#1364" class="Function Operator"
+      >]</a
+      ><a name="1213"
+      > </a
+      ><a name="1214" href="Categories.Reasoning.html#946" class="Function Operator"
+      >&#8595;&#10216;</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" href="Categories.Reasoning.html#197" class="Function"
+      >refl-hom</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" href="Categories.Reasoning.html#946" class="Function Operator"
+      >&#10217;</a
+      ><a name="1227"
+      >
+      </a
+      ><a name="1234" href="Categories.Limit.html#1062" class="Bound"
+      >C</a
+      ><a name="1235"
+      > </a
+      ><a name="1236" href="Categories.Category.html#1364" class="Function Operator"
+      >[</a
+      ><a name="1237"
+      > </a
+      ><a name="1238" href="Categories.Limit.html#1072" class="Bound"
+      >h</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" href="Categories.Category.html#1364" class="Function Operator"
+      >&#8728;</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" href="Categories.Category.html#366" class="Field"
+      >id</a
+      ><a name="1244"
+      > </a
+      ><a name="1245" href="Categories.Limit.html#1062" class="Bound"
+      >C</a
+      ><a name="1246"
+      > </a
+      ><a name="1247" class="Symbol"
+      >{</a
+      ><a name="1248" href="Categories.Limit.html#1065" class="Bound"
+      >a</a
+      ><a name="1249" class="Symbol"
+      >}</a
+      ><a name="1250"
+      > </a
+      ><a name="1251" href="Categories.Category.html#1364" class="Function Operator"
+      >]</a
+      ><a name="1252"
+      > </a
+      ><a name="1253" href="Categories.Reasoning.html#946" class="Function Operator"
+      >&#8595;&#10216;</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" href="Categories.Category.html#460" class="Field"
+      >rightIdentity</a
+      ><a name="1269"
+      > </a
+      ><a name="1270" href="Categories.Limit.html#1062" class="Bound"
+      >C</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" href="Categories.Reasoning.html#946" class="Function Operator"
+      >&#10217;</a
+      ><a name="1273"
+      >
+      </a
+      ><a name="1280" href="Categories.Limit.html#1072" class="Bound"
+      >h</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="Categories.Reasoning.html#1087" class="Function Operator"
+      >&#8593;&#10216;</a
+      ><a name="1284"
+      > </a
+      ><a name="1285" href="Categories.Category.html#403" class="Field"
+      >leftIdentity</a
+      ><a name="1297"
+      > </a
+      ><a name="1298" href="Categories.Limit.html#1062" class="Bound"
+      >C</a
+      ><a name="1299"
+      > </a
+      ><a name="1300" href="Categories.Reasoning.html#1087" class="Function Operator"
+      >&#10217;</a
+      ><a name="1301"
+      >
+      </a
+      ><a name="1308" href="Categories.Limit.html#1062" class="Bound"
+      >C</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" href="Categories.Category.html#1364" class="Function Operator"
+      >[</a
+      ><a name="1311"
+      > </a
+      ><a name="1312" href="Categories.Functor.html#281" class="Field"
+      >fmap</a
+      ><a name="1316"
+      > </a
+      ><a name="1317" class="Symbol"
+      >(</a
+      ><a name="1318" href="Categories.Limit.html#336" class="Function"
+      >Diagonal</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" href="Categories.Limit.html#1060" class="Bound"
+      >J</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" href="Categories.Limit.html#1062" class="Bound"
+      >C</a
+      ><a name="1330"
+      > </a
+      ><a name="1331" href="Categories.Limit.html#1069" class="Bound"
+      >b</a
+      ><a name="1332" class="Symbol"
+      >)</a
+      ><a name="1333"
+      > </a
+      ><a name="1334" href="Categories.Limit.html#1133" class="Bound"
+      >f</a
+      ><a name="1335"
+      > </a
+      ><a name="1336" href="Categories.Category.html#1364" class="Function Operator"
+      >&#8728;</a
+      ><a name="1337"
+      > </a
+      ><a name="1338" href="Categories.Limit.html#1072" class="Bound"
+      >h</a
+      ><a name="1339"
+      > </a
+      ><a name="1340" href="Categories.Category.html#1364" class="Function Operator"
+      >]</a
+      ><a name="1341"
+      >
+    </a
+      ><a name="1346" href="Categories.Reasoning.html#1416" class="Function Operator"
+      >&#8718;</a
+      ><a name="1347"
+      >
+  </a
+      ><a name="1350" class="Symbol"
+      >}</a
+      ><a name="1351"
+      >
+
+</a
+      ><a name="1353" class="Keyword"
+      >record</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" href="Categories.Limit.html#1360" class="Record"
+      >Cone</a
+      ><a name="1364"
+      > </a
+      ><a name="1365" class="Symbol"
+      >{</a
+      ><a name="1366" href="Categories.Limit.html#1366" class="Bound"
+      >S&#8320;</a
+      ><a name="1368"
+      > </a
+      ><a name="1369" href="Categories.Limit.html#1369" class="Bound"
+      >S&#8321;</a
+      ><a name="1371"
+      > </a
+      ><a name="1372" href="Categories.Limit.html#1372" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="1374"
+      > </a
+      ><a name="1375" href="Categories.Limit.html#1375" class="Bound"
+      >C&#8320;</a
+      ><a name="1377"
+      > </a
+      ><a name="1378" href="Categories.Limit.html#1378" class="Bound"
+      >C&#8321;</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" href="Categories.Limit.html#1381" class="Bound"
+      >&#8467;</a
+      ><a name="1382" class="Symbol"
+      >}</a
+      ><a name="1383"
+      > </a
+      ><a name="1384" class="Symbol"
+      >{</a
+      ><a name="1385" href="Categories.Limit.html#1385" class="Bound"
+      >J</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" class="Symbol"
+      >:</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="1397"
+      > </a
+      ><a name="1398" href="Categories.Limit.html#1366" class="Bound"
+      >S&#8320;</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" href="Categories.Limit.html#1369" class="Bound"
+      >S&#8321;</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="Categories.Limit.html#1372" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="1406" class="Symbol"
+      >}</a
+      ><a name="1407"
+      > </a
+      ><a name="1408" class="Symbol"
+      >{</a
+      ><a name="1409" href="Categories.Limit.html#1409" class="Bound"
+      >C</a
+      ><a name="1410"
+      > </a
+      ><a name="1411" class="Symbol"
+      >:</a
+      ><a name="1412"
+      > </a
+      ><a name="1413" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="1421"
+      > </a
+      ><a name="1422" href="Categories.Limit.html#1375" class="Bound"
+      >C&#8320;</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" href="Categories.Limit.html#1378" class="Bound"
+      >C&#8321;</a
+      ><a name="1427"
+      > </a
+      ><a name="1428" href="Categories.Limit.html#1381" class="Bound"
+      >&#8467;</a
+      ><a name="1429" class="Symbol"
+      >}</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" class="Symbol"
+      >(</a
+      ><a name="1432" href="Categories.Limit.html#1432" class="Bound"
+      >F</a
+      ><a name="1433"
+      > </a
+      ><a name="1434" class="Symbol"
+      >:</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" href="Categories.Functor.html#107" class="Record"
+      >Functor</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" href="Categories.Limit.html#1385" class="Bound"
+      >J</a
+      ><a name="1445"
+      > </a
+      ><a name="1446" href="Categories.Limit.html#1409" class="Bound"
+      >C</a
+      ><a name="1447" class="Symbol"
+      >)</a
+      ><a name="1448"
+      > </a
+      ><a name="1449" class="Symbol"
+      >:</a
+      ><a name="1450"
+      > </a
+      ><a name="1451" class="PrimitiveType"
+      >Set</a
+      ><a name="1454"
+      > </a
+      ><a name="1455" class="Symbol"
+      >(</a
+      ><a name="1456" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="1459"
+      > </a
+      ><a name="1460" class="Symbol"
+      >(</a
+      ><a name="1461" href="Categories.Limit.html#1381" class="Bound"
+      >&#8467;</a
+      ><a name="1462"
+      > </a
+      ><a name="1463" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1464"
+      > </a
+      ><a name="1465" href="Categories.Limit.html#1378" class="Bound"
+      >C&#8321;</a
+      ><a name="1467"
+      > </a
+      ><a name="1468" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1469"
+      > </a
+      ><a name="1470" href="Categories.Limit.html#1375" class="Bound"
+      >C&#8320;</a
+      ><a name="1472"
+      > </a
+      ><a name="1473" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1474"
+      > </a
+      ><a name="1475" href="Categories.Limit.html#1372" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="1477"
+      > </a
+      ><a name="1478" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1479"
+      > </a
+      ><a name="1480" href="Categories.Limit.html#1369" class="Bound"
+      >S&#8321;</a
+      ><a name="1482"
+      > </a
+      ><a name="1483" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1484"
+      > </a
+      ><a name="1485" href="Categories.Limit.html#1366" class="Bound"
+      >S&#8320;</a
+      ><a name="1487" class="Symbol"
+      >))</a
+      ><a name="1489"
+      > </a
+      ><a name="1490" class="Keyword"
+      >where</a
+      ><a name="1495"
+      >
+  </a
+      ><a name="1498" class="Keyword"
+      >field</a
+      ><a name="1503"
+      >
+    </a
+      ><a name="1508" href="Categories.Limit.html#1508" class="Field"
+      >vertex</a
+      ><a name="1514"
+      > </a
+      ><a name="1515" class="Symbol"
+      >:</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" href="Categories.Category.html#229" class="Field"
+      >Obj</a
+      ><a name="1520"
+      > </a
+      ><a name="1521" href="Categories.Limit.html#1409" class="Bound"
+      >C</a
+      ><a name="1522"
+      >
+    </a
+      ><a name="1527" href="Categories.Limit.html#1527" class="Field"
+      >side</a
+      ><a name="1531"
+      > </a
+      ><a name="1532" class="Symbol"
+      >:</a
+      ><a name="1533"
+      > </a
+      ><a name="1534" href="Categories.Nat.html#147" class="Record"
+      >Nat</a
+      ><a name="1537"
+      > </a
+      ><a name="1538" href="Categories.Limit.html#694" class="Function Operator"
+      >&#916;[</a
+      ><a name="1540"
+      > </a
+      ><a name="1541" href="Categories.Limit.html#1508" class="Bound"
+      >vertex</a
+      ><a name="1547"
+      > </a
+      ><a name="1548" href="Categories.Limit.html#694" class="Function Operator"
+      >]</a
+      ><a name="1549"
+      > </a
+      ><a name="1550" href="Categories.Limit.html#1432" class="Bound"
+      >F</a
+      ><a name="1551"
+      >
+&#8239;
+</a
+      ><a name="1554" class="Keyword"
+      >record</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" href="Categories.Limit.html#1561" class="Record"
+      >Limit</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" class="Symbol"
+      >{</a
+      ><a name="1568" href="Categories.Limit.html#1568" class="Bound"
+      >S&#8320;</a
+      ><a name="1570"
+      > </a
+      ><a name="1571" href="Categories.Limit.html#1571" class="Bound"
+      >S&#8321;</a
+      ><a name="1573"
+      > </a
+      ><a name="1574" href="Categories.Limit.html#1574" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="1576"
+      > </a
+      ><a name="1577" href="Categories.Limit.html#1577" class="Bound"
+      >C&#8320;</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" href="Categories.Limit.html#1580" class="Bound"
+      >C&#8321;</a
+      ><a name="1582"
+      > </a
+      ><a name="1583" href="Categories.Limit.html#1583" class="Bound"
+      >&#8467;</a
+      ><a name="1584" class="Symbol"
+      >}</a
+      ><a name="1585"
+      > </a
+      ><a name="1586" class="Symbol"
+      >{</a
+      ><a name="1587" href="Categories.Limit.html#1587" class="Bound"
+      >J</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" class="Symbol"
+      >:</a
+      ><a name="1590"
+      > </a
+      ><a name="1591" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="1599"
+      > </a
+      ><a name="1600" href="Categories.Limit.html#1568" class="Bound"
+      >S&#8320;</a
+      ><a name="1602"
+      > </a
+      ><a name="1603" href="Categories.Limit.html#1571" class="Bound"
+      >S&#8321;</a
+      ><a name="1605"
+      > </a
+      ><a name="1606" href="Categories.Limit.html#1574" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="1608" class="Symbol"
+      >}</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" class="Symbol"
+      >{</a
+      ><a name="1611" href="Categories.Limit.html#1611" class="Bound"
+      >C</a
+      ><a name="1612"
+      > </a
+      ><a name="1613" class="Symbol"
+      >:</a
+      ><a name="1614"
+      > </a
+      ><a name="1615" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" href="Categories.Limit.html#1577" class="Bound"
+      >C&#8320;</a
+      ><a name="1626"
+      > </a
+      ><a name="1627" href="Categories.Limit.html#1580" class="Bound"
+      >C&#8321;</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="Categories.Limit.html#1583" class="Bound"
+      >&#8467;</a
+      ><a name="1631" class="Symbol"
+      >}</a
+      ><a name="1632"
+      > </a
+      ><a name="1633" class="Symbol"
+      >(</a
+      ><a name="1634" href="Categories.Limit.html#1634" class="Bound"
+      >F</a
+      ><a name="1635"
+      > </a
+      ><a name="1636" class="Symbol"
+      >:</a
+      ><a name="1637"
+      > </a
+      ><a name="1638" href="Categories.Functor.html#107" class="Record"
+      >Functor</a
+      ><a name="1645"
+      > </a
+      ><a name="1646" href="Categories.Limit.html#1587" class="Bound"
+      >J</a
+      ><a name="1647"
+      > </a
+      ><a name="1648" href="Categories.Limit.html#1611" class="Bound"
+      >C</a
+      ><a name="1649" class="Symbol"
+      >)</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" class="Symbol"
+      >:</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" class="PrimitiveType"
+      >Set</a
+      ><a name="1656"
+      > </a
+      ><a name="1657" class="Symbol"
+      >(</a
+      ><a name="1658" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="1661"
+      > </a
+      ><a name="1662" class="Symbol"
+      >(</a
+      ><a name="1663" href="Categories.Limit.html#1583" class="Bound"
+      >&#8467;</a
+      ><a name="1664"
+      > </a
+      ><a name="1665" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1666"
+      > </a
+      ><a name="1667" href="Categories.Limit.html#1580" class="Bound"
+      >C&#8321;</a
+      ><a name="1669"
+      > </a
+      ><a name="1670" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1671"
+      > </a
+      ><a name="1672" href="Categories.Limit.html#1577" class="Bound"
+      >C&#8320;</a
+      ><a name="1674"
+      > </a
+      ><a name="1675" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" href="Categories.Limit.html#1574" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="1679"
+      > </a
+      ><a name="1680" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" href="Categories.Limit.html#1571" class="Bound"
+      >S&#8321;</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1686"
+      > </a
+      ><a name="1687" href="Categories.Limit.html#1568" class="Bound"
+      >S&#8320;</a
+      ><a name="1689" class="Symbol"
+      >))</a
+      ><a name="1691"
+      > </a
+      ><a name="1692" class="Keyword"
+      >where</a
+      ><a name="1697"
+      >
+  </a
+      ><a name="1700" class="Keyword"
+      >field</a
+      ><a name="1705"
+      >
+    </a
+      ><a name="1710" href="Categories.Limit.html#1710" class="Field"
+      >limiting-cone</a
+      ><a name="1723"
+      > </a
+      ><a name="1724" class="Symbol"
+      >:</a
+      ><a name="1725"
+      > </a
+      ><a name="1726" href="Categories.Limit.html#1360" class="Record"
+      >Cone</a
+      ><a name="1730"
+      > </a
+      ><a name="1731" href="Categories.Limit.html#1634" class="Bound"
+      >F</a
+      ><a name="1732"
+      >
+
+  </a
+      ><a name="1736" href="Categories.Limit.html#1736" class="Bound"
+      >limit</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" class="Symbol"
+      >:</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" href="Categories.Category.html#229" class="Field"
+      >Obj</a
+      ><a name="1747"
+      > </a
+      ><a name="1748" href="Categories.Limit.html#1611" class="Bound"
+      >C</a
+      ><a name="1749"
+      >
+  </a
+      ><a name="1752" href="Categories.Limit.html#1736" class="Function"
+      >limit</a
+      ><a name="1757"
+      > </a
+      ><a name="1758" class="Symbol"
+      >=</a
+      ><a name="1759"
+      > </a
+      ><a name="1760" href="Categories.Limit.html#1508" class="Field"
+      >Cone.vertex</a
+      ><a name="1771"
+      > </a
+      ><a name="1772" href="Categories.Limit.html#1710" class="Bound"
+      >limiting-cone</a
+      ><a name="1785"
+      >
+
+  </a
+      ><a name="1789" class="Keyword"
+      >field</a
+      ><a name="1794"
+      >
+    </a
+      ><a name="1799" href="Categories.Limit.html#1799" class="Field"
+      >cone-map</a
+      ><a name="1807"
+      > </a
+      ><a name="1808" class="Symbol"
+      >:</a
+      ><a name="1809"
+      > </a
+      ><a name="1810" class="Symbol"
+      >(</a
+      ><a name="1811" href="Categories.Limit.html#1811" class="Bound"
+      >d</a
+      ><a name="1812"
+      > </a
+      ><a name="1813" class="Symbol"
+      >:</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" href="Categories.Limit.html#1360" class="Record"
+      >Cone</a
+      ><a name="1819"
+      > </a
+      ><a name="1820" href="Categories.Limit.html#1634" class="Bound"
+      >F</a
+      ><a name="1821" class="Symbol"
+      >)</a
+      ><a name="1822"
+      > </a
+      ><a name="1823" class="Symbol"
+      >&#8594;</a
+      ><a name="1824"
+      > </a
+      ><a name="1825" href="Categories.Limit.html#1611" class="Bound"
+      >C</a
+      ><a name="1826"
+      > </a
+      ><a name="1827" href="Categories.Category.html#1267" class="Function Operator"
+      >[</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" href="Categories.Limit.html#1508" class="Field"
+      >Cone.vertex</a
+      ><a name="1840"
+      > </a
+      ><a name="1841" href="Categories.Limit.html#1811" class="Bound"
+      >d</a
+      ><a name="1842"
+      > </a
+      ><a name="1843" href="Categories.Category.html#1267" class="Function Operator"
+      >~&gt;</a
+      ><a name="1845"
+      > </a
+      ><a name="1846" href="Categories.Limit.html#1736" class="Bound"
+      >limit</a
+      ><a name="1851"
+      > </a
+      ><a name="1852" href="Categories.Category.html#1267" class="Function Operator"
+      >]</a
+      ><a name="1853"
+      >
+    </a
+      ><a name="1858" href="Categories.Limit.html#1858" class="Field"
+      >universality</a
+      ><a name="1870"
+      > </a
+      ><a name="1871" class="Symbol"
+      >:</a
+      ><a name="1872"
+      >
+      </a
+      ><a name="1879" class="Symbol"
+      >(</a
+      ><a name="1880" href="Categories.Limit.html#1880" class="Bound"
+      >d</a
+      ><a name="1881"
+      > </a
+      ><a name="1882" class="Symbol"
+      >:</a
+      ><a name="1883"
+      > </a
+      ><a name="1884" href="Categories.Limit.html#1360" class="Record"
+      >Cone</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" href="Categories.Limit.html#1634" class="Bound"
+      >F</a
+      ><a name="1890" class="Symbol"
+      >)</a
+      ><a name="1891"
+      > </a
+      ><a name="1892" class="Symbol"
+      >(</a
+      ><a name="1893" href="Categories.Limit.html#1893" class="Bound"
+      >h</a
+      ><a name="1894"
+      > </a
+      ><a name="1895" class="Symbol"
+      >:</a
+      ><a name="1896"
+      > </a
+      ><a name="1897" href="Categories.Limit.html#1611" class="Bound"
+      >C</a
+      ><a name="1898"
+      > </a
+      ><a name="1899" href="Categories.Category.html#1267" class="Function Operator"
+      >[</a
+      ><a name="1900"
+      > </a
+      ><a name="1901" href="Categories.Limit.html#1508" class="Field"
+      >Cone.vertex</a
+      ><a name="1912"
+      > </a
+      ><a name="1913" href="Categories.Limit.html#1880" class="Bound"
+      >d</a
+      ><a name="1914"
+      > </a
+      ><a name="1915" href="Categories.Category.html#1267" class="Function Operator"
+      >~&gt;</a
+      ><a name="1917"
+      > </a
+      ><a name="1918" href="Categories.Limit.html#1736" class="Bound"
+      >limit</a
+      ><a name="1923"
+      > </a
+      ><a name="1924" href="Categories.Category.html#1267" class="Function Operator"
+      >]</a
+      ><a name="1925" class="Symbol"
+      >)</a
+      ><a name="1926"
+      >
+      </a
+      ><a name="1933" class="Symbol"
+      >&#8594;</a
+      ><a name="1934"
+      > </a
+      ><a name="1935" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >[</a
+      ><a name="1936"
+      > </a
+      ><a name="1937" href="Categories.Limit.html#1587" class="Bound"
+      >J</a
+      ><a name="1938"
+      > </a
+      ><a name="1939" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >,</a
+      ><a name="1940"
+      > </a
+      ><a name="1941" href="Categories.Limit.html#1611" class="Bound"
+      >C</a
+      ><a name="1942"
+      > </a
+      ><a name="1943" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >]</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" href="Categories.Category.html#1486" class="Function Operator"
+      >[</a
+      ><a name="1946"
+      > </a
+      ><a name="1947" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >[</a
+      ><a name="1948"
+      > </a
+      ><a name="1949" href="Categories.Limit.html#1587" class="Bound"
+      >J</a
+      ><a name="1950"
+      > </a
+      ><a name="1951" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >,</a
+      ><a name="1952"
+      > </a
+      ><a name="1953" href="Categories.Limit.html#1611" class="Bound"
+      >C</a
+      ><a name="1954"
+      > </a
+      ><a name="1955" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >]</a
+      ><a name="1956"
+      > </a
+      ><a name="1957" href="Categories.Category.html#1364" class="Function Operator"
+      >[</a
+      ><a name="1958"
+      > </a
+      ><a name="1959" class="Symbol"
+      >(</a
+      ><a name="1960" href="Categories.Limit.html#1527" class="Field"
+      >Cone.side</a
+      ><a name="1969"
+      > </a
+      ><a name="1970" href="Categories.Limit.html#1710" class="Bound"
+      >limiting-cone</a
+      ><a name="1983" class="Symbol"
+      >)</a
+      ><a name="1984"
+      > </a
+      ><a name="1985" href="Categories.Category.html#1364" class="Function Operator"
+      >&#8728;</a
+      ><a name="1986"
+      > </a
+      ><a name="1987" href="Categories.Limit.html#851" class="Function"
+      >DiagonalLift</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" href="Categories.Limit.html#1587" class="Bound"
+      >J</a
+      ><a name="2001"
+      > </a
+      ><a name="2002" href="Categories.Limit.html#1611" class="Bound"
+      >C</a
+      ><a name="2003"
+      > </a
+      ><a name="2004" href="Categories.Limit.html#1893" class="Bound"
+      >h</a
+      ><a name="2005"
+      > </a
+      ><a name="2006" href="Categories.Category.html#1364" class="Function Operator"
+      >]</a
+      ><a name="2007"
+      > </a
+      ><a name="2008" href="Categories.Category.html#1486" class="Function Operator"
+      >&#8776;</a
+      ><a name="2009"
+      > </a
+      ><a name="2010" class="Symbol"
+      >(</a
+      ><a name="2011" href="Categories.Limit.html#1527" class="Field"
+      >Cone.side</a
+      ><a name="2020"
+      > </a
+      ><a name="2021" href="Categories.Limit.html#1880" class="Bound"
+      >d</a
+      ><a name="2022" class="Symbol"
+      >)</a
+      ><a name="2023"
+      > </a
+      ><a name="2024" href="Categories.Category.html#1486" class="Function Operator"
+      >]</a
+      ><a name="2025"
+      >
+      </a
+      ><a name="2032" class="Symbol"
+      >&#8594;</a
+      ><a name="2033"
+      > </a
+      ><a name="2034" href="Categories.Limit.html#1611" class="Bound"
+      >C</a
+      ><a name="2035"
+      > </a
+      ><a name="2036" href="Categories.Category.html#1486" class="Function Operator"
+      >[</a
+      ><a name="2037"
+      > </a
+      ><a name="2038" href="Categories.Limit.html#1893" class="Bound"
+      >h</a
+      ><a name="2039"
+      > </a
+      ><a name="2040" href="Categories.Category.html#1486" class="Function Operator"
+      >&#8776;</a
+      ><a name="2041"
+      > </a
+      ><a name="2042" class="Symbol"
+      >(</a
+      ><a name="2043" href="Categories.Limit.html#1799" class="Bound"
+      >cone-map</a
+      ><a name="2051"
+      > </a
+      ><a name="2052" href="Categories.Limit.html#1880" class="Bound"
+      >d</a
+      ><a name="2053" class="Symbol"
+      >)</a
+      ><a name="2054"
+      > </a
+      ><a name="2055" href="Categories.Category.html#1486" class="Function Operator"
+      >]</a
+      ><a name="2056"
+      >
+
+</a
+      ><a name="2058" class="Keyword"
+      >record</a
+      ><a name="2064"
+      > </a
+      ><a name="2065" href="Categories.Limit.html#2065" class="Record"
+      >Cone-Morphism</a
+      ><a name="2078"
+      > </a
+      ><a name="2079" class="Symbol"
+      >{</a
+      ><a name="2080" href="Categories.Limit.html#2080" class="Bound"
+      >S&#8320;</a
+      ><a name="2082"
+      > </a
+      ><a name="2083" href="Categories.Limit.html#2083" class="Bound"
+      >S&#8321;</a
+      ><a name="2085"
+      > </a
+      ><a name="2086" href="Categories.Limit.html#2086" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="2088"
+      > </a
+      ><a name="2089" href="Categories.Limit.html#2089" class="Bound"
+      >C&#8320;</a
+      ><a name="2091"
+      > </a
+      ><a name="2092" href="Categories.Limit.html#2092" class="Bound"
+      >C&#8321;</a
+      ><a name="2094"
+      > </a
+      ><a name="2095" href="Categories.Limit.html#2095" class="Bound"
+      >&#8467;</a
+      ><a name="2096" class="Symbol"
+      >}</a
+      ><a name="2097"
+      > </a
+      ><a name="2098" class="Symbol"
+      >{</a
+      ><a name="2099" href="Categories.Limit.html#2099" class="Bound"
+      >J</a
+      ><a name="2100"
+      > </a
+      ><a name="2101" class="Symbol"
+      >:</a
+      ><a name="2102"
+      > </a
+      ><a name="2103" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="2111"
+      > </a
+      ><a name="2112" href="Categories.Limit.html#2080" class="Bound"
+      >S&#8320;</a
+      ><a name="2114"
+      > </a
+      ><a name="2115" href="Categories.Limit.html#2083" class="Bound"
+      >S&#8321;</a
+      ><a name="2117"
+      > </a
+      ><a name="2118" href="Categories.Limit.html#2086" class="Bound"
+      >&#8467;&#8347;</a
+      ><a name="2120" class="Symbol"
+      >}</a
+      ><a name="2121"
+      > </a
+      ><a name="2122" class="Symbol"
+      >{</a
+      ><a name="2123" href="Categories.Limit.html#2123" class="Bound"
+      >C</a
+      ><a name="2124"
+      > </a
+      ><a name="2125" class="Symbol"
+      >:</a
+      ><a name="2126"
+      > </a
+      ><a name="2127" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="2135"
+      > </a
+      ><a name="2136" href="Categories.Limit.html#2089" class="Bound"
+      >C&#8320;</a
+      ><a name="2138"
+      > </a
+      ><a name="2139" href="Categories.Limit.html#2092" class="Bound"
+      >C&#8321;</a
+      ><a name="2141"
+      > </a
+      ><a name="2142" href="Categories.Limit.html#2095" class="Bound"
+      >&#8467;</a
+      ><a name="2143" class="Symbol"
+      >}</a
+      ><a name="2144"
+      > </a
+      ><a name="2145" class="Symbol"
+      >{</a
+      ><a name="2146" href="Categories.Limit.html#2146" class="Bound"
+      >F</a
+      ><a name="2147"
+      > </a
+      ><a name="2148" class="Symbol"
+      >:</a
+      ><a name="2149"
+      > </a
+      ><a name="2150" href="Categories.Functor.html#107" class="Record"
+      >Functor</a
+      ><a name="2157"
+      > </a
+      ><a name="2158" href="Categories.Limit.html#2099" class="Bound"
+      >J</a
+      ><a name="2159"
+      > </a
+      ><a name="2160" href="Categories.Limit.html#2123" class="Bound"
+      >C</a
+      ><a name="2161" class="Symbol"
+      >}</a
+      ><a name="2162"
+      > </a
+      ><a name="2163" class="Symbol"
+      >(</a
+      ><a name="2164" href="Categories.Limit.html#2164" class="Bound"
+      >c</a
+      ><a name="2165"
+      > </a
+      ><a name="2166" href="Categories.Limit.html#2166" class="Bound"
+      >d</a
+      ><a name="2167"
+      > </a
+      ><a name="2168" class="Symbol"
+      >:</a
+      ><a name="2169"
+      > </a
+      ><a name="2170" href="Categories.Limit.html#1360" class="Record"
+      >Cone</a
+      ><a name="2174"
+      > </a
+      ><a name="2175" href="Categories.Limit.html#2146" class="Bound"
+      >F</a
+      ><a name="2176" class="Symbol"
+      >)</a
+      ><a name="2177"
+      > </a
+      ><a name="2178" class="Symbol"
+      >:</a
+      ><a name="2179"
+      > </a
+      ><a name="2180" class="PrimitiveType"
+      >Set</a
+      ><a name="2183"
+      > </a
+      ><a name="2184" class="Symbol"
+      >(</a
+      ><a name="2185" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="2188"
+      > </a
+      ><a name="2189" class="Symbol"
+      >(</a
+      ><a name="2190" href="Categories.Limit.html#2095" class="Bound"
+      >&#8467;</a
+      ><a name="2191"
+      > </a
+      ><a name="2192" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="2193"
+      > </a
+      ><a name="2194" href="Categories.Limit.html#2092" class="Bound"
+      >C&#8321;</a
+      ><a name="2196"
+      > </a
+      ><a name="2197" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="2198"
+      > </a
+      ><a name="2199" href="Categories.Limit.html#2089" class="Bound"
+      >C&#8320;</a
+      ><a name="2201" class="Symbol"
+      >)</a
+      ><a name="2202"
+      > </a
+      ><a name="2203" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" href="Categories.Limit.html#2080" class="Bound"
+      >S&#8320;</a
+      ><a name="2207" class="Symbol"
+      >)</a
+      ><a name="2208"
+      > </a
+      ><a name="2209" class="Keyword"
+      >where</a
+      ><a name="2214"
+      >
+  </a
+      ><a name="2217" class="Keyword"
+      >field</a
+      ><a name="2222"
+      >
+    </a
+      ><a name="2227" href="Categories.Limit.html#2227" class="Field"
+      >vertex-arrow</a
+      ><a name="2239"
+      > </a
+      ><a name="2240" class="Symbol"
+      >:</a
+      ><a name="2241"
+      > </a
+      ><a name="2242" href="Categories.Limit.html#2123" class="Bound"
+      >C</a
+      ><a name="2243"
+      > </a
+      ><a name="2244" href="Categories.Category.html#1267" class="Function Operator"
+      >[</a
+      ><a name="2245"
+      > </a
+      ><a name="2246" href="Categories.Limit.html#1508" class="Field"
+      >Cone.vertex</a
+      ><a name="2257"
+      > </a
+      ><a name="2258" href="Categories.Limit.html#2164" class="Bound"
+      >c</a
+      ><a name="2259"
+      > </a
+      ><a name="2260" href="Categories.Category.html#1267" class="Function Operator"
+      >~&gt;</a
+      ><a name="2262"
+      > </a
+      ><a name="2263" href="Categories.Limit.html#1508" class="Field"
+      >Cone.vertex</a
+      ><a name="2274"
+      > </a
+      ><a name="2275" href="Categories.Limit.html#2166" class="Bound"
+      >d</a
+      ><a name="2276"
+      > </a
+      ><a name="2277" href="Categories.Category.html#1267" class="Function Operator"
+      >]</a
+      ><a name="2278"
+      >
+
+  </a
+      ><a name="2282" href="Categories.Limit.html#2282" class="Bound"
+      >cone-arrow</a
+      ><a name="2292"
+      > </a
+      ><a name="2293" class="Symbol"
+      >:</a
+      ><a name="2294"
+      > </a
+      ><a name="2295" href="Categories.Nat.html#147" class="Record"
+      >Nat</a
+      ><a name="2298"
+      > </a
+      ><a name="2299" class="Symbol"
+      >(</a
+      ><a name="2300" href="Categories.Limit.html#694" class="Function Operator"
+      >&#916;[</a
+      ><a name="2302"
+      > </a
+      ><a name="2303" href="Categories.Limit.html#1508" class="Field"
+      >Cone.vertex</a
+      ><a name="2314"
+      > </a
+      ><a name="2315" href="Categories.Limit.html#2164" class="Bound"
+      >c</a
+      ><a name="2316"
+      > </a
+      ><a name="2317" href="Categories.Limit.html#694" class="Function Operator"
+      >]</a
+      ><a name="2318" class="Symbol"
+      >)</a
+      ><a name="2319"
+      > </a
+      ><a name="2320" class="Symbol"
+      >(</a
+      ><a name="2321" href="Categories.Limit.html#694" class="Function Operator"
+      >&#916;[</a
+      ><a name="2323"
+      > </a
+      ><a name="2324" href="Categories.Limit.html#1508" class="Field"
+      >Cone.vertex</a
+      ><a name="2335"
+      > </a
+      ><a name="2336" href="Categories.Limit.html#2166" class="Bound"
+      >d</a
+      ><a name="2337"
+      > </a
+      ><a name="2338" href="Categories.Limit.html#694" class="Function Operator"
+      >]</a
+      ><a name="2339" class="Symbol"
+      >)</a
+      ><a name="2340"
+      >
+  </a
+      ><a name="2343" href="Categories.Limit.html#2282" class="Function"
+      >cone-arrow</a
+      ><a name="2353"
+      > </a
+      ><a name="2354" class="Symbol"
+      >=</a
+      ><a name="2355"
+      > </a
+      ><a name="2356" href="Categories.Limit.html#851" class="Function"
+      >DiagonalLift</a
+      ><a name="2368"
+      > </a
+      ><a name="2369" href="Categories.Limit.html#2099" class="Bound"
+      >J</a
+      ><a name="2370"
+      > </a
+      ><a name="2371" href="Categories.Limit.html#2123" class="Bound"
+      >C</a
+      ><a name="2372"
+      > </a
+      ><a name="2373" href="Categories.Limit.html#2227" class="Bound"
+      >vertex-arrow</a
+      ><a name="2385"
+      >
+
+  </a
+      ><a name="2389" class="Keyword"
+      >field</a
+      ><a name="2394"
+      >
+    </a
+      ><a name="2399" href="Categories.Limit.html#2399" class="Field"
+      >commute</a
+      ><a name="2406"
+      > </a
+      ><a name="2407" class="Symbol"
+      >:</a
+      ><a name="2408"
+      > </a
+      ><a name="2409" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >[</a
+      ><a name="2410"
+      > </a
+      ><a name="2411" href="Categories.Limit.html#2099" class="Bound"
+      >J</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >,</a
+      ><a name="2414"
+      > </a
+      ><a name="2415" href="Categories.Limit.html#2123" class="Bound"
+      >C</a
+      ><a name="2416"
+      > </a
+      ><a name="2417" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >]</a
+      ><a name="2418"
+      > </a
+      ><a name="2419" href="Categories.Category.html#1486" class="Function Operator"
+      >[</a
+      ><a name="2420"
+      > </a
+      ><a name="2421" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >[</a
+      ><a name="2422"
+      > </a
+      ><a name="2423" href="Categories.Limit.html#2099" class="Bound"
+      >J</a
+      ><a name="2424"
+      > </a
+      ><a name="2425" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >,</a
+      ><a name="2426"
+      > </a
+      ><a name="2427" href="Categories.Limit.html#2123" class="Bound"
+      >C</a
+      ><a name="2428"
+      > </a
+      ><a name="2429" href="Categories.FunctorCategory.html#5787" class="Function Operator"
+      >]</a
+      ><a name="2430"
+      > </a
+      ><a name="2431" href="Categories.Category.html#1364" class="Function Operator"
+      >[</a
+      ><a name="2432"
+      > </a
+      ><a name="2433" href="Categories.Limit.html#1527" class="Field"
+      >Cone.side</a
+      ><a name="2442"
+      > </a
+      ><a name="2443" href="Categories.Limit.html#2166" class="Bound"
+      >d</a
+      ><a name="2444"
+      > </a
+      ><a name="2445" href="Categories.Category.html#1364" class="Function Operator"
+      >&#8728;</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" href="Categories.Limit.html#2282" class="Bound"
+      >cone-arrow</a
+      ><a name="2457"
+      > </a
+      ><a name="2458" href="Categories.Category.html#1364" class="Function Operator"
+      >]</a
+      ><a name="2459"
+      > </a
+      ><a name="2460" href="Categories.Category.html#1486" class="Function Operator"
+      >&#8776;</a
+      ><a name="2461"
+      > </a
+      ><a name="2462" href="Categories.Limit.html#1527" class="Field"
+      >Cone.side</a
+      ><a name="2471"
+      > </a
+      ><a name="2472" href="Categories.Limit.html#2164" class="Bound"
+      >c</a
+      ><a name="2473"
+      > </a
+      ><a name="2474" href="Categories.Category.html#1486" class="Function Operator"
+      >]</a
+      ><a name="2475"
+      >
+
+</a
+      ><a name="2477" class="Comment"
+      >{-
+Cone-Category : &#8704;{S&#8320; S&#8321; &#8467;&#8347; C&#8320; C&#8321; &#8467;} (J : Category S&#8320; S&#8321; &#8467;&#8347;) (C : Category C&#8320; C&#8321; &#8467;) {F : Functor J C} &#8594; Category _ _ _
+Cone-Category J C {F} = record
+  { Obj = Cone F
+  ; _~&gt;_ = Cone-Morphism
+  ; _&#8728;_ = Cone-Morphism-composite
+  ; _&#8776;_ = Cone-Morphism-&#8776;
+  ; id = Cone-Morphism-id
+
+  ; leftIdentity = {!!}
+  ; rightIdentity = {!!}
+  ; assoc = {!!}
+  ; equivalence = {!!}
+  ; &#8776;-composite = {!!}
+  }
+  where
+    open Cone-Morphism
+    open Cone
+    open &#8776;-lemmas [ J , C ]
+
+    Cone-Morphism-composite : {a b c : Cone F} &#8594; Cone-Morphism b c &#8594; Cone-Morphism a b &#8594; Cone-Morphism a c
+    Cone-Morphism-composite {a} {b} {c} bc ab = record
+      { vertex-arrow = C [ vertex-arrow bc &#8728; vertex-arrow ab ]
+      ; commute = let open &#8776;-Reasoning [ J , C ] in
+        begin
+          [ J , C ] [ side c &#8728; [ J , C ] [ cone-arrow bc &#8728; cone-arrow ab ] ]
+        &#8593;&#10216; assoc [ J , C ] &#10217;
+          [ J , C ] [ [ J , C ] [ side c &#8728; cone-arrow bc ] &#8728; cone-arrow ab ]
+        &#8595;&#10216; &#8776;-composite-refl (commute bc) &#10217;
+          [ J , C ] [ side b &#8728; cone-arrow ab ]
+        &#8595;&#10216; commute ab &#10217;
+          side a
+        &#8718;
+      }
+
+    Cone-Morphism-&#8776; : {a b : Cone F} &#8594; (&#945; &#946; : Cone-Morphism a b) &#8594; Set _
+    Cone-Morphism-&#8776; &#945; &#946; = C [ vertex-arrow &#945; ~ vertex-arrow &#946; ]
+
+    Cone-Morphism-id : {a : Cone F} &#8594; Cone-Morphism a a
+    Cone-Morphism-id {a} = record
+      { vertex-arrow = id C
+      ; commute = rightIdentity [ J , C ]
+      }
+
+-}</a
+      ><a name="3881"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
