@@ -1,12 +1,12 @@
 module Everything where
 
--- Categories
+-- Category
 import Categories.Category
 
--- Functors
+-- Functor
 import Categories.Functor
 
--- Natural Transformations
+-- Natural Transformation
 import Categories.Nat
 
 -- Functor Category [C,D] = D^C
@@ -18,6 +18,12 @@ import Categories.Reasoning
 -- Yoneda Functor, Yoneda Lemma
 import Categories.Yoneda
 
+-- Limit
+import Categories.Limit
+
+-- Objects
+import Categories.Objects.Objects
+
 
 -- Sets
 import Categories.Categories.Sets
@@ -25,5 +31,8 @@ import Categories.Categories.Sets
 -- Cat
 import Categories.Categories.Cat
 
+-- Poset
+import Categories.Categories.Poset
 
-
+-- index category
+import Categories.Categories.Index

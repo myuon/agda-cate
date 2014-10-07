@@ -1,7 +1,7 @@
 Agda-Cate
 =========
 
-doc
+html
 --------
 
 https://myuon.github.io/agda-cate/Everything.html

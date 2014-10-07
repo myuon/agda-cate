@@ -3,7 +3,6 @@ module Categories.Category where
 open import Level
 open import Function as F using (flip)
 open import Relation.Binary
-open import Relation.Binary.Core
 
 record Category (C₀ C₁ ℓ : Level) : Set (suc (C₀ ⊔ C₁ ⊔ ℓ)) where
   infixr 9 _∘_
@@ -85,7 +84,27 @@ data _[_~_]
   eqArrow : {g : C [ A ~> B ]} → C [ f ≈ g ] → C [ f ~ g ]
 
 module LocallySmall {S₀ S₁ ℓ′} where
+  open import Relation.Binary.Core
   postulate ≈-≡ : {C : Category S₀ S₁ ℓ′} {a b : Obj C} {f g : Hom C a b} → C [ f ≈ g ] → f ≡ g
   import Relation.Binary.PropositionalEquality as Eq
   postulate extensionality : Eq.Extensionality S₁ S₁
+
+module ≈-lemmas {C₀ C₁ ℓ} (C : Category C₀ C₁ ℓ) where
+  open IsEquivalence
+  refl-≈ : {a b : Obj C} {f : C [ a ~> b ]} → C [ f ≈ f ]
+  refl-≈ = refl (equivalence C)
+
+  sym-≈ : {a b : Obj C} {f g : C [ a ~> b ]} → C [ f ≈ g ] → C [ g ≈ f ]
+  sym-≈ f≈g = sym (equivalence C) f≈g
+
+  trans-≈ : {a b : Obj C} {f g h : C [ a ~> b ]} → C [ f ≈ g ] → C [ g ≈ h ] → C [ f ≈ h ]
+  trans-≈ f≈g g≈h = trans (equivalence C) f≈g g≈h
+
+  ≈-refl-composite : {a b c : Obj C} {f : C [ b ~> c ]} {h i : C [ a ~> b ]}
+      → C [ h ≈ i ] → C [ C [ f ∘ h ] ≈ C [ f ∘ i ] ]
+  ≈-refl-composite h≈i = ≈-composite C (refl (equivalence C)) h≈i
+
+  ≈-composite-refl : {a b c : Obj C} {f g : C [ b ~> c ]} {h : C [ a ~> b ]}
+      → C [ f ≈ g ] → C [ C [ f ∘ h ] ≈ C [ g ∘ h ] ]
+  ≈-composite-refl f≈g = ≈-composite C f≈g (refl (equivalence C))
 

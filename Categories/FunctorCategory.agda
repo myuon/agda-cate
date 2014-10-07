@@ -143,4 +143,3 @@ FunCat C D = record
 
 PSh[_] : ∀{C₀ C₁ ℓ} (C : Category C₀ C₁ ℓ) → Category _ _ _
 PSh[_] {_} {C₁} {_} X = FunCat (op X) (Sets {C₁})
-
