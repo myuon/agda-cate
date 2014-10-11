@@ -5,7 +5,6 @@ open import Relation.Binary.Core using (Rel; module IsEquivalence)
 open import Categories.Category
 open import Categories.Functor
 open import Categories.Nat
-open import Categories.FunctorCategory
 open import Categories.Reasoning
 
 open Category
@@ -16,13 +15,13 @@ open IsEquivalence
 Diagonal :
   ∀{S₀ S₁ ℓₛ C₀ C₁ ℓ} (J : Category S₀ S₁ ℓₛ) (C : Category C₀ C₁ ℓ)
   (r : Obj C) → Functor J C
-Diagonal _ C r = record
+Diagonal J C r = record
   { fobj = \_ → r
   ; fmap = \_ → id C {r}
 
-  ; ≈-cong = \_ → refl (equivalence C)
-  ; preserveId = refl (equivalence C)
-  ; covariant = sym (equivalence C) (trans (equivalence C) (leftIdentity C) (refl (equivalence C)))
+  ; ≈-cong = \_ → ≈-lemmas.refl-≈ C
+  ; preserveId = ≈-lemmas.refl-≈ C
+  ; covariant = ≈-lemmas.sym-≈ C (leftIdentity C)
   }
 
 Δ[_] : ∀{S₀ S₁ ℓₛ C₀ C₁ ℓ} {J : Category S₀ S₁ ℓₛ} {C : Category C₀ C₁ ℓ} (r : Obj C) → Functor J C
@@ -113,5 +112,4 @@ Cone-Category J C {F} = record
       { vertex-arrow = id C
       ; commute = rightIdentity [ J , C ]
       }
-
 -}

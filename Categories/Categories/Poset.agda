@@ -4,6 +4,8 @@ open import Level
 open import Relation.Binary
 open import Relation.Unary
 open import Categories.Category
+open import Categories.Limit
+open import Categories.Objects.Objects
 
 open Category
 open Poset renaming (_≈_ to _≈P_; _≤_ to _[_≤_])

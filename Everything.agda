@@ -1,5 +1,11 @@
 module Everything where
 
+-- Topological Space
+import Topology.Topology
+
+-- ≈-Reasoning
+import Categories.Reasoning
+
 -- Category
 import Categories.Category
 
@@ -8,12 +14,6 @@ import Categories.Functor
 
 -- Natural Transformation
 import Categories.Nat
-
--- Functor Category [C,D] = D^C
-import Categories.FunctorCategory
-
--- ≈-Reasoning
-import Categories.Reasoning
 
 -- Yoneda Functor, Yoneda Lemma
 import Categories.Yoneda
@@ -24,6 +24,11 @@ import Categories.Limit
 -- Objects
 import Categories.Objects.Objects
 
+-- Adjoint
+import Categories.Adjoint
+
+-- Kan Extension
+import Categories.KanExtension
 
 -- Sets
 import Categories.Categories.Sets

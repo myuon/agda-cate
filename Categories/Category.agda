@@ -71,9 +71,9 @@ record Iso {C₀ C₁ ℓ : Level} {C : Category C₀ C₁ ℓ} {a b : Obj C}
 infix 4 _≅_
 record _≅_ {C₀ C₁ ℓ : Level} {C : Category C₀ C₁ ℓ} (a b : Obj C) : Set (C₀ ⊔ C₁ ⊔ ℓ) where
   field
-    l~>r : C [ a ~> b ]
-    r~>l : C [ b ~> a ]
-    iso : Iso {C₀} {C₁} {ℓ} {C} {a} {b} l~>r r~>l
+    ≅-→ : C [ a ~> b ]
+    ≅-← : C [ b ~> a ]
+    iso : Iso {C₀} {C₁} {ℓ} {C} {a} {b} ≅-→ ≅-←
 
 _[_≅_] : ∀{C₀ C₁ ℓ} (C : Category C₀ C₁ ℓ) (a b : Obj C) → Set _
 C [ a ≅ b ] = _≅_ {_} {_} {_} {C} a b
@@ -91,6 +91,7 @@ module LocallySmall {S₀ S₁ ℓ′} where
 
 module ≈-lemmas {C₀ C₁ ℓ} (C : Category C₀ C₁ ℓ) where
   open IsEquivalence
+
   refl-≈ : {a b : Obj C} {f : C [ a ~> b ]} → C [ f ≈ f ]
   refl-≈ = refl (equivalence C)
 
@@ -100,11 +101,11 @@ module ≈-lemmas {C₀ C₁ ℓ} (C : Category C₀ C₁ ℓ) where
   trans-≈ : {a b : Obj C} {f g h : C [ a ~> b ]} → C [ f ≈ g ] → C [ g ≈ h ] → C [ f ≈ h ]
   trans-≈ f≈g g≈h = trans (equivalence C) f≈g g≈h
 
-  ≈-refl-composite : {a b c : Obj C} {f : C [ b ~> c ]} {h i : C [ a ~> b ]}
+  ≈-composite-reflˡ : {a b c : Obj C} {f : C [ b ~> c ]} {h i : C [ a ~> b ]}
       → C [ h ≈ i ] → C [ C [ f ∘ h ] ≈ C [ f ∘ i ] ]
-  ≈-refl-composite h≈i = ≈-composite C (refl (equivalence C)) h≈i
+  ≈-composite-reflˡ h≈i = ≈-composite C refl-≈ h≈i
 
-  ≈-composite-refl : {a b c : Obj C} {f g : C [ b ~> c ]} {h : C [ a ~> b ]}
+  ≈-composite-reflʳ : {a b c : Obj C} {f g : C [ b ~> c ]} {h : C [ a ~> b ]}
       → C [ f ≈ g ] → C [ C [ f ∘ h ] ≈ C [ g ∘ h ] ]
-  ≈-composite-refl f≈g = ≈-composite C f≈g (refl (equivalence C))
+  ≈-composite-reflʳ f≈g = ≈-composite C f≈g refl-≈
 

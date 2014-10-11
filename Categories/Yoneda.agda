@@ -9,7 +9,6 @@ open import Categories.Functor
 open import Categories.Nat
 open import Categories.Categories.Sets
 open import Categories.Reasoning
-open import Categories.FunctorCategory
 
 open Category
 open Functor
@@ -148,10 +147,46 @@ yoneda C = record
 y[_] : {C : Category S₀ S₁ ℓₛ} → (a : Obj C) → Obj PSh[ C ]
 y[_] {C} a = fobj (yoneda C) a
 
+covariantHom : (C : Category S₀ S₁ ℓₛ) → (r : Obj C) → Functor C (Sets {S₁})
+covariantHom C r = record
+  { fobj = \d → Hom C r d
+  ; fmap = \f u → C [ f ∘ u ]
+  ; ≈-cong = \f≈g → extensionality (\_ → ≈-≡ {C} (≈-composite-reflʳ f≈g))
+  ; preserveId = extensionality (\_ → ≈-≡ {C} (leftIdentity C))
+  ; covariant = extensionality (\_ → ≈-≡ {C} (assoc C))
+  }
+  where
+    open ≈-lemmas C
+
+grothendieck : (C : Category S₀ S₁ ℓₛ) → Functor (op C) [ C , Sets {S₁} ]
+grothendieck C = record
+  { fobj = \r → covariantHom C r
+  ; fmap = fmap-g
+  
+  ; ≈-cong = \f≈g → eqArrow (extensionality (\_ → ≈-≡ {C} (≈-composite-reflˡ f≈g)))
+  ; preserveId = eqArrow (extensionality (\_ → ≈-≡ {C} (rightIdentity C)))
+  ; covariant = eqArrow (extensionality (\_ → ≈-≡ {C} (sym-≈ (assoc C))))
+  }
+  where
+    open ≈-lemmas C
+
+    fmap-g : ∀{a b} (f : C [ b ~> a ]) → Nat (covariantHom C a) (covariantHom C b)
+    fmap-g f = record
+      { component = \_ u → C [ u ∘ f ]
+      ; naturality = extensionality (\_ → ≈-≡ {C} (assoc C))
+      }
+
+
+hom[_][-,_] : (C : Category S₀ S₁ ℓₛ) → (Obj C) → Functor (op C) (Sets {S₁})
+hom[_][-,_] C r = fobj (yoneda C) r
+
+hom[_][_,-] : (C : Category S₀ S₁ ℓₛ) → (Obj (op C)) → Functor C (Sets {S₁})
+hom[_][_,-] C r = fobj (grothendieck C) r
+
 YonedaLemma : {C : Category S₀ S₁ ℓₛ} {F : Obj PSh[ C ]} {r : Obj C} → Sets [ Nat y[ r ] F ≅ Lift {S₁} {suc S₀ ⊔ (suc (suc S₁) ⊔ suc ℓₛ)} (fobj F r) ]
 YonedaLemma {C} {F} {r} = record
-  { l~>r = Nat→F
-  ; r~>l = F→Nat
+  { ≅-→ = Nat→F
+  ; ≅-← = F→Nat
   ; iso = record { iso-l = iso-Nat; iso-r = iso-F }
   }
   where
@@ -227,3 +262,6 @@ YonedaLemma {C} {F} {r} = record
             id Sets (lift x)
           ∎
 
+record Representable {C : Category S₀ S₁ ℓₛ} (F : Obj PSh[ C ]) {r : Obj C} : Set (suc (ℓₛ ⊔ suc S₁ ⊔ S₀)) where
+  field
+    representation : PSh[ C ] [ hom[ C ][-, r ] ≅ F ]

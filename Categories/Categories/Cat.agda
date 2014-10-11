@@ -13,7 +13,7 @@ Cat : ∀{C₀ C₁ ℓ} → Category (suc (C₀ ⊔ C₁ ⊔ ℓ)) (suc (C₀ �
 Cat {C₀} {C₁} {ℓ} = record
   { Obj = Category C₀ C₁ ℓ
   ; _~>_ = Functor
-  ; _∘_ = _∘F_
+  ; _∘_ = _∘′_
   ; _≈_ = _≈F_
   ; id = id-Functor
 
@@ -26,8 +26,8 @@ Cat {C₀} {C₁} {ℓ} = record
       → ≈-composite-Functor {A} {B} {C} {F} {G} {H} {I}
   }
   where
-    _∘F_ : {C D E : Category C₀ C₁ ℓ} → Functor D E → Functor C D → Functor C E
-    _∘F_ {C} {D} {E} F G = record
+    _∘′_ : {C D E : Category C₀ C₁ ℓ} → Functor D E → Functor C D → Functor C E
+    _∘′_ {C} {D} {E} F G = record
       { fobj = fobjFG
       ; fmap = fmapFG
       ; ≈-cong = ≈-cong-Functor

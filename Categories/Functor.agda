@@ -2,6 +2,7 @@ module Categories.Functor where
 
 open import Level
 open import Categories.Category
+open import Categories.Reasoning
 
 open Category
 
@@ -23,4 +24,21 @@ record Functor
 
 open Functor
 
+_∘F_ : {C₀ C₁ ℓ D₀ D₁ ℓ′ E₀ E₁ ℓ″ : Level}
+  {C : Category C₀ C₁ ℓ} {D : Category D₀ D₁ ℓ′} {E : Category E₀ E₁ ℓ″}
+  → Functor D E → Functor C D → Functor C E
+_∘F_ {C = C} {D = D} {E = E} F G = record
+  { fobj = \x → fobj F (fobj G x)
+  ; fmap = \f → fmap F (fmap G f)
+  ; ≈-cong = \f≈g → ≈-cong F (≈-cong G f≈g)
+  ; preserveId = trans-≈ E (≈-cong F (preserveId G)) (preserveId F)
+  ; covariant = \{a} {b} {c} {f} {g} → let open ≈-Reasoning E in
+    begin
+      fmap F (fmap G (C [ g ∘ f ])) ↓⟨ ≈-cong F (covariant G) ⟩
+      fmap F (D [ fmap G g ∘ fmap G f ]) ↓⟨ covariant F ⟩
+      E [ fmap F (fmap G g) ∘ fmap F (fmap G f) ]
+    ∎
+  }
+  where
+    open ≈-lemmas
 
