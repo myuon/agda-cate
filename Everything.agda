@@ -1,7 +1,10 @@
 module Everything where
 
+-- Set
+import Sets.Sets
+
 -- Topological Space
-import Topology.Topology
+import Sets.Topology
 
 -- ≈-Reasoning
 import Categories.Reasoning
