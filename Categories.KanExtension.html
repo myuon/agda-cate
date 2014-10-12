@@ -1,0 +1,2945 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Categories.KanExtension</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Keyword"
+      >module</a
+      ><a name="7"
+      > </a
+      ><a name="8" href="Categories.KanExtension.html#1" class="Module"
+      >Categories.KanExtension</a
+      ><a name="31"
+      > </a
+      ><a name="32" class="Keyword"
+      >where</a
+      ><a name="37"
+      >
+
+</a
+      ><a name="39" class="Keyword"
+      >open</a
+      ><a name="43"
+      > </a
+      ><a name="44" class="Keyword"
+      >import</a
+      ><a name="50"
+      > </a
+      ><a name="51" href="Level.html#1" class="Module"
+      >Level</a
+      ><a name="56"
+      >
+</a
+      ><a name="57" class="Keyword"
+      >open</a
+      ><a name="61"
+      > </a
+      ><a name="62" class="Keyword"
+      >import</a
+      ><a name="68"
+      > </a
+      ><a name="69" href="Function.html#1" class="Module"
+      >Function</a
+      ><a name="77"
+      > </a
+      ><a name="78" class="Keyword"
+      >hiding</a
+      ><a name="84"
+      > </a
+      ><a name="85" class="Symbol"
+      >(</a
+      ><a name="86"
+      >id</a
+      ><a name="88" class="Symbol"
+      >)</a
+      ><a name="89"
+      >
+</a
+      ><a name="90" class="Keyword"
+      >open</a
+      ><a name="94"
+      > </a
+      ><a name="95" class="Keyword"
+      >import</a
+      ><a name="101"
+      > </a
+      ><a name="102" href="Function.Equivalence.html#1" class="Module"
+      >Function.Equivalence</a
+      ><a name="122"
+      > </a
+      ><a name="123" class="Keyword"
+      >hiding</a
+      ><a name="129"
+      > </a
+      ><a name="130" class="Symbol"
+      >(</a
+      ><a name="131"
+      >id</a
+      ><a name="133" class="Symbol"
+      >)</a
+      ><a name="134"
+      >
+</a
+      ><a name="135" class="Keyword"
+      >open</a
+      ><a name="139"
+      > </a
+      ><a name="140" class="Keyword"
+      >import</a
+      ><a name="146"
+      > </a
+      ><a name="147" href="Categories.Category.html#1" class="Module"
+      >Categories.Category</a
+      ><a name="166"
+      >
+</a
+      ><a name="167" class="Keyword"
+      >open</a
+      ><a name="171"
+      > </a
+      ><a name="172" class="Keyword"
+      >import</a
+      ><a name="178"
+      > </a
+      ><a name="179" href="Categories.Functor.html#1" class="Module"
+      >Categories.Functor</a
+      ><a name="197"
+      >
+</a
+      ><a name="198" class="Keyword"
+      >open</a
+      ><a name="202"
+      > </a
+      ><a name="203" class="Keyword"
+      >import</a
+      ><a name="209"
+      > </a
+      ><a name="210" href="Categories.Nat.html#1" class="Module"
+      >Categories.Nat</a
+      ><a name="224"
+      >
+</a
+      ><a name="225" class="Keyword"
+      >open</a
+      ><a name="229"
+      > </a
+      ><a name="230" class="Keyword"
+      >import</a
+      ><a name="236"
+      > </a
+      ><a name="237" href="Categories.Categories.Sets.html#1" class="Module"
+      >Categories.Categories.Sets</a
+      ><a name="263"
+      >
+</a
+      ><a name="264" class="Keyword"
+      >open</a
+      ><a name="268"
+      > </a
+      ><a name="269" class="Keyword"
+      >import</a
+      ><a name="275"
+      > </a
+      ><a name="276" href="Categories.Reasoning.html#1" class="Module"
+      >Categories.Reasoning</a
+      ><a name="296"
+      >
+
+</a
+      ><a name="298" class="Keyword"
+      >open</a
+      ><a name="302"
+      > </a
+      ><a name="303" href="Categories.Category.html#128" class="Module"
+      >Category</a
+      ><a name="311"
+      >
+</a
+      ><a name="312" class="Keyword"
+      >open</a
+      ><a name="316"
+      > </a
+      ><a name="317" href="Categories.Functor.html#140" class="Module"
+      >Functor</a
+      ><a name="324"
+      >
+</a
+      ><a name="325" class="Keyword"
+      >open</a
+      ><a name="329"
+      > </a
+      ><a name="330" href="Categories.Nat.html#285" class="Module"
+      >Nat</a
+      ><a name="333"
+      >
+
+</a
+      ><a name="335" class="Keyword"
+      >record</a
+      ><a name="341"
+      > </a
+      ><a name="342" href="Categories.KanExtension.html#342" class="Record"
+      >Lan</a
+      ><a name="345"
+      > </a
+      ><a name="346" class="Symbol"
+      >{</a
+      ><a name="347" href="Categories.KanExtension.html#347" class="Bound"
+      >B&#8320;</a
+      ><a name="349"
+      > </a
+      ><a name="350" href="Categories.KanExtension.html#350" class="Bound"
+      >B&#8321;</a
+      ><a name="352"
+      > </a
+      ><a name="353" href="Categories.KanExtension.html#353" class="Bound"
+      >&#8467;</a
+      ><a name="354"
+      > </a
+      ><a name="355" href="Categories.KanExtension.html#355" class="Bound"
+      >C&#8320;</a
+      ><a name="357"
+      > </a
+      ><a name="358" href="Categories.KanExtension.html#358" class="Bound"
+      >C&#8321;</a
+      ><a name="360"
+      > </a
+      ><a name="361" href="Categories.KanExtension.html#361" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="363"
+      > </a
+      ><a name="364" href="Categories.KanExtension.html#364" class="Bound"
+      >D&#8320;</a
+      ><a name="366"
+      > </a
+      ><a name="367" href="Categories.KanExtension.html#367" class="Bound"
+      >D&#8321;</a
+      ><a name="369"
+      > </a
+      ><a name="370" href="Categories.KanExtension.html#370" class="Bound"
+      >&#8467;&#8243;</a
+      ><a name="372"
+      > </a
+      ><a name="373" class="Symbol"
+      >:</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="380" class="Symbol"
+      >}</a
+      ><a name="381"
+      >
+  </a
+      ><a name="384" class="Symbol"
+      >{</a
+      ><a name="385" href="Categories.KanExtension.html#385" class="Bound"
+      >C</a
+      ><a name="386"
+      > </a
+      ><a name="387" class="Symbol"
+      >:</a
+      ><a name="388"
+      > </a
+      ><a name="389" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="397"
+      > </a
+      ><a name="398" href="Categories.KanExtension.html#355" class="Bound"
+      >C&#8320;</a
+      ><a name="400"
+      > </a
+      ><a name="401" href="Categories.KanExtension.html#358" class="Bound"
+      >C&#8321;</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="Categories.KanExtension.html#353" class="Bound"
+      >&#8467;</a
+      ><a name="405" class="Symbol"
+      >}</a
+      ><a name="406"
+      > </a
+      ><a name="407" class="Symbol"
+      >{</a
+      ><a name="408" href="Categories.KanExtension.html#408" class="Bound"
+      >D</a
+      ><a name="409"
+      > </a
+      ><a name="410" class="Symbol"
+      >:</a
+      ><a name="411"
+      > </a
+      ><a name="412" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="420"
+      > </a
+      ><a name="421" href="Categories.KanExtension.html#355" class="Bound"
+      >C&#8320;</a
+      ><a name="423"
+      > </a
+      ><a name="424" href="Categories.KanExtension.html#358" class="Bound"
+      >C&#8321;</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="Categories.KanExtension.html#353" class="Bound"
+      >&#8467;</a
+      ><a name="428" class="Symbol"
+      >}</a
+      ><a name="429"
+      > </a
+      ><a name="430" class="Symbol"
+      >{</a
+      ><a name="431" href="Categories.KanExtension.html#431" class="Bound"
+      >U</a
+      ><a name="432"
+      > </a
+      ><a name="433" class="Symbol"
+      >:</a
+      ><a name="434"
+      > </a
+      ><a name="435" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="443"
+      > </a
+      ><a name="444" href="Categories.KanExtension.html#355" class="Bound"
+      >C&#8320;</a
+      ><a name="446"
+      > </a
+      ><a name="447" href="Categories.KanExtension.html#358" class="Bound"
+      >C&#8321;</a
+      ><a name="449"
+      > </a
+      ><a name="450" href="Categories.KanExtension.html#353" class="Bound"
+      >&#8467;</a
+      ><a name="451" class="Symbol"
+      >}</a
+      ><a name="452"
+      >
+  </a
+      ><a name="455" class="Symbol"
+      >(</a
+      ><a name="456" href="Categories.KanExtension.html#456" class="Bound"
+      >F</a
+      ><a name="457"
+      > </a
+      ><a name="458" class="Symbol"
+      >:</a
+      ><a name="459"
+      > </a
+      ><a name="460" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="467"
+      > </a
+      ><a name="468" href="Categories.KanExtension.html#385" class="Bound"
+      >C</a
+      ><a name="469"
+      > </a
+      ><a name="470" href="Categories.KanExtension.html#408" class="Bound"
+      >D</a
+      ><a name="471" class="Symbol"
+      >)</a
+      ><a name="472"
+      > </a
+      ><a name="473" class="Symbol"
+      >(</a
+      ><a name="474" href="Categories.KanExtension.html#474" class="Bound"
+      >E</a
+      ><a name="475"
+      > </a
+      ><a name="476" class="Symbol"
+      >:</a
+      ><a name="477"
+      > </a
+      ><a name="478" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="485"
+      > </a
+      ><a name="486" href="Categories.KanExtension.html#385" class="Bound"
+      >C</a
+      ><a name="487"
+      > </a
+      ><a name="488" href="Categories.KanExtension.html#431" class="Bound"
+      >U</a
+      ><a name="489" class="Symbol"
+      >)</a
+      ><a name="490"
+      > </a
+      ><a name="491" class="Symbol"
+      >:</a
+      ><a name="492"
+      > </a
+      ><a name="493" class="PrimitiveType"
+      >Set</a
+      ><a name="496"
+      > </a
+      ><a name="497" class="Symbol"
+      >(</a
+      ><a name="498" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="501"
+      > </a
+      ><a name="502" class="Symbol"
+      >(</a
+      ><a name="503" href="Categories.KanExtension.html#353" class="Bound"
+      >&#8467;</a
+      ><a name="504"
+      > </a
+      ><a name="505" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="506"
+      > </a
+      ><a name="507" href="Categories.KanExtension.html#358" class="Bound"
+      >C&#8321;</a
+      ><a name="509"
+      > </a
+      ><a name="510" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="511"
+      > </a
+      ><a name="512" href="Categories.KanExtension.html#355" class="Bound"
+      >C&#8320;</a
+      ><a name="514" class="Symbol"
+      >))</a
+      ><a name="516"
+      > </a
+      ><a name="517" class="Keyword"
+      >where</a
+      ><a name="522"
+      >
+  </a
+      ><a name="525" class="Keyword"
+      >field</a
+      ><a name="530"
+      >
+    </a
+      ><a name="535" href="Categories.KanExtension.html#535" class="Field"
+      >kan-ext</a
+      ><a name="542"
+      > </a
+      ><a name="543" class="Symbol"
+      >:</a
+      ><a name="544"
+      > </a
+      ><a name="545" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="552"
+      > </a
+      ><a name="553" href="Categories.KanExtension.html#408" class="Bound"
+      >D</a
+      ><a name="554"
+      > </a
+      ><a name="555" href="Categories.KanExtension.html#431" class="Bound"
+      >U</a
+      ><a name="556"
+      >
+    </a
+      ><a name="561" href="Categories.KanExtension.html#561" class="Field"
+      >kan-nat</a
+      ><a name="568"
+      > </a
+      ><a name="569" class="Symbol"
+      >:</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="Categories.Nat.html#285" class="Record"
+      >Nat</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="Categories.KanExtension.html#474" class="Bound"
+      >E</a
+      ><a name="576"
+      > </a
+      ><a name="577" class="Symbol"
+      >(</a
+      ><a name="578" href="Categories.KanExtension.html#535" class="Bound"
+      >kan-ext</a
+      ><a name="585"
+      > </a
+      ><a name="586" href="Categories.Functor.html#687" class="Function Operator"
+      >&#8728;F</a
+      ><a name="588"
+      > </a
+      ><a name="589" href="Categories.KanExtension.html#456" class="Bound"
+      >F</a
+      ><a name="590" class="Symbol"
+      >)</a
+      ><a name="591"
+      >
+
+  </a
+      ><a name="595" class="Keyword"
+      >field</a
+      ><a name="600"
+      >
+    </a
+      ><a name="605" href="Categories.KanExtension.html#605" class="Field"
+      >nat-induced</a
+      ><a name="616"
+      > </a
+      ><a name="617" class="Symbol"
+      >:</a
+      ><a name="618"
+      > </a
+      ><a name="619" class="Symbol"
+      >(</a
+      ><a name="620" href="Categories.KanExtension.html#620" class="Bound"
+      >S</a
+      ><a name="621"
+      > </a
+      ><a name="622" class="Symbol"
+      >:</a
+      ><a name="623"
+      > </a
+      ><a name="624" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="631"
+      > </a
+      ><a name="632" href="Categories.KanExtension.html#408" class="Bound"
+      >D</a
+      ><a name="633"
+      > </a
+      ><a name="634" href="Categories.KanExtension.html#431" class="Bound"
+      >U</a
+      ><a name="635" class="Symbol"
+      >)</a
+      ><a name="636"
+      > </a
+      ><a name="637" class="Symbol"
+      >&#8594;</a
+      ><a name="638"
+      > </a
+      ><a name="639" href="Categories.Nat.html#285" class="Record"
+      >Nat</a
+      ><a name="642"
+      > </a
+      ><a name="643" href="Categories.KanExtension.html#474" class="Bound"
+      >E</a
+      ><a name="644"
+      > </a
+      ><a name="645" class="Symbol"
+      >(</a
+      ><a name="646" href="Categories.KanExtension.html#620" class="Bound"
+      >S</a
+      ><a name="647"
+      > </a
+      ><a name="648" href="Categories.Functor.html#687" class="Function Operator"
+      >&#8728;F</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="Categories.KanExtension.html#456" class="Bound"
+      >F</a
+      ><a name="652" class="Symbol"
+      >)</a
+      ><a name="653"
+      > </a
+      ><a name="654" class="Symbol"
+      >&#8594;</a
+      ><a name="655"
+      > </a
+      ><a name="656" href="Categories.Nat.html#285" class="Record"
+      >Nat</a
+      ><a name="659"
+      > </a
+      ><a name="660" href="Categories.KanExtension.html#535" class="Bound"
+      >kan-ext</a
+      ><a name="667"
+      > </a
+      ><a name="668" href="Categories.KanExtension.html#620" class="Bound"
+      >S</a
+      ><a name="669"
+      >
+    </a
+      ><a name="674" href="Categories.KanExtension.html#674" class="Field"
+      >universality</a
+      ><a name="686"
+      > </a
+      ><a name="687" class="Symbol"
+      >:</a
+      ><a name="688"
+      > </a
+      ><a name="689" class="Symbol"
+      >(</a
+      ><a name="690" href="Categories.KanExtension.html#690" class="Bound"
+      >S</a
+      ><a name="691"
+      > </a
+      ><a name="692" class="Symbol"
+      >:</a
+      ><a name="693"
+      > </a
+      ><a name="694" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="701"
+      > </a
+      ><a name="702" href="Categories.KanExtension.html#408" class="Bound"
+      >D</a
+      ><a name="703"
+      > </a
+      ><a name="704" href="Categories.KanExtension.html#431" class="Bound"
+      >U</a
+      ><a name="705" class="Symbol"
+      >)</a
+      ><a name="706"
+      > </a
+      ><a name="707" class="Symbol"
+      >&#8594;</a
+      ><a name="708"
+      > </a
+      ><a name="709" class="Symbol"
+      >(</a
+      ><a name="710" href="Categories.KanExtension.html#710" class="Bound"
+      >&#952;</a
+      ><a name="711"
+      > </a
+      ><a name="712" class="Symbol"
+      >:</a
+      ><a name="713"
+      > </a
+      ><a name="714" href="Categories.Nat.html#285" class="Record"
+      >Nat</a
+      ><a name="717"
+      > </a
+      ><a name="718" href="Categories.KanExtension.html#474" class="Bound"
+      >E</a
+      ><a name="719"
+      > </a
+      ><a name="720" class="Symbol"
+      >(</a
+      ><a name="721" href="Categories.KanExtension.html#690" class="Bound"
+      >S</a
+      ><a name="722"
+      > </a
+      ><a name="723" href="Categories.Functor.html#687" class="Function Operator"
+      >&#8728;F</a
+      ><a name="725"
+      > </a
+      ><a name="726" href="Categories.KanExtension.html#456" class="Bound"
+      >F</a
+      ><a name="727" class="Symbol"
+      >))</a
+      ><a name="729"
+      > </a
+      ><a name="730" class="Symbol"
+      >&#8594;</a
+      ><a name="731"
+      > </a
+      ><a name="732" class="Symbol"
+      >(</a
+      ><a name="733" href="Categories.KanExtension.html#733" class="Bound"
+      >&#964;</a
+      ><a name="734"
+      > </a
+      ><a name="735" class="Symbol"
+      >:</a
+      ><a name="736"
+      > </a
+      ><a name="737" href="Categories.Nat.html#285" class="Record"
+      >Nat</a
+      ><a name="740"
+      > </a
+      ><a name="741" href="Categories.KanExtension.html#535" class="Bound"
+      >kan-ext</a
+      ><a name="748"
+      > </a
+      ><a name="749" href="Categories.KanExtension.html#690" class="Bound"
+      >S</a
+      ><a name="750" class="Symbol"
+      >)</a
+      ><a name="751"
+      > </a
+      ><a name="752" class="Symbol"
+      >&#8594;</a
+      ><a name="753"
+      > </a
+      ><a name="754" href="Categories.Nat.html#6136" class="Function Operator"
+      >[</a
+      ><a name="755"
+      > </a
+      ><a name="756" href="Categories.KanExtension.html#385" class="Bound"
+      >C</a
+      ><a name="757"
+      > </a
+      ><a name="758" href="Categories.Nat.html#6136" class="Function Operator"
+      >,</a
+      ><a name="759"
+      > </a
+      ><a name="760" href="Categories.KanExtension.html#431" class="Bound"
+      >U</a
+      ><a name="761"
+      > </a
+      ><a name="762" href="Categories.Nat.html#6136" class="Function Operator"
+      >]</a
+      ><a name="763"
+      > </a
+      ><a name="764" href="Categories.Category.html#1486" class="Function Operator"
+      >[</a
+      ><a name="765"
+      > </a
+      ><a name="766" href="Categories.KanExtension.html#710" class="Bound"
+      >&#952;</a
+      ><a name="767"
+      > </a
+      ><a name="768" href="Categories.Category.html#1486" class="Function Operator"
+      >&#8776;</a
+      ><a name="769"
+      > </a
+      ><a name="770" href="Categories.Nat.html#6136" class="Function Operator"
+      >[</a
+      ><a name="771"
+      > </a
+      ><a name="772" href="Categories.KanExtension.html#385" class="Bound"
+      >C</a
+      ><a name="773"
+      > </a
+      ><a name="774" href="Categories.Nat.html#6136" class="Function Operator"
+      >,</a
+      ><a name="775"
+      > </a
+      ><a name="776" href="Categories.KanExtension.html#431" class="Bound"
+      >U</a
+      ><a name="777"
+      > </a
+      ><a name="778" href="Categories.Nat.html#6136" class="Function Operator"
+      >]</a
+      ><a name="779"
+      > </a
+      ><a name="780" href="Categories.Category.html#1364" class="Function Operator"
+      >[</a
+      ><a name="781"
+      > </a
+      ><a name="782" class="Symbol"
+      >(</a
+      ><a name="783" href="Categories.KanExtension.html#456" class="Bound"
+      >F</a
+      ><a name="784"
+      > </a
+      ><a name="785" href="Categories.Nat.html#7074" class="Function Operator"
+      >&#8728;&#8595;</a
+      ><a name="787"
+      > </a
+      ><a name="788" href="Categories.KanExtension.html#733" class="Bound"
+      >&#964;</a
+      ><a name="789" class="Symbol"
+      >)</a
+      ><a name="790"
+      > </a
+      ><a name="791" href="Categories.Category.html#1364" class="Function Operator"
+      >&#8728;</a
+      ><a name="792"
+      > </a
+      ><a name="793" href="Categories.KanExtension.html#561" class="Bound"
+      >kan-nat</a
+      ><a name="800"
+      > </a
+      ><a name="801" href="Categories.Category.html#1364" class="Function Operator"
+      >]</a
+      ><a name="802"
+      > </a
+      ><a name="803" href="Categories.Category.html#1486" class="Function Operator"
+      >]</a
+      ><a name="804"
+      > </a
+      ><a name="805" class="Symbol"
+      >&#8594;</a
+      ><a name="806"
+      > </a
+      ><a name="807" href="Categories.Nat.html#6136" class="Function Operator"
+      >[</a
+      ><a name="808"
+      > </a
+      ><a name="809" href="Categories.KanExtension.html#408" class="Bound"
+      >D</a
+      ><a name="810"
+      > </a
+      ><a name="811" href="Categories.Nat.html#6136" class="Function Operator"
+      >,</a
+      ><a name="812"
+      > </a
+      ><a name="813" href="Categories.KanExtension.html#431" class="Bound"
+      >U</a
+      ><a name="814"
+      > </a
+      ><a name="815" href="Categories.Nat.html#6136" class="Function Operator"
+      >]</a
+      ><a name="816"
+      > </a
+      ><a name="817" href="Categories.Category.html#1486" class="Function Operator"
+      >[</a
+      ><a name="818"
+      > </a
+      ><a name="819" href="Categories.KanExtension.html#733" class="Bound"
+      >&#964;</a
+      ><a name="820"
+      > </a
+      ><a name="821" href="Categories.Category.html#1486" class="Function Operator"
+      >&#8776;</a
+      ><a name="822"
+      > </a
+      ><a name="823" href="Categories.KanExtension.html#605" class="Bound"
+      >nat-induced</a
+      ><a name="834"
+      > </a
+      ><a name="835" href="Categories.KanExtension.html#690" class="Bound"
+      >S</a
+      ><a name="836"
+      > </a
+      ><a name="837" href="Categories.KanExtension.html#710" class="Bound"
+      >&#952;</a
+      ><a name="838"
+      > </a
+      ><a name="839" href="Categories.Category.html#1486" class="Function Operator"
+      >]</a
+      ><a name="840"
+      >
+
+</a
+      ><a name="842" href="Categories.KanExtension.html#842" class="Function Operator"
+      >_&#8224;_</a
+      ><a name="845"
+      > </a
+      ><a name="846" class="Symbol"
+      >:</a
+      ><a name="847"
+      > </a
+      ><a name="848" class="Symbol"
+      >{</a
+      ><a name="849" href="Categories.KanExtension.html#849" class="Bound"
+      >B&#8320;</a
+      ><a name="851"
+      > </a
+      ><a name="852" href="Categories.KanExtension.html#852" class="Bound"
+      >B&#8321;</a
+      ><a name="854"
+      > </a
+      ><a name="855" href="Categories.KanExtension.html#855" class="Bound"
+      >&#8467;</a
+      ><a name="856"
+      > </a
+      ><a name="857" href="Categories.KanExtension.html#857" class="Bound"
+      >C&#8320;</a
+      ><a name="859"
+      > </a
+      ><a name="860" href="Categories.KanExtension.html#860" class="Bound"
+      >C&#8321;</a
+      ><a name="862"
+      > </a
+      ><a name="863" href="Categories.KanExtension.html#863" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="865"
+      > </a
+      ><a name="866" href="Categories.KanExtension.html#866" class="Bound"
+      >D&#8320;</a
+      ><a name="868"
+      > </a
+      ><a name="869" href="Categories.KanExtension.html#869" class="Bound"
+      >D&#8321;</a
+      ><a name="871"
+      > </a
+      ><a name="872" href="Categories.KanExtension.html#872" class="Bound"
+      >&#8467;&#8243;</a
+      ><a name="874"
+      > </a
+      ><a name="875" class="Symbol"
+      >:</a
+      ><a name="876"
+      > </a
+      ><a name="877" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="882" class="Symbol"
+      >}</a
+      ><a name="883"
+      >
+  </a
+      ><a name="886" class="Symbol"
+      >{</a
+      ><a name="887" href="Categories.KanExtension.html#887" class="Bound"
+      >C</a
+      ><a name="888"
+      > </a
+      ><a name="889" class="Symbol"
+      >:</a
+      ><a name="890"
+      > </a
+      ><a name="891" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="Categories.KanExtension.html#857" class="Bound"
+      >C&#8320;</a
+      ><a name="902"
+      > </a
+      ><a name="903" href="Categories.KanExtension.html#860" class="Bound"
+      >C&#8321;</a
+      ><a name="905"
+      > </a
+      ><a name="906" href="Categories.KanExtension.html#855" class="Bound"
+      >&#8467;</a
+      ><a name="907" class="Symbol"
+      >}</a
+      ><a name="908"
+      > </a
+      ><a name="909" class="Symbol"
+      >{</a
+      ><a name="910" href="Categories.KanExtension.html#910" class="Bound"
+      >D</a
+      ><a name="911"
+      > </a
+      ><a name="912" class="Symbol"
+      >:</a
+      ><a name="913"
+      > </a
+      ><a name="914" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="922"
+      > </a
+      ><a name="923" href="Categories.KanExtension.html#857" class="Bound"
+      >C&#8320;</a
+      ><a name="925"
+      > </a
+      ><a name="926" href="Categories.KanExtension.html#860" class="Bound"
+      >C&#8321;</a
+      ><a name="928"
+      > </a
+      ><a name="929" href="Categories.KanExtension.html#855" class="Bound"
+      >&#8467;</a
+      ><a name="930" class="Symbol"
+      >}</a
+      ><a name="931"
+      > </a
+      ><a name="932" class="Symbol"
+      >{</a
+      ><a name="933" href="Categories.KanExtension.html#933" class="Bound"
+      >U</a
+      ><a name="934"
+      > </a
+      ><a name="935" class="Symbol"
+      >:</a
+      ><a name="936"
+      > </a
+      ><a name="937" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="945"
+      > </a
+      ><a name="946" href="Categories.KanExtension.html#857" class="Bound"
+      >C&#8320;</a
+      ><a name="948"
+      > </a
+      ><a name="949" href="Categories.KanExtension.html#860" class="Bound"
+      >C&#8321;</a
+      ><a name="951"
+      > </a
+      ><a name="952" href="Categories.KanExtension.html#855" class="Bound"
+      >&#8467;</a
+      ><a name="953" class="Symbol"
+      >}</a
+      ><a name="954"
+      >
+  </a
+      ><a name="957" class="Symbol"
+      >(</a
+      ><a name="958" href="Categories.KanExtension.html#958" class="Bound"
+      >F</a
+      ><a name="959"
+      > </a
+      ><a name="960" class="Symbol"
+      >:</a
+      ><a name="961"
+      > </a
+      ><a name="962" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="969"
+      > </a
+      ><a name="970" href="Categories.KanExtension.html#887" class="Bound"
+      >C</a
+      ><a name="971"
+      > </a
+      ><a name="972" href="Categories.KanExtension.html#910" class="Bound"
+      >D</a
+      ><a name="973" class="Symbol"
+      >)</a
+      ><a name="974"
+      > </a
+      ><a name="975" class="Symbol"
+      >(</a
+      ><a name="976" href="Categories.KanExtension.html#976" class="Bound"
+      >E</a
+      ><a name="977"
+      > </a
+      ><a name="978" class="Symbol"
+      >:</a
+      ><a name="979"
+      > </a
+      ><a name="980" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="987"
+      > </a
+      ><a name="988" href="Categories.KanExtension.html#887" class="Bound"
+      >C</a
+      ><a name="989"
+      > </a
+      ><a name="990" href="Categories.KanExtension.html#933" class="Bound"
+      >U</a
+      ><a name="991" class="Symbol"
+      >)</a
+      ><a name="992"
+      > </a
+      ><a name="993" class="Symbol"
+      >&#8594;</a
+      ><a name="994"
+      > </a
+      ><a name="995" class="PrimitiveType"
+      >Set</a
+      ><a name="998"
+      > </a
+      ><a name="999" class="Symbol"
+      >(</a
+      ><a name="1000" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="1003"
+      > </a
+      ><a name="1004" href="Categories.KanExtension.html#860" class="Bound"
+      >C&#8321;</a
+      ><a name="1006"
+      > </a
+      ><a name="1007" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" class="Symbol"
+      >(</a
+      ><a name="1010" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" href="Categories.KanExtension.html#857" class="Bound"
+      >C&#8320;</a
+      ><a name="1016"
+      > </a
+      ><a name="1017" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1018"
+      > </a
+      ><a name="1019" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" href="Categories.KanExtension.html#855" class="Bound"
+      >&#8467;</a
+      ><a name="1024" class="Symbol"
+      >))</a
+      ><a name="1026"
+      >
+</a
+      ><a name="1027" href="Categories.KanExtension.html#842" class="Function Operator"
+      >_&#8224;_</a
+      ><a name="1030"
+      > </a
+      ><a name="1031" class="Symbol"
+      >{</a
+      ><a name="1032" href="Categories.KanExtension.html#1032" class="Bound"
+      >B&#8320;</a
+      ><a name="1034" class="Symbol"
+      >}</a
+      ><a name="1035"
+      > </a
+      ><a name="1036" class="Symbol"
+      >{</a
+      ><a name="1037" href="Categories.KanExtension.html#1037" class="Bound"
+      >B&#8321;</a
+      ><a name="1039" class="Symbol"
+      >}</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" class="Symbol"
+      >{</a
+      ><a name="1042" href="Categories.KanExtension.html#1042" class="Bound"
+      >&#8467;</a
+      ><a name="1043" class="Symbol"
+      >}</a
+      ><a name="1044"
+      > </a
+      ><a name="1045" class="Symbol"
+      >{</a
+      ><a name="1046" href="Categories.KanExtension.html#1046" class="Bound"
+      >C&#8320;</a
+      ><a name="1048" class="Symbol"
+      >}</a
+      ><a name="1049"
+      > </a
+      ><a name="1050" class="Symbol"
+      >{</a
+      ><a name="1051" href="Categories.KanExtension.html#1051" class="Bound"
+      >C&#8321;</a
+      ><a name="1053" class="Symbol"
+      >}</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" class="Symbol"
+      >{</a
+      ><a name="1056" href="Categories.KanExtension.html#1056" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="1058" class="Symbol"
+      >}</a
+      ><a name="1059"
+      > </a
+      ><a name="1060" class="Symbol"
+      >{</a
+      ><a name="1061" href="Categories.KanExtension.html#1061" class="Bound"
+      >D&#8320;</a
+      ><a name="1063" class="Symbol"
+      >}</a
+      ><a name="1064"
+      > </a
+      ><a name="1065" class="Symbol"
+      >{</a
+      ><a name="1066" href="Categories.KanExtension.html#1066" class="Bound"
+      >D&#8321;</a
+      ><a name="1068" class="Symbol"
+      >}</a
+      ><a name="1069"
+      > </a
+      ><a name="1070" class="Symbol"
+      >{</a
+      ><a name="1071" href="Categories.KanExtension.html#1071" class="Bound"
+      >&#8467;&#8243;</a
+      ><a name="1073" class="Symbol"
+      >}</a
+      ><a name="1074"
+      > </a
+      ><a name="1075" class="Symbol"
+      >{</a
+      ><a name="1076" href="Categories.KanExtension.html#1076" class="Bound"
+      >C</a
+      ><a name="1077" class="Symbol"
+      >}</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" class="Symbol"
+      >{</a
+      ><a name="1080" href="Categories.KanExtension.html#1080" class="Bound"
+      >D</a
+      ><a name="1081" class="Symbol"
+      >}</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" class="Symbol"
+      >{</a
+      ><a name="1084" href="Categories.KanExtension.html#1084" class="Bound"
+      >U</a
+      ><a name="1085" class="Symbol"
+      >}</a
+      ><a name="1086"
+      >
+  </a
+      ><a name="1089" class="Symbol"
+      >=</a
+      ><a name="1090"
+      > </a
+      ><a name="1091" href="Categories.KanExtension.html#342" class="Record"
+      >Lan</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" class="Symbol"
+      >{</a
+      ><a name="1096" href="Categories.KanExtension.html#1032" class="Bound"
+      >B&#8320;</a
+      ><a name="1098" class="Symbol"
+      >}</a
+      ><a name="1099"
+      > </a
+      ><a name="1100" class="Symbol"
+      >{</a
+      ><a name="1101" href="Categories.KanExtension.html#1037" class="Bound"
+      >B&#8321;</a
+      ><a name="1103" class="Symbol"
+      >}</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" class="Symbol"
+      >{</a
+      ><a name="1106" href="Categories.KanExtension.html#1042" class="Bound"
+      >&#8467;</a
+      ><a name="1107" class="Symbol"
+      >}</a
+      ><a name="1108"
+      > </a
+      ><a name="1109" class="Symbol"
+      >{</a
+      ><a name="1110" href="Categories.KanExtension.html#1046" class="Bound"
+      >C&#8320;</a
+      ><a name="1112" class="Symbol"
+      >}</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" class="Symbol"
+      >{</a
+      ><a name="1115" href="Categories.KanExtension.html#1051" class="Bound"
+      >C&#8321;</a
+      ><a name="1117" class="Symbol"
+      >}</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" class="Symbol"
+      >{</a
+      ><a name="1120" href="Categories.KanExtension.html#1056" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="1122" class="Symbol"
+      >}</a
+      ><a name="1123"
+      > </a
+      ><a name="1124" class="Symbol"
+      >{</a
+      ><a name="1125" href="Categories.KanExtension.html#1061" class="Bound"
+      >D&#8320;</a
+      ><a name="1127" class="Symbol"
+      >}</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" class="Symbol"
+      >{</a
+      ><a name="1130" href="Categories.KanExtension.html#1066" class="Bound"
+      >D&#8321;</a
+      ><a name="1132" class="Symbol"
+      >}</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" class="Symbol"
+      >{</a
+      ><a name="1135" href="Categories.KanExtension.html#1071" class="Bound"
+      >&#8467;&#8243;</a
+      ><a name="1137" class="Symbol"
+      >}</a
+      ><a name="1138"
+      > </a
+      ><a name="1139" class="Symbol"
+      >{</a
+      ><a name="1140" href="Categories.KanExtension.html#1076" class="Bound"
+      >C</a
+      ><a name="1141" class="Symbol"
+      >}</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" class="Symbol"
+      >{</a
+      ><a name="1144" href="Categories.KanExtension.html#1080" class="Bound"
+      >D</a
+      ><a name="1145" class="Symbol"
+      >}</a
+      ><a name="1146"
+      > </a
+      ><a name="1147" class="Symbol"
+      >{</a
+      ><a name="1148" href="Categories.KanExtension.html#1084" class="Bound"
+      >U</a
+      ><a name="1149" class="Symbol"
+      >}</a
+      ><a name="1150"
+      >
+
+</a
+      ><a name="1152" class="Keyword"
+      >record</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="Categories.KanExtension.html#1159" class="Record"
+      >Ran</a
+      ><a name="1162"
+      > </a
+      ><a name="1163" class="Symbol"
+      >{</a
+      ><a name="1164" href="Categories.KanExtension.html#1164" class="Bound"
+      >B&#8320;</a
+      ><a name="1166"
+      > </a
+      ><a name="1167" href="Categories.KanExtension.html#1167" class="Bound"
+      >B&#8321;</a
+      ><a name="1169"
+      > </a
+      ><a name="1170" href="Categories.KanExtension.html#1170" class="Bound"
+      >&#8467;</a
+      ><a name="1171"
+      > </a
+      ><a name="1172" href="Categories.KanExtension.html#1172" class="Bound"
+      >C&#8320;</a
+      ><a name="1174"
+      > </a
+      ><a name="1175" href="Categories.KanExtension.html#1175" class="Bound"
+      >C&#8321;</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" href="Categories.KanExtension.html#1178" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" href="Categories.KanExtension.html#1181" class="Bound"
+      >D&#8320;</a
+      ><a name="1183"
+      > </a
+      ><a name="1184" href="Categories.KanExtension.html#1184" class="Bound"
+      >D&#8321;</a
+      ><a name="1186"
+      > </a
+      ><a name="1187" href="Categories.KanExtension.html#1187" class="Bound"
+      >&#8467;&#8243;</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" class="Symbol"
+      >:</a
+      ><a name="1191"
+      > </a
+      ><a name="1192" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="1197" class="Symbol"
+      >}</a
+      ><a name="1198"
+      >
+  </a
+      ><a name="1201" class="Symbol"
+      >{</a
+      ><a name="1202" href="Categories.KanExtension.html#1202" class="Bound"
+      >C</a
+      ><a name="1203"
+      > </a
+      ><a name="1204" class="Symbol"
+      >:</a
+      ><a name="1205"
+      > </a
+      ><a name="1206" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="1214"
+      > </a
+      ><a name="1215" href="Categories.KanExtension.html#1172" class="Bound"
+      >C&#8320;</a
+      ><a name="1217"
+      > </a
+      ><a name="1218" href="Categories.KanExtension.html#1175" class="Bound"
+      >C&#8321;</a
+      ><a name="1220"
+      > </a
+      ><a name="1221" href="Categories.KanExtension.html#1170" class="Bound"
+      >&#8467;</a
+      ><a name="1222" class="Symbol"
+      >}</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" class="Symbol"
+      >{</a
+      ><a name="1225" href="Categories.KanExtension.html#1225" class="Bound"
+      >D</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" class="Symbol"
+      >:</a
+      ><a name="1228"
+      > </a
+      ><a name="1229" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="1237"
+      > </a
+      ><a name="1238" href="Categories.KanExtension.html#1172" class="Bound"
+      >C&#8320;</a
+      ><a name="1240"
+      > </a
+      ><a name="1241" href="Categories.KanExtension.html#1175" class="Bound"
+      >C&#8321;</a
+      ><a name="1243"
+      > </a
+      ><a name="1244" href="Categories.KanExtension.html#1170" class="Bound"
+      >&#8467;</a
+      ><a name="1245" class="Symbol"
+      >}</a
+      ><a name="1246"
+      > </a
+      ><a name="1247" class="Symbol"
+      >{</a
+      ><a name="1248" href="Categories.KanExtension.html#1248" class="Bound"
+      >U</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" class="Symbol"
+      >:</a
+      ><a name="1251"
+      > </a
+      ><a name="1252" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="1260"
+      > </a
+      ><a name="1261" href="Categories.KanExtension.html#1172" class="Bound"
+      >C&#8320;</a
+      ><a name="1263"
+      > </a
+      ><a name="1264" href="Categories.KanExtension.html#1175" class="Bound"
+      >C&#8321;</a
+      ><a name="1266"
+      > </a
+      ><a name="1267" href="Categories.KanExtension.html#1170" class="Bound"
+      >&#8467;</a
+      ><a name="1268" class="Symbol"
+      >}</a
+      ><a name="1269"
+      >
+  </a
+      ><a name="1272" class="Symbol"
+      >(</a
+      ><a name="1273" href="Categories.KanExtension.html#1273" class="Bound"
+      >F</a
+      ><a name="1274"
+      > </a
+      ><a name="1275" class="Symbol"
+      >:</a
+      ><a name="1276"
+      > </a
+      ><a name="1277" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="1284"
+      > </a
+      ><a name="1285" href="Categories.KanExtension.html#1202" class="Bound"
+      >C</a
+      ><a name="1286"
+      > </a
+      ><a name="1287" href="Categories.KanExtension.html#1225" class="Bound"
+      >D</a
+      ><a name="1288" class="Symbol"
+      >)</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" class="Symbol"
+      >(</a
+      ><a name="1291" href="Categories.KanExtension.html#1291" class="Bound"
+      >E</a
+      ><a name="1292"
+      > </a
+      ><a name="1293" class="Symbol"
+      >:</a
+      ><a name="1294"
+      > </a
+      ><a name="1295" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="1302"
+      > </a
+      ><a name="1303" href="Categories.KanExtension.html#1202" class="Bound"
+      >C</a
+      ><a name="1304"
+      > </a
+      ><a name="1305" href="Categories.KanExtension.html#1248" class="Bound"
+      >U</a
+      ><a name="1306" class="Symbol"
+      >)</a
+      ><a name="1307"
+      > </a
+      ><a name="1308" class="Symbol"
+      >:</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" class="PrimitiveType"
+      >Set</a
+      ><a name="1313"
+      > </a
+      ><a name="1314" class="Symbol"
+      >(</a
+      ><a name="1315" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="1318"
+      > </a
+      ><a name="1319" class="Symbol"
+      >(</a
+      ><a name="1320" href="Categories.KanExtension.html#1170" class="Bound"
+      >&#8467;</a
+      ><a name="1321"
+      > </a
+      ><a name="1322" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" href="Categories.KanExtension.html#1175" class="Bound"
+      >C&#8321;</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" href="Categories.KanExtension.html#1172" class="Bound"
+      >C&#8320;</a
+      ><a name="1331" class="Symbol"
+      >))</a
+      ><a name="1333"
+      > </a
+      ><a name="1334" class="Keyword"
+      >where</a
+      ><a name="1339"
+      >
+  </a
+      ><a name="1342" class="Keyword"
+      >field</a
+      ><a name="1347"
+      >
+    </a
+      ><a name="1352" href="Categories.KanExtension.html#1352" class="Field"
+      >kan-ext</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" class="Symbol"
+      >:</a
+      ><a name="1361"
+      > </a
+      ><a name="1362" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="1369"
+      > </a
+      ><a name="1370" href="Categories.KanExtension.html#1225" class="Bound"
+      >D</a
+      ><a name="1371"
+      > </a
+      ><a name="1372" href="Categories.KanExtension.html#1248" class="Bound"
+      >U</a
+      ><a name="1373"
+      >
+    </a
+      ><a name="1378" href="Categories.KanExtension.html#1378" class="Field"
+      >kan-nat</a
+      ><a name="1385"
+      > </a
+      ><a name="1386" class="Symbol"
+      >:</a
+      ><a name="1387"
+      > </a
+      ><a name="1388" href="Categories.Nat.html#285" class="Record"
+      >Nat</a
+      ><a name="1391"
+      > </a
+      ><a name="1392" class="Symbol"
+      >(</a
+      ><a name="1393" href="Categories.KanExtension.html#1352" class="Bound"
+      >kan-ext</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" href="Categories.Functor.html#687" class="Function Operator"
+      >&#8728;F</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="Categories.KanExtension.html#1273" class="Bound"
+      >F</a
+      ><a name="1405" class="Symbol"
+      >)</a
+      ><a name="1406"
+      > </a
+      ><a name="1407" href="Categories.KanExtension.html#1291" class="Bound"
+      >E</a
+      ><a name="1408"
+      >
+
+  </a
+      ><a name="1412" class="Keyword"
+      >field</a
+      ><a name="1417"
+      >
+    </a
+      ><a name="1422" href="Categories.KanExtension.html#1422" class="Field"
+      >nat-induced</a
+      ><a name="1433"
+      > </a
+      ><a name="1434" class="Symbol"
+      >:</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" class="Symbol"
+      >(</a
+      ><a name="1437" href="Categories.KanExtension.html#1437" class="Bound"
+      >S</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" class="Symbol"
+      >:</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="1448"
+      > </a
+      ><a name="1449" href="Categories.KanExtension.html#1225" class="Bound"
+      >D</a
+      ><a name="1450"
+      > </a
+      ><a name="1451" href="Categories.KanExtension.html#1248" class="Bound"
+      >U</a
+      ><a name="1452" class="Symbol"
+      >)</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" class="Symbol"
+      >&#8594;</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" href="Categories.Nat.html#285" class="Record"
+      >Nat</a
+      ><a name="1459"
+      > </a
+      ><a name="1460" class="Symbol"
+      >(</a
+      ><a name="1461" href="Categories.KanExtension.html#1437" class="Bound"
+      >S</a
+      ><a name="1462"
+      > </a
+      ><a name="1463" href="Categories.Functor.html#687" class="Function Operator"
+      >&#8728;F</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" href="Categories.KanExtension.html#1273" class="Bound"
+      >F</a
+      ><a name="1467" class="Symbol"
+      >)</a
+      ><a name="1468"
+      > </a
+      ><a name="1469" href="Categories.KanExtension.html#1291" class="Bound"
+      >E</a
+      ><a name="1470"
+      > </a
+      ><a name="1471" class="Symbol"
+      >&#8594;</a
+      ><a name="1472"
+      > </a
+      ><a name="1473" href="Categories.Nat.html#285" class="Record"
+      >Nat</a
+      ><a name="1476"
+      > </a
+      ><a name="1477" href="Categories.KanExtension.html#1437" class="Bound"
+      >S</a
+      ><a name="1478"
+      > </a
+      ><a name="1479" href="Categories.KanExtension.html#1352" class="Bound"
+      >kan-ext</a
+      ><a name="1486"
+      >
+    </a
+      ><a name="1491" href="Categories.KanExtension.html#1491" class="Field"
+      >universality</a
+      ><a name="1503"
+      > </a
+      ><a name="1504" class="Symbol"
+      >:</a
+      ><a name="1505"
+      > </a
+      ><a name="1506" class="Symbol"
+      >(</a
+      ><a name="1507" href="Categories.KanExtension.html#1507" class="Bound"
+      >S</a
+      ><a name="1508"
+      > </a
+      ><a name="1509" class="Symbol"
+      >:</a
+      ><a name="1510"
+      > </a
+      ><a name="1511" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="1518"
+      > </a
+      ><a name="1519" href="Categories.KanExtension.html#1225" class="Bound"
+      >D</a
+      ><a name="1520"
+      > </a
+      ><a name="1521" href="Categories.KanExtension.html#1248" class="Bound"
+      >U</a
+      ><a name="1522" class="Symbol"
+      >)</a
+      ><a name="1523"
+      > </a
+      ><a name="1524" class="Symbol"
+      >&#8594;</a
+      ><a name="1525"
+      > </a
+      ><a name="1526" class="Symbol"
+      >(</a
+      ><a name="1527" href="Categories.KanExtension.html#1527" class="Bound"
+      >&#952;</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" class="Symbol"
+      >:</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" href="Categories.Nat.html#285" class="Record"
+      >Nat</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" class="Symbol"
+      >(</a
+      ><a name="1536" href="Categories.KanExtension.html#1507" class="Bound"
+      >S</a
+      ><a name="1537"
+      > </a
+      ><a name="1538" href="Categories.Functor.html#687" class="Function Operator"
+      >&#8728;F</a
+      ><a name="1540"
+      > </a
+      ><a name="1541" href="Categories.KanExtension.html#1273" class="Bound"
+      >F</a
+      ><a name="1542" class="Symbol"
+      >)</a
+      ><a name="1543"
+      > </a
+      ><a name="1544" href="Categories.KanExtension.html#1291" class="Bound"
+      >E</a
+      ><a name="1545" class="Symbol"
+      >)</a
+      ><a name="1546"
+      > </a
+      ><a name="1547" class="Symbol"
+      >&#8594;</a
+      ><a name="1548"
+      > </a
+      ><a name="1549" class="Symbol"
+      >(</a
+      ><a name="1550" href="Categories.KanExtension.html#1550" class="Bound"
+      >&#964;</a
+      ><a name="1551"
+      > </a
+      ><a name="1552" class="Symbol"
+      >:</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="Categories.Nat.html#285" class="Record"
+      >Nat</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" href="Categories.KanExtension.html#1507" class="Bound"
+      >S</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" href="Categories.KanExtension.html#1352" class="Bound"
+      >kan-ext</a
+      ><a name="1567" class="Symbol"
+      >)</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" class="Symbol"
+      >&#8594;</a
+      ><a name="1570"
+      > </a
+      ><a name="1571" href="Categories.Nat.html#6136" class="Function Operator"
+      >[</a
+      ><a name="1572"
+      > </a
+      ><a name="1573" href="Categories.KanExtension.html#1202" class="Bound"
+      >C</a
+      ><a name="1574"
+      > </a
+      ><a name="1575" href="Categories.Nat.html#6136" class="Function Operator"
+      >,</a
+      ><a name="1576"
+      > </a
+      ><a name="1577" href="Categories.KanExtension.html#1248" class="Bound"
+      >U</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" href="Categories.Nat.html#6136" class="Function Operator"
+      >]</a
+      ><a name="1580"
+      > </a
+      ><a name="1581" href="Categories.Category.html#1486" class="Function Operator"
+      >[</a
+      ><a name="1582"
+      > </a
+      ><a name="1583" href="Categories.KanExtension.html#1527" class="Bound"
+      >&#952;</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" href="Categories.Category.html#1486" class="Function Operator"
+      >&#8776;</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" href="Categories.Nat.html#6136" class="Function Operator"
+      >[</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" href="Categories.KanExtension.html#1202" class="Bound"
+      >C</a
+      ><a name="1590"
+      > </a
+      ><a name="1591" href="Categories.Nat.html#6136" class="Function Operator"
+      >,</a
+      ><a name="1592"
+      > </a
+      ><a name="1593" href="Categories.KanExtension.html#1248" class="Bound"
+      >U</a
+      ><a name="1594"
+      > </a
+      ><a name="1595" href="Categories.Nat.html#6136" class="Function Operator"
+      >]</a
+      ><a name="1596"
+      > </a
+      ><a name="1597" href="Categories.Category.html#1364" class="Function Operator"
+      >[</a
+      ><a name="1598"
+      > </a
+      ><a name="1599" href="Categories.KanExtension.html#1378" class="Bound"
+      >kan-nat</a
+      ><a name="1606"
+      > </a
+      ><a name="1607" href="Categories.Category.html#1364" class="Function Operator"
+      >&#8728;</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" class="Symbol"
+      >(</a
+      ><a name="1610" href="Categories.KanExtension.html#1273" class="Bound"
+      >F</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" href="Categories.Nat.html#7074" class="Function Operator"
+      >&#8728;&#8595;</a
+      ><a name="1614"
+      > </a
+      ><a name="1615" href="Categories.KanExtension.html#1550" class="Bound"
+      >&#964;</a
+      ><a name="1616" class="Symbol"
+      >)</a
+      ><a name="1617"
+      > </a
+      ><a name="1618" href="Categories.Category.html#1364" class="Function Operator"
+      >]</a
+      ><a name="1619"
+      > </a
+      ><a name="1620" href="Categories.Category.html#1486" class="Function Operator"
+      >]</a
+      ><a name="1621"
+      > </a
+      ><a name="1622" class="Symbol"
+      >&#8594;</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" href="Categories.Nat.html#6136" class="Function Operator"
+      >[</a
+      ><a name="1625"
+      > </a
+      ><a name="1626" href="Categories.KanExtension.html#1225" class="Bound"
+      >D</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" href="Categories.Nat.html#6136" class="Function Operator"
+      >,</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="Categories.KanExtension.html#1248" class="Bound"
+      >U</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" href="Categories.Nat.html#6136" class="Function Operator"
+      >]</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" href="Categories.Category.html#1486" class="Function Operator"
+      >[</a
+      ><a name="1635"
+      > </a
+      ><a name="1636" href="Categories.KanExtension.html#1550" class="Bound"
+      >&#964;</a
+      ><a name="1637"
+      > </a
+      ><a name="1638" href="Categories.Category.html#1486" class="Function Operator"
+      >&#8776;</a
+      ><a name="1639"
+      > </a
+      ><a name="1640" href="Categories.KanExtension.html#1422" class="Bound"
+      >nat-induced</a
+      ><a name="1651"
+      > </a
+      ><a name="1652" href="Categories.KanExtension.html#1507" class="Bound"
+      >S</a
+      ><a name="1653"
+      > </a
+      ><a name="1654" href="Categories.KanExtension.html#1527" class="Bound"
+      >&#952;</a
+      ><a name="1655"
+      > </a
+      ><a name="1656" href="Categories.Category.html#1486" class="Function Operator"
+      >]</a
+      ><a name="1657"
+      >
+
+</a
+      ><a name="1659" href="Categories.KanExtension.html#1659" class="Function Operator"
+      >_&#8225;_</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" class="Symbol"
+      >:</a
+      ><a name="1664"
+      > </a
+      ><a name="1665" class="Symbol"
+      >{</a
+      ><a name="1666" href="Categories.KanExtension.html#1666" class="Bound"
+      >B&#8320;</a
+      ><a name="1668"
+      > </a
+      ><a name="1669" href="Categories.KanExtension.html#1669" class="Bound"
+      >B&#8321;</a
+      ><a name="1671"
+      > </a
+      ><a name="1672" href="Categories.KanExtension.html#1672" class="Bound"
+      >&#8467;</a
+      ><a name="1673"
+      > </a
+      ><a name="1674" href="Categories.KanExtension.html#1674" class="Bound"
+      >C&#8320;</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" href="Categories.KanExtension.html#1677" class="Bound"
+      >C&#8321;</a
+      ><a name="1679"
+      > </a
+      ><a name="1680" href="Categories.KanExtension.html#1680" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="1682"
+      > </a
+      ><a name="1683" href="Categories.KanExtension.html#1683" class="Bound"
+      >D&#8320;</a
+      ><a name="1685"
+      > </a
+      ><a name="1686" href="Categories.KanExtension.html#1686" class="Bound"
+      >D&#8321;</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" href="Categories.KanExtension.html#1689" class="Bound"
+      >&#8467;&#8243;</a
+      ><a name="1691"
+      > </a
+      ><a name="1692" class="Symbol"
+      >:</a
+      ><a name="1693"
+      > </a
+      ><a name="1694" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="1699" class="Symbol"
+      >}</a
+      ><a name="1700"
+      >
+  </a
+      ><a name="1703" class="Symbol"
+      >{</a
+      ><a name="1704" href="Categories.KanExtension.html#1704" class="Bound"
+      >C</a
+      ><a name="1705"
+      > </a
+      ><a name="1706" class="Symbol"
+      >:</a
+      ><a name="1707"
+      > </a
+      ><a name="1708" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="1716"
+      > </a
+      ><a name="1717" href="Categories.KanExtension.html#1674" class="Bound"
+      >C&#8320;</a
+      ><a name="1719"
+      > </a
+      ><a name="1720" href="Categories.KanExtension.html#1677" class="Bound"
+      >C&#8321;</a
+      ><a name="1722"
+      > </a
+      ><a name="1723" href="Categories.KanExtension.html#1672" class="Bound"
+      >&#8467;</a
+      ><a name="1724" class="Symbol"
+      >}</a
+      ><a name="1725"
+      > </a
+      ><a name="1726" class="Symbol"
+      >{</a
+      ><a name="1727" href="Categories.KanExtension.html#1727" class="Bound"
+      >D</a
+      ><a name="1728"
+      > </a
+      ><a name="1729" class="Symbol"
+      >:</a
+      ><a name="1730"
+      > </a
+      ><a name="1731" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="Categories.KanExtension.html#1674" class="Bound"
+      >C&#8320;</a
+      ><a name="1742"
+      > </a
+      ><a name="1743" href="Categories.KanExtension.html#1677" class="Bound"
+      >C&#8321;</a
+      ><a name="1745"
+      > </a
+      ><a name="1746" href="Categories.KanExtension.html#1672" class="Bound"
+      >&#8467;</a
+      ><a name="1747" class="Symbol"
+      >}</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" class="Symbol"
+      >{</a
+      ><a name="1750" href="Categories.KanExtension.html#1750" class="Bound"
+      >U</a
+      ><a name="1751"
+      > </a
+      ><a name="1752" class="Symbol"
+      >:</a
+      ><a name="1753"
+      > </a
+      ><a name="1754" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="1762"
+      > </a
+      ><a name="1763" href="Categories.KanExtension.html#1674" class="Bound"
+      >C&#8320;</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" href="Categories.KanExtension.html#1677" class="Bound"
+      >C&#8321;</a
+      ><a name="1768"
+      > </a
+      ><a name="1769" href="Categories.KanExtension.html#1672" class="Bound"
+      >&#8467;</a
+      ><a name="1770" class="Symbol"
+      >}</a
+      ><a name="1771"
+      >
+  </a
+      ><a name="1774" class="Symbol"
+      >(</a
+      ><a name="1775" href="Categories.KanExtension.html#1775" class="Bound"
+      >F</a
+      ><a name="1776"
+      > </a
+      ><a name="1777" class="Symbol"
+      >:</a
+      ><a name="1778"
+      > </a
+      ><a name="1779" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="1786"
+      > </a
+      ><a name="1787" href="Categories.KanExtension.html#1704" class="Bound"
+      >C</a
+      ><a name="1788"
+      > </a
+      ><a name="1789" href="Categories.KanExtension.html#1727" class="Bound"
+      >D</a
+      ><a name="1790" class="Symbol"
+      >)</a
+      ><a name="1791"
+      > </a
+      ><a name="1792" class="Symbol"
+      >(</a
+      ><a name="1793" href="Categories.KanExtension.html#1793" class="Bound"
+      >E</a
+      ><a name="1794"
+      > </a
+      ><a name="1795" class="Symbol"
+      >:</a
+      ><a name="1796"
+      > </a
+      ><a name="1797" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="1804"
+      > </a
+      ><a name="1805" href="Categories.KanExtension.html#1704" class="Bound"
+      >C</a
+      ><a name="1806"
+      > </a
+      ><a name="1807" href="Categories.KanExtension.html#1750" class="Bound"
+      >U</a
+      ><a name="1808" class="Symbol"
+      >)</a
+      ><a name="1809"
+      > </a
+      ><a name="1810" class="Symbol"
+      >&#8594;</a
+      ><a name="1811"
+      > </a
+      ><a name="1812" class="PrimitiveType"
+      >Set</a
+      ><a name="1815"
+      > </a
+      ><a name="1816" class="Symbol"
+      >(</a
+      ><a name="1817" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="1820"
+      > </a
+      ><a name="1821" href="Categories.KanExtension.html#1677" class="Bound"
+      >C&#8321;</a
+      ><a name="1823"
+      > </a
+      ><a name="1824" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" class="Symbol"
+      >(</a
+      ><a name="1827" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="1830"
+      > </a
+      ><a name="1831" href="Categories.KanExtension.html#1674" class="Bound"
+      >C&#8320;</a
+      ><a name="1833"
+      > </a
+      ><a name="1834" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="1835"
+      > </a
+      ><a name="1836" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="1839"
+      > </a
+      ><a name="1840" href="Categories.KanExtension.html#1672" class="Bound"
+      >&#8467;</a
+      ><a name="1841" class="Symbol"
+      >))</a
+      ><a name="1843"
+      >
+</a
+      ><a name="1844" href="Categories.KanExtension.html#1659" class="Function Operator"
+      >_&#8225;_</a
+      ><a name="1847"
+      > </a
+      ><a name="1848" class="Symbol"
+      >{</a
+      ><a name="1849" href="Categories.KanExtension.html#1849" class="Bound"
+      >B&#8320;</a
+      ><a name="1851" class="Symbol"
+      >}</a
+      ><a name="1852"
+      > </a
+      ><a name="1853" class="Symbol"
+      >{</a
+      ><a name="1854" href="Categories.KanExtension.html#1854" class="Bound"
+      >B&#8321;</a
+      ><a name="1856" class="Symbol"
+      >}</a
+      ><a name="1857"
+      > </a
+      ><a name="1858" class="Symbol"
+      >{</a
+      ><a name="1859" href="Categories.KanExtension.html#1859" class="Bound"
+      >&#8467;</a
+      ><a name="1860" class="Symbol"
+      >}</a
+      ><a name="1861"
+      > </a
+      ><a name="1862" class="Symbol"
+      >{</a
+      ><a name="1863" href="Categories.KanExtension.html#1863" class="Bound"
+      >C&#8320;</a
+      ><a name="1865" class="Symbol"
+      >}</a
+      ><a name="1866"
+      > </a
+      ><a name="1867" class="Symbol"
+      >{</a
+      ><a name="1868" href="Categories.KanExtension.html#1868" class="Bound"
+      >C&#8321;</a
+      ><a name="1870" class="Symbol"
+      >}</a
+      ><a name="1871"
+      > </a
+      ><a name="1872" class="Symbol"
+      >{</a
+      ><a name="1873" href="Categories.KanExtension.html#1873" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="1875" class="Symbol"
+      >}</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" class="Symbol"
+      >{</a
+      ><a name="1878" href="Categories.KanExtension.html#1878" class="Bound"
+      >D&#8320;</a
+      ><a name="1880" class="Symbol"
+      >}</a
+      ><a name="1881"
+      > </a
+      ><a name="1882" class="Symbol"
+      >{</a
+      ><a name="1883" href="Categories.KanExtension.html#1883" class="Bound"
+      >D&#8321;</a
+      ><a name="1885" class="Symbol"
+      >}</a
+      ><a name="1886"
+      > </a
+      ><a name="1887" class="Symbol"
+      >{</a
+      ><a name="1888" href="Categories.KanExtension.html#1888" class="Bound"
+      >&#8467;&#8243;</a
+      ><a name="1890" class="Symbol"
+      >}</a
+      ><a name="1891"
+      > </a
+      ><a name="1892" class="Symbol"
+      >{</a
+      ><a name="1893" href="Categories.KanExtension.html#1893" class="Bound"
+      >C</a
+      ><a name="1894" class="Symbol"
+      >}</a
+      ><a name="1895"
+      > </a
+      ><a name="1896" class="Symbol"
+      >{</a
+      ><a name="1897" href="Categories.KanExtension.html#1897" class="Bound"
+      >D</a
+      ><a name="1898" class="Symbol"
+      >}</a
+      ><a name="1899"
+      > </a
+      ><a name="1900" class="Symbol"
+      >{</a
+      ><a name="1901" href="Categories.KanExtension.html#1901" class="Bound"
+      >U</a
+      ><a name="1902" class="Symbol"
+      >}</a
+      ><a name="1903"
+      >
+  </a
+      ><a name="1906" class="Symbol"
+      >=</a
+      ><a name="1907"
+      > </a
+      ><a name="1908" href="Categories.KanExtension.html#1159" class="Record"
+      >Ran</a
+      ><a name="1911"
+      > </a
+      ><a name="1912" class="Symbol"
+      >{</a
+      ><a name="1913" href="Categories.KanExtension.html#1849" class="Bound"
+      >B&#8320;</a
+      ><a name="1915" class="Symbol"
+      >}</a
+      ><a name="1916"
+      > </a
+      ><a name="1917" class="Symbol"
+      >{</a
+      ><a name="1918" href="Categories.KanExtension.html#1854" class="Bound"
+      >B&#8321;</a
+      ><a name="1920" class="Symbol"
+      >}</a
+      ><a name="1921"
+      > </a
+      ><a name="1922" class="Symbol"
+      >{</a
+      ><a name="1923" href="Categories.KanExtension.html#1859" class="Bound"
+      >&#8467;</a
+      ><a name="1924" class="Symbol"
+      >}</a
+      ><a name="1925"
+      > </a
+      ><a name="1926" class="Symbol"
+      >{</a
+      ><a name="1927" href="Categories.KanExtension.html#1863" class="Bound"
+      >C&#8320;</a
+      ><a name="1929" class="Symbol"
+      >}</a
+      ><a name="1930"
+      > </a
+      ><a name="1931" class="Symbol"
+      >{</a
+      ><a name="1932" href="Categories.KanExtension.html#1868" class="Bound"
+      >C&#8321;</a
+      ><a name="1934" class="Symbol"
+      >}</a
+      ><a name="1935"
+      > </a
+      ><a name="1936" class="Symbol"
+      >{</a
+      ><a name="1937" href="Categories.KanExtension.html#1873" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="1939" class="Symbol"
+      >}</a
+      ><a name="1940"
+      > </a
+      ><a name="1941" class="Symbol"
+      >{</a
+      ><a name="1942" href="Categories.KanExtension.html#1878" class="Bound"
+      >D&#8320;</a
+      ><a name="1944" class="Symbol"
+      >}</a
+      ><a name="1945"
+      > </a
+      ><a name="1946" class="Symbol"
+      >{</a
+      ><a name="1947" href="Categories.KanExtension.html#1883" class="Bound"
+      >D&#8321;</a
+      ><a name="1949" class="Symbol"
+      >}</a
+      ><a name="1950"
+      > </a
+      ><a name="1951" class="Symbol"
+      >{</a
+      ><a name="1952" href="Categories.KanExtension.html#1888" class="Bound"
+      >&#8467;&#8243;</a
+      ><a name="1954" class="Symbol"
+      >}</a
+      ><a name="1955"
+      > </a
+      ><a name="1956" class="Symbol"
+      >{</a
+      ><a name="1957" href="Categories.KanExtension.html#1893" class="Bound"
+      >C</a
+      ><a name="1958" class="Symbol"
+      >}</a
+      ><a name="1959"
+      > </a
+      ><a name="1960" class="Symbol"
+      >{</a
+      ><a name="1961" href="Categories.KanExtension.html#1897" class="Bound"
+      >D</a
+      ><a name="1962" class="Symbol"
+      >}</a
+      ><a name="1963"
+      > </a
+      ><a name="1964" class="Symbol"
+      >{</a
+      ><a name="1965" href="Categories.KanExtension.html#1901" class="Bound"
+      >U</a
+      ><a name="1966" class="Symbol"
+      >}</a
+      ><a name="1967"
+      >
+
+</a
+      ><a name="1969" href="Categories.KanExtension.html#1969" class="Function Operator"
+      >_&#8315;&#185;</a
+      ><a name="1972"
+      > </a
+      ><a name="1973" class="Symbol"
+      >:</a
+      ><a name="1974"
+      > </a
+      ><a name="1975" class="Symbol"
+      >{</a
+      ><a name="1976" href="Categories.KanExtension.html#1976" class="Bound"
+      >C&#8320;</a
+      ><a name="1978"
+      > </a
+      ><a name="1979" href="Categories.KanExtension.html#1979" class="Bound"
+      >C&#8321;</a
+      ><a name="1981"
+      > </a
+      ><a name="1982" href="Categories.KanExtension.html#1982" class="Bound"
+      >&#8467;</a
+      ><a name="1983"
+      > </a
+      ><a name="1984" href="Categories.KanExtension.html#1984" class="Bound"
+      >D&#8320;</a
+      ><a name="1986"
+      > </a
+      ><a name="1987" href="Categories.KanExtension.html#1987" class="Bound"
+      >D&#8321;</a
+      ><a name="1989"
+      > </a
+      ><a name="1990" href="Categories.KanExtension.html#1990" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="1992"
+      > </a
+      ><a name="1993" href="Categories.KanExtension.html#1993" class="Bound"
+      >U&#8320;</a
+      ><a name="1995"
+      > </a
+      ><a name="1996" href="Categories.KanExtension.html#1996" class="Bound"
+      >U&#8321;</a
+      ><a name="1998"
+      > </a
+      ><a name="1999" href="Categories.KanExtension.html#1999" class="Bound"
+      >&#8467;&#8243;</a
+      ><a name="2001"
+      > </a
+      ><a name="2002" class="Symbol"
+      >:</a
+      ><a name="2003"
+      > </a
+      ><a name="2004" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="2009" class="Symbol"
+      >}</a
+      ><a name="2010"
+      >
+  </a
+      ><a name="2013" class="Symbol"
+      >{</a
+      ><a name="2014" href="Categories.KanExtension.html#2014" class="Bound"
+      >C</a
+      ><a name="2015"
+      > </a
+      ><a name="2016" class="Symbol"
+      >:</a
+      ><a name="2017"
+      > </a
+      ><a name="2018" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" href="Categories.KanExtension.html#1976" class="Bound"
+      >C&#8320;</a
+      ><a name="2029"
+      > </a
+      ><a name="2030" href="Categories.KanExtension.html#1979" class="Bound"
+      >C&#8321;</a
+      ><a name="2032"
+      > </a
+      ><a name="2033" href="Categories.KanExtension.html#1982" class="Bound"
+      >&#8467;</a
+      ><a name="2034" class="Symbol"
+      >}</a
+      ><a name="2035"
+      > </a
+      ><a name="2036" class="Symbol"
+      >{</a
+      ><a name="2037" href="Categories.KanExtension.html#2037" class="Bound"
+      >D</a
+      ><a name="2038"
+      > </a
+      ><a name="2039" class="Symbol"
+      >:</a
+      ><a name="2040"
+      > </a
+      ><a name="2041" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="2049"
+      > </a
+      ><a name="2050" href="Categories.KanExtension.html#1984" class="Bound"
+      >D&#8320;</a
+      ><a name="2052"
+      > </a
+      ><a name="2053" href="Categories.KanExtension.html#1987" class="Bound"
+      >D&#8321;</a
+      ><a name="2055"
+      > </a
+      ><a name="2056" href="Categories.KanExtension.html#1990" class="Bound"
+      >&#8467;&#8242;</a
+      ><a name="2058" class="Symbol"
+      >}</a
+      ><a name="2059"
+      > </a
+      ><a name="2060" class="Symbol"
+      >{</a
+      ><a name="2061" href="Categories.KanExtension.html#2061" class="Bound"
+      >U</a
+      ><a name="2062"
+      > </a
+      ><a name="2063" class="Symbol"
+      >:</a
+      ><a name="2064"
+      > </a
+      ><a name="2065" href="Categories.Category.html#128" class="Record"
+      >Category</a
+      ><a name="2073"
+      > </a
+      ><a name="2074" href="Categories.KanExtension.html#1993" class="Bound"
+      >U&#8320;</a
+      ><a name="2076"
+      > </a
+      ><a name="2077" href="Categories.KanExtension.html#1996" class="Bound"
+      >U&#8321;</a
+      ><a name="2079"
+      > </a
+      ><a name="2080" href="Categories.KanExtension.html#1999" class="Bound"
+      >&#8467;&#8243;</a
+      ><a name="2082" class="Symbol"
+      >}</a
+      ><a name="2083"
+      >
+  </a
+      ><a name="2086" class="Symbol"
+      >(</a
+      ><a name="2087" href="Categories.KanExtension.html#2087" class="Bound"
+      >F</a
+      ><a name="2088"
+      > </a
+      ><a name="2089" class="Symbol"
+      >:</a
+      ><a name="2090"
+      > </a
+      ><a name="2091" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="2098"
+      > </a
+      ><a name="2099" href="Categories.KanExtension.html#2014" class="Bound"
+      >C</a
+      ><a name="2100"
+      > </a
+      ><a name="2101" href="Categories.KanExtension.html#2037" class="Bound"
+      >D</a
+      ><a name="2102" class="Symbol"
+      >)</a
+      ><a name="2103"
+      > </a
+      ><a name="2104" class="Symbol"
+      >&#8594;</a
+      ><a name="2105"
+      > </a
+      ><a name="2106" href="Categories.Functor.html#140" class="Record"
+      >Functor</a
+      ><a name="2113"
+      > </a
+      ><a name="2114" href="Categories.Nat.html#6136" class="Function Operator"
+      >[</a
+      ><a name="2115"
+      > </a
+      ><a name="2116" href="Categories.KanExtension.html#2037" class="Bound"
+      >D</a
+      ><a name="2117"
+      > </a
+      ><a name="2118" href="Categories.Nat.html#6136" class="Function Operator"
+      >,</a
+      ><a name="2119"
+      > </a
+      ><a name="2120" href="Categories.KanExtension.html#2061" class="Bound"
+      >U</a
+      ><a name="2121"
+      > </a
+      ><a name="2122" href="Categories.Nat.html#6136" class="Function Operator"
+      >]</a
+      ><a name="2123"
+      > </a
+      ><a name="2124" href="Categories.Nat.html#6136" class="Function Operator"
+      >[</a
+      ><a name="2125"
+      > </a
+      ><a name="2126" href="Categories.KanExtension.html#2014" class="Bound"
+      >C</a
+      ><a name="2127"
+      > </a
+      ><a name="2128" href="Categories.Nat.html#6136" class="Function Operator"
+      >,</a
+      ><a name="2129"
+      > </a
+      ><a name="2130" href="Categories.KanExtension.html#2061" class="Bound"
+      >U</a
+      ><a name="2131"
+      > </a
+      ><a name="2132" href="Categories.Nat.html#6136" class="Function Operator"
+      >]</a
+      ><a name="2133"
+      >
+</a
+      ><a name="2134" href="Categories.KanExtension.html#1969" class="Function Operator"
+      >_&#8315;&#185;</a
+      ><a name="2137"
+      > </a
+      ><a name="2138" class="Symbol"
+      >{</a
+      ><a name="2139" class="Argument"
+      >C</a
+      ><a name="2140"
+      > </a
+      ><a name="2141" class="Symbol"
+      >=</a
+      ><a name="2142"
+      > </a
+      ><a name="2143" href="Categories.KanExtension.html#2143" class="Bound"
+      >C</a
+      ><a name="2144" class="Symbol"
+      >}</a
+      ><a name="2145"
+      > </a
+      ><a name="2146" class="Symbol"
+      >{</a
+      ><a name="2147" class="Argument"
+      >D</a
+      ><a name="2148"
+      > </a
+      ><a name="2149" class="Symbol"
+      >=</a
+      ><a name="2150"
+      > </a
+      ><a name="2151" href="Categories.KanExtension.html#2151" class="Bound"
+      >D</a
+      ><a name="2152" class="Symbol"
+      >}</a
+      ><a name="2153"
+      > </a
+      ><a name="2154" class="Symbol"
+      >{</a
+      ><a name="2155" class="Argument"
+      >U</a
+      ><a name="2156"
+      > </a
+      ><a name="2157" class="Symbol"
+      >=</a
+      ><a name="2158"
+      > </a
+      ><a name="2159" href="Categories.KanExtension.html#2159" class="Bound"
+      >U</a
+      ><a name="2160" class="Symbol"
+      >}</a
+      ><a name="2161"
+      > </a
+      ><a name="2162" href="Categories.KanExtension.html#2162" class="Bound"
+      >F</a
+      ><a name="2163"
+      > </a
+      ><a name="2164" class="Symbol"
+      >=</a
+      ><a name="2165"
+      > </a
+      ><a name="2166" class="Keyword"
+      >record</a
+      ><a name="2172"
+      >
+  </a
+      ><a name="2175" class="Symbol"
+      >{</a
+      ><a name="2176"
+      > </a
+      ><a name="2177" class="Field"
+      >fobj</a
+      ><a name="2181"
+      > </a
+      ><a name="2182" class="Symbol"
+      >=</a
+      ><a name="2183"
+      > </a
+      ><a name="2184" class="Symbol"
+      >\</a
+      ><a name="2185" href="Categories.KanExtension.html#2185" class="Bound"
+      >S</a
+      ><a name="2186"
+      > </a
+      ><a name="2187" class="Symbol"
+      >&#8594;</a
+      ><a name="2188"
+      > </a
+      ><a name="2189" href="Categories.KanExtension.html#2185" class="Bound"
+      >S</a
+      ><a name="2190"
+      > </a
+      ><a name="2191" href="Categories.Functor.html#687" class="Function Operator"
+      >&#8728;F</a
+      ><a name="2193"
+      > </a
+      ><a name="2194" href="Categories.KanExtension.html#2162" class="Bound"
+      >F</a
+      ><a name="2195"
+      >
+  </a
+      ><a name="2198" class="Symbol"
+      >;</a
+      ><a name="2199"
+      > </a
+      ><a name="2200" class="Field"
+      >fmap</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" class="Symbol"
+      >=</a
+      ><a name="2206"
+      > </a
+      ><a name="2207" class="Symbol"
+      >\</a
+      ><a name="2208" href="Categories.KanExtension.html#2208" class="Bound"
+      >&#945;</a
+      ><a name="2209"
+      > </a
+      ><a name="2210" class="Symbol"
+      >&#8594;</a
+      ><a name="2211"
+      > </a
+      ><a name="2212" href="Categories.KanExtension.html#2162" class="Bound"
+      >F</a
+      ><a name="2213"
+      > </a
+      ><a name="2214" href="Categories.Nat.html#7074" class="Function Operator"
+      >&#8728;&#8595;</a
+      ><a name="2216"
+      > </a
+      ><a name="2217" href="Categories.KanExtension.html#2208" class="Bound"
+      >&#945;</a
+      ><a name="2218"
+      >
+  </a
+      ><a name="2221" class="Symbol"
+      >;</a
+      ><a name="2222"
+      > </a
+      ><a name="2223" class="Field"
+      >&#8776;-cong</a
+      ><a name="2229"
+      > </a
+      ><a name="2230" class="Symbol"
+      >=</a
+      ><a name="2231"
+      > </a
+      ><a name="2232" class="Symbol"
+      >\</a
+      ><a name="2233" href="Categories.KanExtension.html#2233" class="Bound"
+      >f&#8776;g</a
+      ><a name="2236"
+      > </a
+      ><a name="2237" class="Symbol"
+      >&#8594;</a
+      ><a name="2238"
+      > </a
+      ><a name="2239" href="Categories.KanExtension.html#2233" class="Bound"
+      >f&#8776;g</a
+      ><a name="2242"
+      >
+  </a
+      ><a name="2245" class="Symbol"
+      >;</a
+      ><a name="2246"
+      > </a
+      ><a name="2247" class="Field"
+      >preserveId</a
+      ><a name="2257"
+      > </a
+      ><a name="2258" class="Symbol"
+      >=</a
+      ><a name="2259"
+      > </a
+      ><a name="2260" class="Symbol"
+      >\{</a
+      ><a name="2262" href="Categories.KanExtension.html#2262" class="Bound"
+      >a</a
+      ><a name="2263"
+      > </a
+      ><a name="2264" class="Symbol"
+      >:</a
+      ><a name="2265"
+      > </a
+      ><a name="2266" href="Categories.Category.html#229" class="Field"
+      >Obj</a
+      ><a name="2269"
+      > </a
+      ><a name="2270" href="Categories.Nat.html#6136" class="Function Operator"
+      >[</a
+      ><a name="2271"
+      > </a
+      ><a name="2272" href="Categories.KanExtension.html#2151" class="Bound"
+      >D</a
+      ><a name="2273"
+      > </a
+      ><a name="2274" href="Categories.Nat.html#6136" class="Function Operator"
+      >,</a
+      ><a name="2275"
+      > </a
+      ><a name="2276" href="Categories.KanExtension.html#2159" class="Bound"
+      >U</a
+      ><a name="2277"
+      > </a
+      ><a name="2278" href="Categories.Nat.html#6136" class="Function Operator"
+      >]</a
+      ><a name="2279" class="Symbol"
+      >}</a
+      ><a name="2280"
+      > </a
+      ><a name="2281" class="Symbol"
+      >{</a
+      ><a name="2282" href="Categories.KanExtension.html#2282" class="Bound"
+      >r</a
+      ><a name="2283"
+      > </a
+      ><a name="2284" class="Symbol"
+      >:</a
+      ><a name="2285"
+      > </a
+      ><a name="2286" href="Categories.Category.html#229" class="Field"
+      >Obj</a
+      ><a name="2289"
+      > </a
+      ><a name="2290" href="Categories.KanExtension.html#2143" class="Bound"
+      >C</a
+      ><a name="2291" class="Symbol"
+      >}</a
+      ><a name="2292"
+      > </a
+      ><a name="2293" class="Symbol"
+      >&#8594;</a
+      ><a name="2294"
+      > </a
+      ><a name="2295" href="Categories.Category.html#2275" class="InductiveConstructor"
+      >eqArrow</a
+      ><a name="2302"
+      > </a
+      ><a name="2303" href="Function.html#1835" class="Function Operator"
+      >$</a
+      ><a name="2304"
+      > </a
+      ><a name="2305" class="Keyword"
+      >let</a
+      ><a name="2308"
+      > </a
+      ><a name="2309" class="Keyword"
+      >open</a
+      ><a name="2313"
+      > </a
+      ><a name="2314" href="Categories.Reasoning.html#136" class="Module"
+      >&#8776;-Reasoning</a
+      ><a name="2325"
+      > </a
+      ><a name="2326" href="Categories.KanExtension.html#2159" class="Bound"
+      >U</a
+      ><a name="2327"
+      > </a
+      ><a name="2328" class="Keyword"
+      >in</a
+      ><a name="2330"
+      > </a
+      ><a name="2331" href="Categories.Reasoning.html#197" class="Function"
+      >refl-hom</a
+      ><a name="2339"
+      >
+  </a
+      ><a name="2342" class="Symbol"
+      >;</a
+      ><a name="2343"
+      > </a
+      ><a name="2344" class="Field"
+      >covariant</a
+      ><a name="2353"
+      > </a
+      ><a name="2354" class="Symbol"
+      >=</a
+      ><a name="2355"
+      > </a
+      ><a name="2356" class="Symbol"
+      >\{</a
+      ><a name="2358" href="Categories.KanExtension.html#2358" class="Bound"
+      >a</a
+      ><a name="2359" class="Symbol"
+      >}</a
+      ><a name="2360"
+      > </a
+      ><a name="2361" class="Symbol"
+      >{</a
+      ><a name="2362" href="Categories.KanExtension.html#2362" class="Bound"
+      >b</a
+      ><a name="2363" class="Symbol"
+      >}</a
+      ><a name="2364"
+      > </a
+      ><a name="2365" class="Symbol"
+      >{</a
+      ><a name="2366" href="Categories.KanExtension.html#2366" class="Bound"
+      >c</a
+      ><a name="2367" class="Symbol"
+      >}</a
+      ><a name="2368"
+      > </a
+      ><a name="2369" class="Symbol"
+      >{</a
+      ><a name="2370" href="Categories.KanExtension.html#2370" class="Bound"
+      >f</a
+      ><a name="2371" class="Symbol"
+      >}</a
+      ><a name="2372"
+      > </a
+      ><a name="2373" class="Symbol"
+      >{</a
+      ><a name="2374" href="Categories.KanExtension.html#2374" class="Bound"
+      >g</a
+      ><a name="2375" class="Symbol"
+      >}</a
+      ><a name="2376"
+      > </a
+      ><a name="2377" class="Symbol"
+      >{</a
+      ><a name="2378" href="Categories.KanExtension.html#2378" class="Bound"
+      >r</a
+      ><a name="2379" class="Symbol"
+      >}</a
+      ><a name="2380"
+      > </a
+      ><a name="2381" class="Symbol"
+      >&#8594;</a
+      ><a name="2382"
+      > </a
+      ><a name="2383" href="Categories.Category.html#2275" class="InductiveConstructor"
+      >eqArrow</a
+      ><a name="2390"
+      > </a
+      ><a name="2391" href="Function.html#1835" class="Function Operator"
+      >$</a
+      ><a name="2392"
+      > </a
+      ><a name="2393" class="Keyword"
+      >let</a
+      ><a name="2396"
+      > </a
+      ><a name="2397" class="Keyword"
+      >open</a
+      ><a name="2401"
+      > </a
+      ><a name="2402" href="Categories.Reasoning.html#136" class="Module"
+      >&#8776;-Reasoning</a
+      ><a name="2413"
+      > </a
+      ><a name="2414" href="Categories.KanExtension.html#2159" class="Bound"
+      >U</a
+      ><a name="2415"
+      > </a
+      ><a name="2416" class="Keyword"
+      >in</a
+      ><a name="2418"
+      > </a
+      ><a name="2419" href="Categories.Reasoning.html#197" class="Function"
+      >refl-hom</a
+      ><a name="2427"
+      >
+  </a
+      ><a name="2430" class="Symbol"
+      >}</a
+      ><a name="2431"
+      >
+
+</a
+      ><a name="2433" class="Comment"
+      >{-
+hom[_,_&#8315;&#185;[-]] : {C&#8320; C&#8321; &#8467; D&#8320; D&#8321; &#8467;&#8242; U&#8320; U&#8321; &#8467;&#8243; : Level} {C : Category C&#8320; C&#8321; &#8467;} {D : Category D&#8320; D&#8321; &#8467;&#8242;} {U : Category U&#8320; U&#8321; &#8467;&#8243;} &#8594; Functor C D &#8594; Functor C U &#8594; Functor [ U , D ] Sets
+hom[_,_&#8315;&#185;[-]] {C = C} {D = D} {U = U} E F = record
+  { fobj = \r &#8594; Nat E (fobj (F &#8315;&#185;) r)
+  ; fmap = fmap-hom
+  ; &#8776;-cong = \{a} {b} {f : Nat a b} {g : Nat a b} f&#8776;g &#8594; {!!}
+  ; preserveId = {!!}
+  ; covariant = {!!}
+  }
+  where
+    open &#8776;-lemmas
+
+    fmap-hom = \{a} {b} (f : [ U , D ] [ a ~&gt; b ]) (&#945; : Nat E (fobj (F &#8315;&#185;) a))
+      &#8594; record
+      { component = \(r : Obj C) &#8594; D [ component (fmap (F &#8315;&#185;) f) r &#8728; component &#945; r ]
+      ; naturality = \{x} {y} {g : C [ x ~&gt; y ]} &#8594; let open &#8776;-Reasoning D in
+        begin
+          D [ D [ component f (fobj F y) &#8728; component &#945; y ] &#8728; fmap E g ]
+        &#8595;&#10216; assoc D &#10217;
+          D [ component f (fobj F y) &#8728; D [ component &#945; y &#8728; fmap E g ] ]
+        &#8595;&#10216; &#8776;-composite-refl&#737; D (naturality &#945;) &#10217;
+          D [ component f (fobj F y) &#8728; D [ fmap (a &#8728;F F) g &#8728; component &#945; x ] ]
+        &#8593;&#10216; assoc D &#10217;
+          D [ D [ component (F &#8728;&#8595; f) y &#8728; fmap (a &#8728;F F) g ] &#8728; component &#945; x ]
+        &#8595;&#10216; &#8776;-composite-refl&#691; D (naturality (F &#8728;&#8595; f)) &#10217;
+          D [ D [ fmap (b &#8728;F F) g &#8728; component (F &#8728;&#8595; f) x ] &#8728; component &#945; x ]
+        &#8595;&#10216; assoc D &#10217;
+          D [ fmap (b &#8728;F F) g &#8728; D [ component f (fobj F x) &#8728; component &#945; x ] ]
+        &#8718;
+      }
+-}</a
+      ><a name="3768"
+      >
+
+</a
+      ><a name="3770" class="Comment"
+      >--Prop1 : {B&#8320; B&#8321; &#8467; C&#8320; C&#8321; &#8467;&#8242; D&#8320; D&#8321; &#8467;&#8243; : Level} {C D U : Category C&#8320; C&#8321; &#8467;}</a
+      ><a name="3842"
+      >
+</a
+      ><a name="3843" class="Comment"
+      >--  (F : Functor C D) (E : Functor C U) &#8594; &#8707; Repesentable ()</a
+      ><a name="3902"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

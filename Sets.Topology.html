@@ -1,0 +1,991 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Sets.Topology</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Keyword"
+      >module</a
+      ><a name="7"
+      > </a
+      ><a name="8" href="Sets.Topology.html#1" class="Module"
+      >Sets.Topology</a
+      ><a name="21"
+      > </a
+      ><a name="22" class="Keyword"
+      >where</a
+      ><a name="27"
+      >
+
+</a
+      ><a name="29" class="Keyword"
+      >open</a
+      ><a name="33"
+      > </a
+      ><a name="34" class="Keyword"
+      >import</a
+      ><a name="40"
+      > </a
+      ><a name="41" href="Level.html#1" class="Module"
+      >Level</a
+      ><a name="46"
+      >
+</a
+      ><a name="47" class="Keyword"
+      >open</a
+      ><a name="51"
+      > </a
+      ><a name="52" class="Keyword"
+      >import</a
+      ><a name="58"
+      > </a
+      ><a name="59" href="Function.html#1" class="Module"
+      >Function</a
+      ><a name="67"
+      >
+</a
+      ><a name="68" class="Keyword"
+      >import</a
+      ><a name="74"
+      > </a
+      ><a name="75" href="Data.Fin.html#1" class="Module"
+      >Data.Fin</a
+      ><a name="83"
+      > </a
+      ><a name="84" class="Symbol"
+      >as</a
+      ><a name="86"
+      > </a
+      ><a name="87" class="Module"
+      >Fin</a
+      ><a name="90"
+      >
+</a
+      ><a name="91" class="Keyword"
+      >open</a
+      ><a name="95"
+      > </a
+      ><a name="96" class="Keyword"
+      >import</a
+      ><a name="102"
+      > </a
+      ><a name="103" href="Data.Product.html#1" class="Module"
+      >Data.Product</a
+      ><a name="115"
+      > </a
+      ><a name="116" class="Keyword"
+      >hiding</a
+      ><a name="122"
+      > </a
+      ><a name="123" class="Symbol"
+      >(</a
+      ><a name="124"
+      >_,_</a
+      ><a name="127" class="Symbol"
+      >)</a
+      ><a name="128"
+      >
+</a
+      ><a name="129" class="Keyword"
+      >open</a
+      ><a name="133"
+      > </a
+      ><a name="134" class="Keyword"
+      >import</a
+      ><a name="140"
+      > </a
+      ><a name="141" href="Relation.Binary.html#1" class="Module"
+      >Relation.Binary</a
+      ><a name="156"
+      >
+</a
+      ><a name="157" class="Keyword"
+      >open</a
+      ><a name="161"
+      > </a
+      ><a name="162" class="Keyword"
+      >import</a
+      ><a name="168"
+      > </a
+      ><a name="169" href="Relation.Nullary.html#1" class="Module"
+      >Relation.Nullary</a
+      ><a name="185"
+      >
+</a
+      ><a name="186" class="Keyword"
+      >open</a
+      ><a name="190"
+      > </a
+      ><a name="191" class="Keyword"
+      >import</a
+      ><a name="197"
+      > </a
+      ><a name="198" href="Relation.Unary.html#1" class="Module"
+      >Relation.Unary</a
+      ><a name="212"
+      > </a
+      ><a name="213" class="Keyword"
+      >hiding</a
+      ><a name="219"
+      > </a
+      ><a name="220" class="Symbol"
+      >(</a
+      ><a name="221"
+      >&#8709;</a
+      ><a name="222" class="Symbol"
+      >)</a
+      ><a name="223"
+      >
+</a
+      ><a name="224" class="Keyword"
+      >open</a
+      ><a name="228"
+      > </a
+      ><a name="229" class="Keyword"
+      >import</a
+      ><a name="235"
+      > </a
+      ><a name="236" href="Sets.Sets.html#1" class="Module"
+      >Sets.Sets</a
+      ><a name="245"
+      >
+
+</a
+      ><a name="247" class="Keyword"
+      >record</a
+      ><a name="253"
+      > </a
+      ><a name="254" href="Sets.Topology.html#254" class="Record"
+      >TopSpace</a
+      ><a name="262"
+      > </a
+      ><a name="263" href="Sets.Topology.html#263" class="Bound"
+      >a</a
+      ><a name="264"
+      > </a
+      ><a name="265" href="Sets.Topology.html#265" class="Bound"
+      >&#8467;</a
+      ><a name="266"
+      > </a
+      ><a name="267" class="Symbol"
+      >:</a
+      ><a name="268"
+      > </a
+      ><a name="269" class="PrimitiveType"
+      >Set</a
+      ><a name="272"
+      > </a
+      ><a name="273" class="Symbol"
+      >(</a
+      ><a name="274" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="277"
+      > </a
+      ><a name="278" class="Symbol"
+      >(</a
+      ><a name="279" href="Sets.Topology.html#263" class="Bound"
+      >a</a
+      ><a name="280"
+      > </a
+      ><a name="281" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="282"
+      > </a
+      ><a name="283" href="Sets.Topology.html#265" class="Bound"
+      >&#8467;</a
+      ><a name="284" class="Symbol"
+      >))</a
+      ><a name="286"
+      > </a
+      ><a name="287" class="Keyword"
+      >where</a
+      ><a name="292"
+      >
+  </a
+      ><a name="295" class="Keyword"
+      >field</a
+      ><a name="300"
+      >
+    </a
+      ><a name="305" href="Sets.Topology.html#305" class="Field"
+      >set</a
+      ><a name="308"
+      > </a
+      ><a name="309" class="Symbol"
+      >:</a
+      ><a name="310"
+      > </a
+      ><a name="311" class="PrimitiveType"
+      >Set</a
+      ><a name="314"
+      > </a
+      ><a name="315" href="Sets.Topology.html#263" class="Bound"
+      >a</a
+      ><a name="316"
+      >
+    </a
+      ><a name="321" href="Sets.Topology.html#321" class="Field"
+      >OpenFamily</a
+      ><a name="331"
+      > </a
+      ><a name="332" class="Symbol"
+      >:</a
+      ><a name="333"
+      > </a
+      ><a name="334" href="Sets.Sets.html#716" class="Function"
+      >FamilyOfSet</a
+      ><a name="345"
+      > </a
+      ><a name="346" class="Symbol"
+      >{</a
+      ><a name="347" href="Sets.Topology.html#263" class="Bound"
+      >a</a
+      ><a name="348" class="Symbol"
+      >}</a
+      ><a name="349"
+      > </a
+      ><a name="350" class="Symbol"
+      >{</a
+      ><a name="351" href="Sets.Topology.html#265" class="Bound"
+      >&#8467;</a
+      ><a name="352" class="Symbol"
+      >}</a
+      ><a name="353"
+      > </a
+      ><a name="354" href="Sets.Topology.html#305" class="Bound"
+      >set</a
+      ><a name="357"
+      >
+
+  </a
+      ><a name="361" class="Keyword"
+      >field</a
+      ><a name="366"
+      >
+    </a
+      ><a name="371" href="Sets.Topology.html#371" class="Field"
+      >&#8709;-open</a
+      ><a name="377"
+      > </a
+      ><a name="378" class="Symbol"
+      >:</a
+      ><a name="379"
+      > </a
+      ><a name="380" href="Sets.Sets.html#828" class="Function"
+      >&#8709;</a
+      ><a name="381"
+      > </a
+      ><a name="382" href="Relation.Unary.html#925" class="Function Operator"
+      >&#8712;</a
+      ><a name="383"
+      > </a
+      ><a name="384" href="Sets.Topology.html#321" class="Bound"
+      >OpenFamily</a
+      ><a name="394"
+      >
+    </a
+      ><a name="399" href="Sets.Topology.html#399" class="Field"
+      >all-open</a
+      ><a name="407"
+      > </a
+      ><a name="408" class="Symbol"
+      >:</a
+      ><a name="409"
+      > </a
+      ><a name="410" href="Sets.Sets.html#874" class="Function"
+      >U&#8320;</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="Relation.Unary.html#925" class="Function Operator"
+      >&#8712;</a
+      ><a name="414"
+      > </a
+      ><a name="415" href="Sets.Topology.html#321" class="Bound"
+      >OpenFamily</a
+      ><a name="425"
+      >
+    </a
+      ><a name="430" href="Sets.Topology.html#430" class="Field"
+      >&#8899;-open</a
+      ><a name="436"
+      > </a
+      ><a name="437" class="Symbol"
+      >:</a
+      ><a name="438"
+      > </a
+      ><a name="439" class="Symbol"
+      >{</a
+      ><a name="440" href="Sets.Topology.html#440" class="Bound"
+      >A</a
+      ><a name="441"
+      > </a
+      ><a name="442" class="Symbol"
+      >:</a
+      ><a name="443"
+      > </a
+      ><a name="444" class="PrimitiveType"
+      >Set</a
+      ><a name="447" class="Symbol"
+      >}</a
+      ><a name="448"
+      > </a
+      ><a name="449" class="Symbol"
+      >(</a
+      ><a name="450" href="Sets.Topology.html#450" class="Bound"
+      >f</a
+      ><a name="451"
+      > </a
+      ><a name="452" class="Symbol"
+      >:</a
+      ><a name="453"
+      > </a
+      ><a name="454" href="Sets.Topology.html#440" class="Bound"
+      >A</a
+      ><a name="455"
+      > </a
+      ><a name="456" class="Symbol"
+      >&#8594;</a
+      ><a name="457"
+      > </a
+      ><a name="458" href="Data.Product.html#805" class="Function"
+      >&#8707;</a
+      ><a name="459"
+      > </a
+      ><a name="460" href="Sets.Topology.html#321" class="Bound"
+      >OpenFamily</a
+      ><a name="470" class="Symbol"
+      >)</a
+      ><a name="471"
+      > </a
+      ><a name="472" class="Symbol"
+      >&#8594;</a
+      ><a name="473"
+      > </a
+      ><a name="474" href="Sets.Sets.html#1322" class="Function"
+      >Union</a
+      ><a name="479"
+      > </a
+      ><a name="480" class="Symbol"
+      >{</a
+      ><a name="481" href="Sets.Topology.html#263" class="Bound"
+      >a</a
+      ><a name="482" class="Symbol"
+      >}</a
+      ><a name="483"
+      > </a
+      ><a name="484" class="Symbol"
+      >(</a
+      ><a name="485" href="Data.Product.html#525" class="Field"
+      >proj&#8321;</a
+      ><a name="490"
+      > </a
+      ><a name="491" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="492"
+      > </a
+      ><a name="493" href="Sets.Topology.html#450" class="Bound"
+      >f</a
+      ><a name="494" class="Symbol"
+      >)</a
+      ><a name="495"
+      > </a
+      ><a name="496" href="Relation.Unary.html#925" class="Function Operator"
+      >&#8712;</a
+      ><a name="497"
+      > </a
+      ><a name="498" href="Sets.Topology.html#321" class="Bound"
+      >OpenFamily</a
+      ><a name="508"
+      >
+    </a
+      ><a name="513" href="Sets.Topology.html#513" class="Field"
+      >&#8745;-open</a
+      ><a name="519"
+      > </a
+      ><a name="520" class="Symbol"
+      >:</a
+      ><a name="521"
+      > </a
+      ><a name="522" class="Symbol"
+      >&#8704;{</a
+      ><a name="524" href="Sets.Topology.html#524" class="Bound"
+      >n</a
+      ><a name="525" class="Symbol"
+      >}</a
+      ><a name="526"
+      > </a
+      ><a name="527" class="Symbol"
+      >(</a
+      ><a name="528" href="Sets.Topology.html#528" class="Bound"
+      >f</a
+      ><a name="529"
+      > </a
+      ><a name="530" class="Symbol"
+      >:</a
+      ><a name="531"
+      > </a
+      ><a name="532" href="Data.Fin.html#775" class="Datatype"
+      >Fin.Fin</a
+      ><a name="539"
+      > </a
+      ><a name="540" href="Sets.Topology.html#524" class="Bound"
+      >n</a
+      ><a name="541"
+      > </a
+      ><a name="542" class="Symbol"
+      >&#8594;</a
+      ><a name="543"
+      > </a
+      ><a name="544" href="Data.Product.html#805" class="Function"
+      >&#8707;</a
+      ><a name="545"
+      > </a
+      ><a name="546" href="Sets.Topology.html#321" class="Bound"
+      >OpenFamily</a
+      ><a name="556" class="Symbol"
+      >)</a
+      ><a name="557"
+      > </a
+      ><a name="558" class="Symbol"
+      >&#8594;</a
+      ><a name="559"
+      > </a
+      ><a name="560" href="Sets.Sets.html#1530" class="Function"
+      >Intersect</a
+      ><a name="569"
+      > </a
+      ><a name="570" class="Symbol"
+      >{</a
+      ><a name="571" href="Sets.Topology.html#263" class="Bound"
+      >a</a
+      ><a name="572" class="Symbol"
+      >}</a
+      ><a name="573"
+      > </a
+      ><a name="574" class="Symbol"
+      >(</a
+      ><a name="575" href="Data.Product.html#525" class="Field"
+      >proj&#8321;</a
+      ><a name="580"
+      > </a
+      ><a name="581" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="582"
+      > </a
+      ><a name="583" href="Sets.Topology.html#528" class="Bound"
+      >f</a
+      ><a name="584" class="Symbol"
+      >)</a
+      ><a name="585"
+      > </a
+      ><a name="586" href="Relation.Unary.html#925" class="Function Operator"
+      >&#8712;</a
+      ><a name="587"
+      > </a
+      ><a name="588" href="Sets.Topology.html#321" class="Bound"
+      >OpenFamily</a
+      ><a name="598"
+      >
+
+  </a
+      ><a name="602" href="Sets.Topology.html#602" class="Function"
+      >neighborhood</a
+      ><a name="614"
+      > </a
+      ><a name="615" class="Symbol"
+      >:</a
+      ><a name="616"
+      > </a
+      ><a name="617" href="Sets.Topology.html#305" class="Field"
+      >set</a
+      ><a name="620"
+      > </a
+      ><a name="621" class="Symbol"
+      >&#8594;</a
+      ><a name="622"
+      > </a
+      ><a name="623" href="Sets.Sets.html#716" class="Function"
+      >FamilyOfSet</a
+      ><a name="634"
+      > </a
+      ><a name="635" class="Symbol"
+      >{</a
+      ><a name="636" href="Sets.Topology.html#263" class="Bound"
+      >a</a
+      ><a name="637" class="Symbol"
+      >}</a
+      ><a name="638"
+      > </a
+      ><a name="639" class="Symbol"
+      >{</a
+      ><a name="640" href="Sets.Topology.html#265" class="Bound"
+      >&#8467;</a
+      ><a name="641" class="Symbol"
+      >}</a
+      ><a name="642"
+      > </a
+      ><a name="643" href="Sets.Topology.html#305" class="Field"
+      >set</a
+      ><a name="646"
+      >
+  </a
+      ><a name="649" href="Sets.Topology.html#602" class="Function"
+      >neighborhood</a
+      ><a name="661"
+      > </a
+      ><a name="662" href="Sets.Topology.html#662" class="Bound"
+      >x</a
+      ><a name="663"
+      > </a
+      ><a name="664" class="Symbol"
+      >=</a
+      ><a name="665"
+      > </a
+      ><a name="666" class="Symbol"
+      >\</a
+      ><a name="667" href="Sets.Topology.html#667" class="Bound"
+      >U</a
+      ><a name="668"
+      > </a
+      ><a name="669" class="Symbol"
+      >&#8594;</a
+      ><a name="670"
+      > </a
+      ><a name="671" class="Symbol"
+      >(</a
+      ><a name="672" href="Sets.Topology.html#662" class="Bound"
+      >x</a
+      ><a name="673"
+      > </a
+      ><a name="674" href="Relation.Unary.html#925" class="Function Operator"
+      >&#8712;</a
+      ><a name="675"
+      > </a
+      ><a name="676" href="Sets.Topology.html#667" class="Bound"
+      >U</a
+      ><a name="677" class="Symbol"
+      >)</a
+      ><a name="678"
+      > </a
+      ><a name="679" href="Data.Product.html#1055" class="Function Operator"
+      >&#215;</a
+      ><a name="680"
+      > </a
+      ><a name="681" class="Symbol"
+      >(</a
+      ><a name="682" href="Sets.Topology.html#667" class="Bound"
+      >U</a
+      ><a name="683"
+      > </a
+      ><a name="684" href="Relation.Unary.html#925" class="Function Operator"
+      >&#8712;</a
+      ><a name="685"
+      > </a
+      ><a name="686" href="Sets.Topology.html#321" class="Field"
+      >OpenFamily</a
+      ><a name="696" class="Symbol"
+      >)</a
+      ><a name="697"
+      >
+
+</a
+      ><a name="699" class="Keyword"
+      >module</a
+      ><a name="705"
+      > </a
+      ><a name="706" href="Sets.Topology.html#706" class="Module"
+      >Interior</a
+      ><a name="714"
+      > </a
+      ><a name="715" class="Symbol"
+      >(</a
+      ><a name="716" href="Sets.Topology.html#716" class="Bound"
+      >X</a
+      ><a name="717"
+      > </a
+      ><a name="718" class="Symbol"
+      >:</a
+      ><a name="719"
+      > </a
+      ><a name="720" href="Sets.Topology.html#254" class="Record"
+      >TopSpace</a
+      ><a name="728"
+      > </a
+      ><a name="729" href="Agda.Primitive.html#580" class="Primitive"
+      >zero</a
+      ><a name="733"
+      > </a
+      ><a name="734" href="Agda.Primitive.html#580" class="Primitive"
+      >zero</a
+      ><a name="738" class="Symbol"
+      >)</a
+      ><a name="739"
+      > </a
+      ><a name="740" class="Keyword"
+      >where</a
+      ><a name="745"
+      >
+  </a
+      ><a name="748" class="Keyword"
+      >open</a
+      ><a name="752"
+      > </a
+      ><a name="753" href="Sets.Topology.html#254" class="Module"
+      >TopSpace</a
+      ><a name="761"
+      > </a
+      ><a name="762" href="Sets.Topology.html#716" class="Bound"
+      >X</a
+      ><a name="763"
+      >
+
+  </a
+      ><a name="767" href="Sets.Topology.html#767" class="Function"
+      >Int</a
+      ><a name="770"
+      > </a
+      ><a name="771" class="Symbol"
+      >:</a
+      ><a name="772"
+      > </a
+      ><a name="773" href="Sets.Sets.html#657" class="Function"
+      >Subset</a
+      ><a name="779"
+      > </a
+      ><a name="780" href="Sets.Topology.html#305" class="Function"
+      >set</a
+      ><a name="783"
+      > </a
+      ><a name="784" class="Symbol"
+      >&#8594;</a
+      ><a name="785"
+      > </a
+      ><a name="786" href="Sets.Sets.html#657" class="Function"
+      >Subset</a
+      ><a name="792"
+      > </a
+      ><a name="793" href="Sets.Topology.html#305" class="Function"
+      >set</a
+      ><a name="796"
+      >
+  </a
+      ><a name="799" href="Sets.Topology.html#767" class="Function"
+      >Int</a
+      ><a name="802"
+      > </a
+      ><a name="803" href="Sets.Topology.html#803" class="Bound"
+      >U</a
+      ><a name="804"
+      > </a
+      ><a name="805" class="Symbol"
+      >=</a
+      ><a name="806"
+      > </a
+      ><a name="807" href="Sets.Sets.html#1430" class="Function"
+      >UnionOf</a
+      ><a name="814"
+      > </a
+      ><a name="815" class="Symbol"
+      >(\</a
+      ><a name="817" href="Sets.Topology.html#817" class="Bound"
+      >V</a
+      ><a name="818"
+      > </a
+      ><a name="819" class="Symbol"
+      >&#8594;</a
+      ><a name="820"
+      > </a
+      ><a name="821" href="Sets.Topology.html#817" class="Bound"
+      >V</a
+      ><a name="822"
+      > </a
+      ><a name="823" href="Relation.Unary.html#925" class="Function Operator"
+      >&#8712;</a
+      ><a name="824"
+      > </a
+      ><a name="825" href="Sets.Topology.html#321" class="Function"
+      >OpenFamily</a
+      ><a name="835"
+      > </a
+      ><a name="836" href="Data.Product.html#1055" class="Function Operator"
+      >&#215;</a
+      ><a name="837"
+      > </a
+      ><a name="838" href="Sets.Topology.html#817" class="Bound"
+      >V</a
+      ><a name="839"
+      > </a
+      ><a name="840" href="Relation.Unary.html#1774" class="Function Operator"
+      >&#8838;</a
+      ><a name="841"
+      > </a
+      ><a name="842" href="Sets.Topology.html#803" class="Bound"
+      >U</a
+      ><a name="843" class="Symbol"
+      >)</a
+      ><a name="844"
+      >
+
+</a
+      ><a name="846" class="Comment"
+      >--  Prop-Int-1 : &#8704; U &#8594; U &#8712; OpenFamily &#8594; Int U &#8838; U</a
+      ><a name="895"
+      >
+</a
+      ><a name="896" class="Comment"
+      >--  Prop-Int-1 U f g = {!!}</a
+      ><a name="923"
+      >
+
+</a
+      ><a name="925" href="Sets.Topology.html#925" class="Function"
+      >Discrete</a
+      ><a name="933"
+      > </a
+      ><a name="934" class="Symbol"
+      >:</a
+      ><a name="935"
+      > </a
+      ><a name="936" class="Symbol"
+      >&#8704;{</a
+      ><a name="938" href="Sets.Topology.html#938" class="Bound"
+      >a</a
+      ><a name="939"
+      > </a
+      ><a name="940" href="Sets.Topology.html#940" class="Bound"
+      >&#8467;</a
+      ><a name="941" class="Symbol"
+      >}</a
+      ><a name="942"
+      > </a
+      ><a name="943" class="Symbol"
+      >(</a
+      ><a name="944" href="Sets.Topology.html#944" class="Bound"
+      >X</a
+      ><a name="945"
+      > </a
+      ><a name="946" class="Symbol"
+      >:</a
+      ><a name="947"
+      > </a
+      ><a name="948" class="PrimitiveType"
+      >Set</a
+      ><a name="951"
+      > </a
+      ><a name="952" href="Sets.Topology.html#938" class="Bound"
+      >a</a
+      ><a name="953" class="Symbol"
+      >)</a
+      ><a name="954"
+      > </a
+      ><a name="955" class="Symbol"
+      >&#8594;</a
+      ><a name="956"
+      > </a
+      ><a name="957" href="Sets.Topology.html#254" class="Record"
+      >TopSpace</a
+      ><a name="965"
+      > </a
+      ><a name="966" href="Sets.Topology.html#938" class="Bound"
+      >a</a
+      ><a name="967"
+      > </a
+      ><a name="968" href="Sets.Topology.html#940" class="Bound"
+      >&#8467;</a
+      ><a name="969"
+      >
+</a
+      ><a name="970" href="Sets.Topology.html#925" class="Function"
+      >Discrete</a
+      ><a name="978"
+      > </a
+      ><a name="979" class="Symbol"
+      >{_}</a
+      ><a name="982"
+      > </a
+      ><a name="983" class="Symbol"
+      >{</a
+      ><a name="984" href="Sets.Topology.html#984" class="Bound"
+      >&#8467;</a
+      ><a name="985" class="Symbol"
+      >}</a
+      ><a name="986"
+      > </a
+      ><a name="987" href="Sets.Topology.html#987" class="Bound"
+      >X</a
+      ><a name="988"
+      > </a
+      ><a name="989" class="Symbol"
+      >=</a
+      ><a name="990"
+      > </a
+      ><a name="991" class="Keyword"
+      >record</a
+      ><a name="997"
+      >
+  </a
+      ><a name="1000" class="Symbol"
+      >{</a
+      ><a name="1001"
+      > </a
+      ><a name="1002" class="Field"
+      >set</a
+      ><a name="1005"
+      > </a
+      ><a name="1006" class="Symbol"
+      >=</a
+      ><a name="1007"
+      > </a
+      ><a name="1008" href="Sets.Topology.html#987" class="Bound"
+      >X</a
+      ><a name="1009"
+      > </a
+      ><a name="1010" class="Symbol"
+      >;</a
+      ><a name="1011"
+      > </a
+      ><a name="1012" class="Field"
+      >OpenFamily</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" class="Symbol"
+      >=</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" href="Sets.Topology.html#1110" class="Function"
+      >openFamily</a
+      ><a name="1035"
+      >
+  </a
+      ><a name="1038" class="Symbol"
+      >;</a
+      ><a name="1039"
+      > </a
+      ><a name="1040" class="Field"
+      >&#8709;-open</a
+      ><a name="1046"
+      > </a
+      ><a name="1047" class="Symbol"
+      >=</a
+      ><a name="1048"
+      > </a
+      ><a name="1049" class="Symbol"
+      >_</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" class="Symbol"
+      >;</a
+      ><a name="1052"
+      > </a
+      ><a name="1053" class="Field"
+      >all-open</a
+      ><a name="1061"
+      > </a
+      ><a name="1062" class="Symbol"
+      >=</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" class="Symbol"
+      >_</a
+      ><a name="1065"
+      >
+  </a
+      ><a name="1068" class="Symbol"
+      >;</a
+      ><a name="1069"
+      > </a
+      ><a name="1070" class="Field"
+      >&#8899;-open</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" class="Symbol"
+      >=</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" class="Symbol"
+      >_</a
+      ><a name="1080"
+      > </a
+      ><a name="1081" class="Symbol"
+      >;</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" class="Field"
+      >&#8745;-open</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" class="Symbol"
+      >=</a
+      ><a name="1091"
+      > </a
+      ><a name="1092" class="Symbol"
+      >_</a
+      ><a name="1093"
+      >
+  </a
+      ><a name="1096" class="Symbol"
+      >}</a
+      ><a name="1097"
+      >
+  </a
+      ><a name="1100" class="Keyword"
+      >where</a
+      ><a name="1105"
+      >
+    </a
+      ><a name="1110" href="Sets.Topology.html#1110" class="Function"
+      >openFamily</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >:</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" href="Relation.Unary.html#555" class="Function"
+      >Pred</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" class="Symbol"
+      >(</a
+      ><a name="1129" href="Relation.Unary.html#555" class="Function"
+      >Pred</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" href="Sets.Topology.html#987" class="Bound"
+      >X</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" href="Sets.Topology.html#984" class="Bound"
+      >&#8467;</a
+      ><a name="1137" class="Symbol"
+      >)</a
+      ><a name="1138"
+      > </a
+      ><a name="1139" href="Sets.Topology.html#984" class="Bound"
+      >&#8467;</a
+      ><a name="1140"
+      >
+    </a
+      ><a name="1145" href="Sets.Topology.html#1110" class="Function"
+      >openFamily</a
+      ><a name="1155"
+      > </a
+      ><a name="1156" class="Symbol"
+      >=</a
+      ><a name="1157"
+      > </a
+      ><a name="1158" href="Sets.Sets.html#874" class="Function"
+      >U&#8320;</a
+      ><a name="1160"
+      >
+
+</a
+      ></pre
+    ></body
+  ></html
+>
