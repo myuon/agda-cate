@@ -3,6 +3,14 @@ module Everything where
 -- Set
 import Sets.Sets
 
+-- Axioms
+import Sets.Sets.Basic
+import Sets.Sets.Extensionality
+import Sets.Sets.Paring
+import Sets.Sets.Union
+import Sets.Sets.Replacement
+import Sets.Sets.Power
+
 -- Topological Space
 import Sets.Topology
 
