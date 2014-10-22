@@ -6,7 +6,7 @@ open import Data.Empty
 open import Data.Product using (Σ ; proj₁ ; proj₂ ; _,_ ; ∃)
 open import Sets.Sets.Basic
 open import Sets.Sets.Extensionality
-open import Sets.Sets.Paring
+open import Sets.Sets.Pairing
 
 postulate
   ∃-union : (A : Set) → ∃ \(B : Set) → ∀ X → X ∈ B ⇔ (∃ \C → (C ∈ A) ∧ (X ∈ C))
@@ -18,8 +18,18 @@ A ∪ B = proj₁ (∃-union [ A , B ])
 ⋃_ : (F : Set) → Set
 ⋃ F = proj₁ (∃-union F)
 
+replace-in-union : {A : Set} → ∀ X → X ∈ ⋃ A → ∃ \C → (C ∈ A) ∧ (X ∈ C)
+replace-in-union {A} X X∈B = proj⃗ (proj₂ (∃-union A) X) X∈B
+
+satisfy-in-union : {A : Set} → ∀ X → (∃ \C → (C ∈ A) ∧ (X ∈ C)) → X ∈ ⋃ A
+satisfy-in-union {A} X cond = proj⃖ (proj₂ (∃-union A) X) cond
+
 ⋃-∈-⊆ : {F X : Set} → X ∈ F → X ⊆ ⋃ F
 ⋃-∈-⊆ {F} {X} X∈⋃F x x∈X = proj⃖ (proj₂ (∃-union F) x) $ X , (X∈⋃F , x∈X)
+
+⋃-⊆-∀ : {F Y : Set} → (∀ X → X ∈ F → X ⊆ Y) → ⋃ F ⊆ Y
+⋃-⊆-∀ f x x∈⋃F = let ex = replace-in-union x x∈⋃F ; X = proj₁ ex in
+  (f X (∧-left $ proj₂ ex)) x (∧-right $ proj₂ ex)
 
 ⋃-cong : {A B : Set} → A ⊆ B → ⋃ A ⊆ ⋃ B
 ⋃-cong {A} {B} A⊆B x x∈⋃A = proj⃖ (proj₂ (∃-union B) x) $ y , (∧-→-refl (A⊆B y) y∈A∧x∈y)
@@ -38,7 +48,7 @@ A ∪ B = proj₁ (∃-union [ A , B ])
 
     lemma : (p : ∃ \C → ((C ∈ [ A , B ]) ∧ (X ∈ C))) → (X ∈ A) ∨ (X ∈ B)
     lemma p = let C∈[A,B] = ∧-left $ proj₂ p ; X∈C = ∧-right $ proj₂ p in
-      X∈A∨B (proj⃗ (proj₂ (∃-paring A B) (proj₁ p)) C∈[A,B]) X∈C
+      X∈A∨B (proj⃗ (proj₂ (∃-pairing A B) (proj₁ p)) C∈[A,B]) X∈C
       where
         X∈A∨B : (proj₁ p ≡ A) ∨ (proj₁ p ≡ B) → (X ∈ proj₁ p) → (X ∈ A) ∨ (X ∈ B)
         X∈A∨B (∨-left C≡A) X∈C = ∨-left $ ∈-≡ C≡A X∈C

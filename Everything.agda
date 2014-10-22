@@ -1,17 +1,19 @@
 module Everything where
 
 -- Set
-import Sets.Sets
-
--- Axioms
 import Sets.Sets.Basic
 import Sets.Sets.Extensionality
-import Sets.Sets.Paring
+import Sets.Sets.Pairing
 import Sets.Sets.Union
-import Sets.Sets.Replacement
+import Sets.Sets.Separation
 import Sets.Sets.Power
 
+import Sets.Sets
+
 -- Topological Space
+import Sets.Topology.Topology
+import Sets.Topology.Interior
+
 import Sets.Topology
 
 -- ≈-Reasoning

@@ -3,7 +3,12 @@ module Sets.Sets.Basic where
 open import Level
 open import Function
 open import Algebra.Structures
+open import Data.Empty
 open import Data.Product
+open import Data.Sum
+  using ()
+  renaming (_⊎_ to _∨_ ; inj₁ to ∨-left ; inj₂ to ∨-right)
+  public
 open import Relation.Nullary
 open import Relation.Nullary.Negation
 open import Relation.Binary
@@ -12,7 +17,8 @@ open import Relation.Binary.PropositionalEquality
   renaming (isEquivalence to ≡-isEquivalence ; refl to ≡-refl ; sym to ≡-sym ; trans to ≡-trans)
   public
 
-infix 4 _∧_
+infixr 2 _∧_
+infixr 4 _,_
 record _∧_ {f} (P Q : Set f) : Set f where
   constructor _,_
   field
@@ -20,31 +26,28 @@ record _∧_ {f} (P Q : Set f) : Set f where
     ∧-right : Q
 open _∧_ public
 
-infix 4 _∨_
-data _∨_ {f} (P Q : Set f) : Set f where
-  ∨-left : P → P ∨ Q
-  ∨-right : Q → P ∨ Q
+module iff where
+  infix 1 _⇔_
+  _⇔_ : ∀{f} → (A B : Set f) → Set f
+  _⇔_ A B = (A → B) ∧ (B → A)
 
-infix 2 _⇔_
-_⇔_ : ∀{f} → (A B : Set f) → Set f
-_⇔_ A B = (A → B) ∧ (B → A)
+  proj⃗ : ∀{f} {A B : Set f} → (A ⇔ B) → (A → B)
+  proj⃗ = ∧-left
 
-proj⃗ : ∀{f} {A B : Set f} → (A ⇔ B) → (A → B)
-proj⃗ = ∧-left
+  proj⃖ : ∀{f} {A B : Set f} → (A ⇔ B) → (B → A)
+  proj⃖ = ∧-right
 
-proj⃖ : ∀{f} {A B : Set f} → (A ⇔ B) → (B → A)
-proj⃖ = ∧-right
+  ⇔-contraposition : ∀{f} {A B : Set f} → A ⇔ B → (¬ A) ⇔ (¬ B)
+  ⇔-contraposition P = contraposition (proj⃖ P) , contraposition (proj⃗ P)
+open iff public
 
-⇔-contraposition : ∀{f} {A B : Set f} → A ⇔ B → (¬ A) ⇔ (¬ B)
-⇔-contraposition P = contraposition (proj⃖ P) , contraposition (proj⃗ P)
-
-module ⇔-Equivalence where
+module ⇔-lemmas where
   ⇔-isEquivalence : ∀{f} → IsEquivalence {suc f} _⇔_
   ⇔-isEquivalence {f} = record
     { refl = id , id
     ; sym = \iff → proj⃖ iff , proj⃗ iff
     ; trans = \ij jk → _∘_ (proj⃗ jk) (proj⃗ ij) , _∘_ {f} (proj⃖ ij) (proj⃖ jk) }
-open ⇔-Equivalence public
+open ⇔-lemmas public
 
 module ∨-∧-lemmas where
   ∨-unrefl : ∀{f} {A : Set f} → A ∨ A → A
@@ -59,6 +62,9 @@ module ∨-∧-lemmas where
 
   ∨-≡-reflˡ : ∀{f} {A B C : Set f} → B ≡ C → A ∨ B → A ∨ C
   ∨-≡-reflˡ B≡C = subst₂ _∨_ ≡-refl B≡C
+
+  ∧-≡ : ∀{f} {A B C D : Set f} → A ≡ C → B ≡ D → A ∧ B → C ∧ D
+  ∧-≡ = subst₂ _∧_
 
   ∨-→-reflʳ : ∀{f} {A B C : Set f} → (A → C) → A ∨ B → C ∨ B
   ∨-→-reflʳ f = λ{(∨-left a) → ∨-left (f a) ; (∨-right b) → ∨-right b}
@@ -161,3 +167,34 @@ postulate
 
 non-datur : ∀{f} {A : Set f} → A ∨ (¬ A)
 non-datur = ¬¬-elim $ \nnp → nnp (∨-right $ \p → nnp $ ∨-left p)
+
+infix 4 _∈_ _∉_
+postulate
+  _∈_ : Set → Set → Set₁
+  elem-∈ : {A : Set} → ∀ x → x ∈ A → A
+
+_∉_ : Set → Set → Set₁
+X ∉ A = (X ∈ A) → ⊥
+
+module elem-lemmas where
+  ≡-∈ : {A : Set} {x y : Set} → x ≡ y → x ∈ A → y ∈ A
+  ≡-∈ x≡y x∈A rewrite x≡y = x∈A
+
+  ∈-≡ : {A B : Set} → {X : Set} → A ≡ B → X ∈ A → X ∈ B
+  ∈-≡ {X = X} A≡B X∈A rewrite A≡B = X∈A
+open elem-lemmas public
+
+infix 5 _⊆_ _⊊_
+_⊆_ : Set → Set → Set₁
+_⊆_ A B = ∀ (x : Set) → x ∈ A → x ∈ B
+
+_⊊_ : Set → Set → Set₁
+A ⊊ B = (A ≢ B) ∧ (A ⊆ B)
+
+module ⊆-Hetero where
+  ⊆-≡-reflˡ : {A B C : Set} → B ≡ C → A ⊆ B → A ⊆ C
+  ⊆-≡-reflˡ B≡C A⊆B x∈A rewrite B≡C = A⊆B x∈A
+
+  ⊆-≡-reflʳ : {A B C : Set} → A ≡ C → A ⊆ B → C ⊆ B
+  ⊆-≡-reflʳ A≡C A⊆B x∈C rewrite A≡C = A⊆B x∈C
+open ⊆-Hetero public
