@@ -7,12 +7,17 @@ import Sets.Sets.Pairing
 import Sets.Sets.Union
 import Sets.Sets.Separation
 import Sets.Sets.Power
+import Sets.Sets.Natural
+import Sets.Sets.Choice
+import Sets.Sets.NonDatur
 
 import Sets.Sets
 
 -- Topological Space
 import Sets.Topology.Topology
 import Sets.Topology.Interior
+import Sets.Topology.Closure
+import Sets.Topology.Neighborhood
 
 import Sets.Topology
 

@@ -18,9 +18,18 @@ postulate
 app-extensionality : {A B : Set} → A ≡ B → ∀ x → (x ∈ A ⇔ x ∈ B)
 app-extensionality eq = lower (proj⃗ extensionality eq)
 
+replace-≡ : {A B : Set} → A ≡ B → ∀ x → (x ∈ A ⇔ x ∈ B)
+replace-≡ = app-extensionality
+
+satisfy-≡ : {A B : Set} → (∀ x → (x ∈ A ⇔ x ∈ B)) → A ≡ B
+satisfy-≡ = ⇔-extensionality
+
 module ⊆-lemmas where
   ⊆-refl : {A : Set} → A ⊆ A
   ⊆-refl = \_ → id
+
+  ⊆-cong : {A B C D : Set} → A ≡ B → C ≡ D → A ⊆ C → B ⊆ D
+  ⊆-cong A≡B C≡D A⊆C rewrite A≡B | C≡D = A⊆C
 
   ⊆-isPartialOrder : IsPartialOrder _≡_ _⊆_
   ⊆-isPartialOrder = record

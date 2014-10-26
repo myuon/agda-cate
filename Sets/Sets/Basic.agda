@@ -2,8 +2,13 @@ module Sets.Sets.Basic where
 
 open import Level
 open import Function
+open import Algebra
 open import Algebra.Structures
 open import Data.Empty
+open import Data.Product
+  using ()
+  renaming (_×_ to _∧_ ; _,_ to _,_ ; proj₁ to ∧-left ; proj₂ to ∧-right)
+  public
 open import Data.Product
 open import Data.Sum
   using ()
@@ -13,18 +18,16 @@ open import Relation.Nullary
 open import Relation.Nullary.Negation
 open import Relation.Binary
 open import Relation.Binary.PropositionalEquality
-  using (_≡_ ; _≢_ ; subst₂ ; cong₂)
+  using (_≡_ ; _≢_)
   renaming (isEquivalence to ≡-isEquivalence ; refl to ≡-refl ; sym to ≡-sym ; trans to ≡-trans)
   public
+open import Relation.Binary.PropositionalEquality
 
-infixr 2 _∧_
-infixr 4 _,_
-record _∧_ {f} (P Q : Set f) : Set f where
-  constructor _,_
-  field
-    ∧-left : P
-    ∧-right : Q
-open _∧_ public
+module case where
+  infix 0 ∨-case_of_
+  ∨-case_of_ : ∀{a b} {A B : Set a} {C : Set b} → A ∨ B → (A ∨ B → C) → C
+  ∨-case x of f = case x of f
+open case public
 
 module iff where
   infix 1 _⇔_
@@ -56,6 +59,18 @@ module ∨-∧-lemmas where
 
   ∧-refl : ∀{f} {A : Set f} → A → A ∧ A
   ∧-refl A = A , A
+
+  ∨-¬right-left : ∀{f} {A B : Set f} → A ∨ B → ¬ B → A
+  ∨-¬right-left or notB = ∨-case or of λ
+    { (∨-left a) → a
+    ; (∨-right b) → ⊥-elim $ notB b
+    }
+
+  ∨-¬left-right : ∀{f} {A B : Set f} → A ∨ B → ¬ A → B
+  ∨-¬left-right or notA = ∨-case or of λ
+    { (∨-left a) → ⊥-elim $ notA a
+    ; (∨-right b) → b
+    }
 
   ∨-≡-reflʳ : ∀{f} {A B C : Set f} → A ≡ C → A ∨ B → C ∨ B
   ∨-≡-reflʳ A≡C = subst₂ _∨_ A≡C ≡-refl
@@ -114,6 +129,32 @@ module ∨-∧-lemmas where
       ∨-cong-lemmaʳ X⇔Y U⇔V (∨-left X) = ∨-left $ proj⃖ X⇔Y X
       ∨-cong-lemmaʳ X⇔Y U⇔V (∨-right U) = ∨-right $ proj⃖ U⇔V U
   open IsLattice (⇔-∨-∧-isLattice {suc zero}) public
+
+  ⇔-∨-∧-isDitributiveLattice : ∀{f} → IsDistributiveLattice {suc f} _⇔_ _∨_ _∧_
+  ⇔-∨-∧-isDitributiveLattice = record
+    { isLattice = ⇔-∨-∧-isLattice
+    ; ∨-∧-distribʳ = distr
+    }
+    where
+    distr : ∀ x y z → (y × z ∨ x) ⇔ (y ∨ x) × (z ∨ x)
+    distr x y z =
+      (λ{ (∨-left yz) → (∨-left $ ∧-left yz) , (∨-left $ ∧-right yz)
+        ; (∨-right x) → ∨-right x , ∨-right x }) ,
+      (λ{ (∨-left y , ∨-left z) → (∨-left $ y , z)
+        ; (∨-right x , _) → ∨-right x
+        ; (_ , ∨-right x) → ∨-right x })
+  open IsDistributiveLattice (⇔-∨-∧-isDitributiveLattice {suc zero})
+    using (∨-∧-distribʳ)
+    public
+
+  ⇔-∨-∧-DitributiveLattice : ∀{f} → DistributiveLattice (suc f) _
+  ⇔-∨-∧-DitributiveLattice {f} = record
+    { Carrier = Set f
+    ; _≈_ = _⇔_
+    ; _∨_ = _∨_
+    ; _∧_ = _∧_
+    ; isDistributiveLattice = ⇔-∨-∧-isDitributiveLattice
+    }
 open ∨-∧-lemmas public
 
 module ⇔-Hetero where
@@ -162,12 +203,6 @@ module ⇔-Reasoning {f} where
   _∎ : (A : Set f) → A IsRelatedTo A
   _∎ _ = relTo ⇔-refl
 
-postulate
-  ¬¬-elim : ∀{f} → Double-Negation-Elimination f
-
-non-datur : ∀{f} {A : Set f} → A ∨ (¬ A)
-non-datur = ¬¬-elim $ \nnp → nnp (∨-right $ \p → nnp $ ∨-left p)
-
 infix 4 _∈_ _∉_
 postulate
   _∈_ : Set → Set → Set₁
@@ -198,3 +233,15 @@ module ⊆-Hetero where
   ⊆-≡-reflʳ : {A B C : Set} → A ≡ C → A ⊆ B → C ⊆ B
   ⊆-≡-reflʳ A≡C A⊆B x∈C rewrite A≡C = A⊆B x∈C
 open ⊆-Hetero public
+
+module Map where
+  _⟶_ : Set → Set → Set₁
+  _⟶_ A B = ∀ x → ∃ \y → (x ∈ A → y ∈ B)
+
+  ⟨_⟩ : ∀ {A B} → A ⟶ B → ∀ x → Set
+  ⟨_⟩ f x = proj₁ (f x)
+
+  _⟨∘⟩_ : ∀ {A B C} → B ⟶ C → A ⟶ B → A ⟶ C
+  _⟨∘⟩_ f g x = ⟨ f ⟩ (⟨ g ⟩ x) , (proj₂ (f $ ⟨ g ⟩ x) ∘ proj₂ (g x))
+open Map public
+

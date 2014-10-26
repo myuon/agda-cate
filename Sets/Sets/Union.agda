@@ -2,6 +2,7 @@ module Sets.Sets.Union where
 
 open import Level
 open import Function
+import Data.Sum as Sum
 open import Data.Empty
 open import Data.Product using (Σ ; proj₁ ; proj₂ ; _,_ ; ∃)
 open import Sets.Sets.Basic
@@ -70,6 +71,12 @@ satisfy-in-union {A} X cond = proj⃖ (proj₂ (∃-union A) X) cond
   (\Y∈X → ∨-∪ Y $ ∨-left $ Y∈X)
 
 module ∪-lemmas where
+  ⊆-cong-∪ : {A B C D : Set} → A ⊆ B → C ⊆ D → A ∪ C ⊆ B ∪ D
+  ⊆-cong-∪ A⊆B C⊆D x x∈A∪C = ∨-∪ x $ Sum.map (A⊆B x) (C⊆D x) $ ∪-∨ x x∈A∪C
+
+  ∪-cong : {A B C D : Set} → A ≡ B → C ≡ D → A ∪ C ≡ B ∪ D
+  ∪-cong A≡B C≡D rewrite A≡B | C≡D = ≡-refl
+
   ∪-idempotent : {A : Set} → A ∪ A ≡ A
   ∪-idempotent {A} = ⇔-extensionality $ \X →
     (\X∈A∪A → ∨-unrefl $ ∪-∨ X X∈A∪A) ,
@@ -107,8 +114,12 @@ module ∪-lemmas where
       lemma X (∨-left X∈A) = X∈A
       lemma X (∨-right X∈∅) = ⊥-elim $ elem-∈ X X∈∅
 
-_⁺ : (A : Set) → Set
-A ⁺ = A ∪ (singleton A)
+  ⊆-∪ˡ : {A B : Set} → A ⊆ A ∪ B
+  ⊆-∪ˡ x x∈A = ∨-∪ x $ ∨-left x∈A
 
-postulate
-  infinite : ∃ \A → (∅ ∈ A) ∧ (∀ X → X ∈ A → X ⁺ ∈ A)
+  ⊆-∪ʳ : {A B : Set} → B ⊆ A ∪ B
+  ⊆-∪ʳ x x∈A = ∨-∪ x $ ∨-right x∈A
+
+  ∉-∪-∧ : {A B : Set} → ∀ X → X ∉ A ∪ B → (X ∉ A) ∧ (X ∉ B)
+  ∉-∪-∧ X X-nin = (\X∈A → X-nin $ ⊆-∪ˡ X X∈A) , (\X∈B → X-nin $ ⊆-∪ʳ X X∈B)
+open ∪-lemmas public

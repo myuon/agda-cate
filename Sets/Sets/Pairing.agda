@@ -2,7 +2,9 @@ module Sets.Sets.Pairing where
 
 open import Level
 open import Function
+open import Data.Empty
 open import Data.Product using (Σ ; proj₁ ; proj₂ ; _,_ ; ∃)
+open import Relation.Binary.PropositionalEquality using (cong₂)
 open import Sets.Sets.Basic
 open import Sets.Sets.Extensionality
 
@@ -14,6 +16,12 @@ postulate
 
 singleton : ∀(A : Set) → Set
 singleton A = [ A , A ]
+
+satisfy-pairing : ∀ {A B} x → (x ≡ A) ∨ (x ≡ B) → x ∈ [ A , B ]
+satisfy-pairing {A} {B} x or = proj⃖ (proj₂ (∃-pairing A B) x) or
+
+replace-pairing : ∀ {A B} x → x ∈ [ A , B ] → (x ≡ A) ∨ (x ≡ B)
+replace-pairing {A} {B} x x-in = proj⃗ (proj₂ (∃-pairing A B) x) x-in
 
 [,]-∨ : {A B : Set} → ∀ X → X ∈ [ A , B ] → (X ≡ A) ∨ (X ≡ B)
 [,]-∨ {A} {B} X X∈[A,B] = proj⃗ (proj₂ (∃-pairing A B) X) X∈[A,B]
@@ -105,10 +113,17 @@ module paring-props where
       lemma-2 (∨-left A≡B) = proj⃖ ≡-singleton A≡B
       lemma-2 (∨-right A≡[A,B]) = proj⃗ prop-1 $ ≡-sym A≡[A,B]
 
---    ≢-singleton : {A : Set} → A ≢ singleton A
+  prop-3 : ∅ ⊊ singleton ∅
+  prop-3 = ≢-singleton , (\x x∈∅ → ⊥-elim $ elem-∈ x x∈∅)
+    where
+    ≢-singleton : ∅ ≢ singleton ∅
+    ≢-singleton eq = proj₂ ∃-empty ∅ $ ∈-≡ (≡-sym eq) A∈[A,B]
 
---    prop-3 : ∅ ⊊ singleton ∅
---    prop-4 : singleton ∅ ⊊ [ ∅ , singleton ∅ ]
+  prop-4 : singleton ∅ ⊊ [ ∅ , singleton ∅ ]
+  prop-4 = not-eq , (\x x-in → satisfy-pairing x $ ∨-left $ ∨-unrefl $ replace-pairing x x-in)
+    where
+    not-eq : singleton ∅ ≢ [ ∅ , singleton ∅ ]
+    not-eq eq = proj₁ prop-3 $ ≡-sym $ ∨-unrefl $ replace-pairing (singleton ∅) $ proj⃖ (replace-≡ eq (singleton ∅)) B∈[A,B]
 
 ∈-singleton-⊆ : {A X : Set} → X ∈ A → singleton X ⊆ A
 ∈-singleton-⊆ X∈A x x∈[X] = ≡-∈ (≡-sym $ in-[A,A] x x∈[X]) X∈A

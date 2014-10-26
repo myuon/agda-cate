@@ -3,7 +3,7 @@ module Sets.Sets.Separation where
 open import Level
 open import Function
 open import Data.Empty
-open import Data.Product using (Σ ; proj₁ ; proj₂ ; _,_ ; ∃)
+open import Data.Product
 open import Relation.Binary
 open import Relation.Nullary
 open import Sets.Sets.Basic
@@ -27,6 +27,7 @@ module replacement-lemmas where
   satisfy-cond {A} {P} Z cond = proj⃖ (proj₂ (separation A P) Z) cond
 open replacement-lemmas public
 
+{-
 private
   prop-1-4 : {A : Set} → let B = ⟦ X ∈ A ∣ X ∉ X ⟧ in B ∉ A
   prop-1-4 {A} p = ¬Q∧Q p non-datur
@@ -46,10 +47,14 @@ private
 
   cor-1-4 : (A : Set) → ∃ \B → B ∉ A
   cor-1-4 A = ⟦ X ∈ A ∣ X ∉ X ⟧ , prop-1-4
+-}
 
 infixr 7 _∩_
 _∩_ : (A B : Set) → Set
 A ∩ B = ⟦ X ∈ A ∣ X ∈ B ⟧
+
+⋂ : (F : Set) → Set
+⋂ F = ⟦ X ∈ ⋃ F ∣ (∀ Y → Y ∈ F → X ∈ Y) ⟧
 
 module ∩-Hetero where
   ∩⇔∧ : {A B : Set} → ∀ X → X ∈ A ∩ B ⇔ (X ∈ A) ∧ (X ∈ B)
@@ -90,7 +95,10 @@ module ∩-lemmas where
   ∩-comm : {A B : Set} → A ∩ B ≡ B ∩ A
   ∩-comm = ⇔-extensionality $ \X → (∧-∩ X ∘ proj⃗ (∧-comm _ _) ∘ ∩-∧ X) , (∧-∩ X ∘ proj⃗ (∧-comm _ _) ∘ ∩-∧ X)
 
---    ∩-assoc : {A B C : Set} → (A ∩ B) ∩ C ≡ A ∩ (B ∩ C)
+  ∩-assoc : {A B C : Set} → (A ∩ B) ∩ C ≡ A ∩ (B ∩ C)
+  ∩-assoc {A} {B} {C} = ⇔-extensionality $ \X →
+    (\X-in → ∧-∩ X $ map id (∧-∩ X) $ proj⃗ (∧-assoc _ _ _) $ map (∩-∧ X) id $ ∩-∧ X X-in) ,
+    (\X-in → ∧-∩ X $ map (∧-∩ X) id $ proj⃖ (∧-assoc _ _ _) $ map id (∩-∧ X) $ ∩-∧ X X-in)
 
   ⊆⇔∩ : {A B : Set} → A ⊆ B ⇔ A ∩ B ≡ A
   ⊆⇔∩ = (\A⊆B → ⇔-extensionality $ \X →
@@ -115,18 +123,52 @@ module ∩-lemmas where
     where
       open ⇔-Reasoning
 
---    distributive law, complement
+  ⋂-2-∩ : {A B : Set} → ⋂ [ A , B ] ≡ A ∩ B
+  ⋂-2-∩ {A} {B} = ⊆-antisym
+    (\x x-in → let and = replace-cond x x-in in ∧-∩ x $ ∧-right and A A∈[A,B] , ∧-right and B B∈[A,B])
+    (\x x∈A∩B →
+      satisfy-cond x $
+        (satisfy-in-union x $ A , A∈[A,B] , (∧-left $ ∩-∧ x x∈A∩B)) ,
+        (\Y Y∈[A,B] → lemma x Y x∈A∩B $ in-[A,B] Y Y∈[A,B]))
+    where
+      lemma : ∀ x Y → x ∈ A ∩ B → (Y ≡ A) ∨ (Y ≡ B) → x ∈ Y
+      lemma x Y x-in (∨-left Y≡A) rewrite Y≡A = ∧-left $ ∩-∧ x x-in
+      lemma x Y x-in (∨-right Y≡B) rewrite Y≡B = ∧-right $ ∩-∧ x x-in
+
+--  ⋂-cong : {A B : Set} → A ⊆ B → ⋂ B ⊆ ⋂ A
+--  ⋂-cong A⊆B x x∈⋂B =
+--    satisfy-cond x $ (satisfy-in-union x $ {!!} , {!!} , {!!}) , {!!}
+--    distributive law
 
 _\\_ : (A B : Set) → Set
 A \\ B = ⟦ X ∈ A ∣ X ∉ B ⟧
 
-A\\A≡∅ : {A : Set} → A \\ A ≡ ∅
-A\\A≡∅ {A} = antisym (\x x∈A\\A → let and = replace-cond x x∈A\\A in ⊥-elim $ ∧-right and $ ∧-left and) (∅-⊆ (A \\ A))
-  where
-    open IsPartialOrder ⊆-isPartialOrder
+module \\-lemmas where
+  A\\A≡∅ : {A : Set} → A \\ A ≡ ∅
+  A\\A≡∅ {A} = antisym (\x x∈A\\A → let and = replace-cond x x∈A\\A in ⊥-elim $ ∧-right and $ ∧-left and) (∅-⊆ (A \\ A))
+    where
+      open IsPartialOrder ⊆-isPartialOrder
 
-\\-⊆ : {A B : Set} → A \\ B ⊆ A
-\\-⊆ x x∈A\\B = ∧-left $ replace-cond x x∈A\\B
+  \\-⊆ : {A B : Set} → A \\ B ⊆ A
+  \\-⊆ x x∈A\\B = ∧-left $ replace-cond x x∈A\\B
+
+  \\-∅ : {A : Set} → A \\ ∅ ≡ A
+  \\-∅ = ⊆-antisym \\-⊆ (\x x∈A → satisfy-cond x $ x∈A , (\x∈∅ → elem-∈ x x∈∅))
+
+  de-Morgan-∪ : {U A B : Set} → (U \\ (A ∪ B)) ≡ ((U \\ A) ∩ (U \\ B))
+  de-Morgan-∪ {U} {A} {B} = ⊆-antisym
+    (\x x-in → let and = replace-cond x x-in ; x∈U = ∧-left and
+                   x-nin-and = ∉-∪-∧ x $ ∧-right and in
+        ∧-∩ x $ (satisfy-cond x $ x∈U , ∧-left x-nin-and) , (satisfy-cond x $ x∈U , ∧-right x-nin-and))
+    (\x x-in → let and = replace-cond x x-in in
+      satisfy-cond x $
+        (∧-left $ replace-cond x $ ∧-left and) ,
+        (\x∈A∪B → lemma x (∪-∨ x x∈A∪B) and))
+    where
+      lemma : ∀ x → x ∈ A ∨ x ∈ B → x ∈ (U \\ A) ∧ x ∈ (U \\ B) → ⊥
+      lemma x (∨-left x∈A) and = ∧-right (replace-cond x $ ∧-left and) x∈A
+      lemma x (∨-right x∈B) and = ∧-right (replace-cond x $ ∧-right and) x∈B
+open \\-lemmas public
 
 {-
 \\-∪ : {A B C : Set} → A \\ (B \\ C) ≡ (A \\ (B ∪ C)) ∪ (A ∩ C)
