@@ -1,0 +1,1063 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Sets.Topology.Closure</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Keyword"
+      >module</a
+      ><a name="7"
+      > </a
+      ><a name="8" href="Sets.Topology.Closure.html#1" class="Module"
+      >Sets.Topology.Closure</a
+      ><a name="29"
+      > </a
+      ><a name="30" class="Keyword"
+      >where</a
+      ><a name="35"
+      >
+
+</a
+      ><a name="37" class="Keyword"
+      >open</a
+      ><a name="41"
+      > </a
+      ><a name="42" class="Keyword"
+      >import</a
+      ><a name="48"
+      > </a
+      ><a name="49" href="Function.html#1" class="Module"
+      >Function</a
+      ><a name="57"
+      >
+</a
+      ><a name="58" class="Keyword"
+      >open</a
+      ><a name="62"
+      > </a
+      ><a name="63" class="Keyword"
+      >import</a
+      ><a name="69"
+      > </a
+      ><a name="70" href="Data.Product.html#1" class="Module"
+      >Data.Product</a
+      ><a name="82"
+      >
+</a
+      ><a name="83" class="Keyword"
+      >open</a
+      ><a name="87"
+      > </a
+      ><a name="88" class="Keyword"
+      >import</a
+      ><a name="94"
+      > </a
+      ><a name="95" href="Relation.Binary.html#1" class="Module"
+      >Relation.Binary</a
+      ><a name="110"
+      >
+</a
+      ><a name="111" class="Keyword"
+      >open</a
+      ><a name="115"
+      > </a
+      ><a name="116" class="Keyword"
+      >import</a
+      ><a name="122"
+      > </a
+      ><a name="123" href="Relation.Binary.PropositionalEquality.html#1" class="Module"
+      >Relation.Binary.PropositionalEquality</a
+      ><a name="160"
+      >
+</a
+      ><a name="161" class="Keyword"
+      >open</a
+      ><a name="165"
+      > </a
+      ><a name="166" class="Keyword"
+      >import</a
+      ><a name="172"
+      > </a
+      ><a name="173" href="Sets.Sets.html#1" class="Module"
+      >Sets.Sets</a
+      ><a name="182"
+      >
+</a
+      ><a name="183" class="Keyword"
+      >open</a
+      ><a name="187"
+      > </a
+      ><a name="188" class="Keyword"
+      >import</a
+      ><a name="194"
+      > </a
+      ><a name="195" href="Sets.Topology.Topology.html#1" class="Module"
+      >Sets.Topology.Topology</a
+      ><a name="217"
+      >
+</a
+      ><a name="218" class="Keyword"
+      >open</a
+      ><a name="222"
+      > </a
+      ><a name="223" class="Keyword"
+      >import</a
+      ><a name="229"
+      > </a
+      ><a name="230" href="Sets.Topology.Interior.html#1" class="Module"
+      >Sets.Topology.Interior</a
+      ><a name="252"
+      >
+
+</a
+      ><a name="254" class="Keyword"
+      >module</a
+      ><a name="260"
+      > </a
+      ><a name="261" href="Sets.Topology.Closure.html#261" class="Module"
+      >Closure</a
+      ><a name="268"
+      > </a
+      ><a name="269" class="Symbol"
+      >(</a
+      ><a name="270" href="Sets.Topology.Closure.html#270" class="Bound"
+      >X</a
+      ><a name="271"
+      > </a
+      ><a name="272" class="Symbol"
+      >:</a
+      ><a name="273"
+      > </a
+      ><a name="274" href="Sets.Topology.Topology.html#184" class="Record"
+      >TopSpace</a
+      ><a name="282" class="Symbol"
+      >)</a
+      ><a name="283"
+      > </a
+      ><a name="284" class="Keyword"
+      >where</a
+      ><a name="289"
+      >
+  </a
+      ><a name="292" class="Keyword"
+      >open</a
+      ><a name="296"
+      > </a
+      ><a name="297" href="Sets.Topology.Topology.html#184" class="Module"
+      >TopSpace</a
+      ><a name="305"
+      > </a
+      ><a name="306" href="Sets.Topology.Closure.html#270" class="Bound"
+      >X</a
+      ><a name="307"
+      >
+
+  </a
+      ><a name="311" href="Sets.Topology.Closure.html#311" class="Function"
+      >Closed</a
+      ><a name="317"
+      > </a
+      ><a name="318" class="Symbol"
+      >:</a
+      ><a name="319"
+      > </a
+      ><a name="320" class="PrimitiveType"
+      >Set</a
+      ><a name="323"
+      >
+  </a
+      ><a name="326" href="Sets.Topology.Closure.html#311" class="Function"
+      >Closed</a
+      ><a name="332"
+      > </a
+      ><a name="333" class="Symbol"
+      >=</a
+      ><a name="334"
+      > </a
+      ><a name="335" href="Sets.Sets.Separation.html#396" class="Function"
+      >&#10214;</a
+      ><a name="336"
+      > </a
+      ><a name="337" href="Sets.Topology.Closure.html#337" class="Bound"
+      >V</a
+      ><a name="338"
+      > </a
+      ><a name="339" href="Sets.Sets.Separation.html#396" class="Function"
+      >&#8712;</a
+      ><a name="340"
+      > </a
+      ><a name="341" href="Sets.Sets.Power.html#368" class="Function Operator"
+      >P[</a
+      ><a name="343"
+      > </a
+      ><a name="344" href="Sets.Topology.Topology.html#218" class="Function"
+      >set</a
+      ><a name="347"
+      > </a
+      ><a name="348" href="Sets.Sets.Power.html#368" class="Function Operator"
+      >]</a
+      ><a name="349"
+      > </a
+      ><a name="350" href="Sets.Sets.Separation.html#396" class="Function"
+      >&#8739;</a
+      ><a name="351"
+      > </a
+      ><a name="352" class="Symbol"
+      >(</a
+      ><a name="353" href="Sets.Topology.Topology.html#218" class="Function"
+      >set</a
+      ><a name="356"
+      > </a
+      ><a name="357" href="Sets.Sets.Separation.html#4700" class="Function Operator"
+      >\\</a
+      ><a name="359"
+      > </a
+      ><a name="360" href="Sets.Topology.Closure.html#337" class="Bound"
+      >V</a
+      ><a name="361" class="Symbol"
+      >)</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="Sets.Sets.Basic.html#6989" class="Postulate Operator"
+      >&#8712;</a
+      ><a name="364"
+      > </a
+      ><a name="365" href="Sets.Topology.Topology.html#232" class="Function"
+      >Open</a
+      ><a name="369"
+      > </a
+      ><a name="370" href="Sets.Sets.Separation.html#396" class="Function"
+      >&#10215;</a
+      ><a name="371"
+      >
+
+  </a
+      ><a name="375" class="Keyword"
+      >private</a
+      ><a name="382"
+      >
+    </a
+      ><a name="387" href="Sets.Topology.Closure.html#387" class="Function"
+      >in-Closed-set</a
+      ><a name="400"
+      > </a
+      ><a name="401" class="Symbol"
+      >:</a
+      ><a name="402"
+      > </a
+      ><a name="403" class="Symbol"
+      >&#8704;</a
+      ><a name="404"
+      > </a
+      ><a name="405" href="Sets.Topology.Closure.html#405" class="Bound"
+      >X</a
+      ><a name="406"
+      > </a
+      ><a name="407" class="Symbol"
+      >&#8594;</a
+      ><a name="408"
+      > </a
+      ><a name="409" href="Sets.Topology.Closure.html#405" class="Bound"
+      >X</a
+      ><a name="410"
+      > </a
+      ><a name="411" href="Sets.Sets.Basic.html#6989" class="Postulate Operator"
+      >&#8712;</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="Sets.Topology.Closure.html#311" class="Function"
+      >Closed</a
+      ><a name="419"
+      > </a
+      ><a name="420" class="Symbol"
+      >&#8594;</a
+      ><a name="421"
+      > </a
+      ><a name="422" href="Sets.Topology.Closure.html#405" class="Bound"
+      >X</a
+      ><a name="423"
+      > </a
+      ><a name="424" href="Sets.Sets.Basic.html#7345" class="Function Operator"
+      >&#8838;</a
+      ><a name="425"
+      > </a
+      ><a name="426" href="Sets.Topology.Topology.html#218" class="Function"
+      >set</a
+      ><a name="429"
+      >
+    </a
+      ><a name="434" href="Sets.Topology.Closure.html#387" class="Function"
+      >in-Closed-set</a
+      ><a name="447"
+      > </a
+      ><a name="448" href="Sets.Topology.Closure.html#448" class="Bound"
+      >X</a
+      ><a name="449"
+      > </a
+      ><a name="450" href="Sets.Topology.Closure.html#450" class="Bound"
+      >X:closed</a
+      ><a name="458"
+      > </a
+      ><a name="459" class="Symbol"
+      >=</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="Sets.Sets.Power.html#541" class="Function"
+      >&#8712;-&#8838;-power</a
+      ><a name="470"
+      > </a
+      ><a name="471" href="Function.html#1835" class="Function Operator"
+      >$</a
+      ><a name="472"
+      > </a
+      ><a name="473" href="Data.Product.html#525" class="Field"
+      >&#8743;-left</a
+      ><a name="479"
+      > </a
+      ><a name="480" href="Function.html#1835" class="Function Operator"
+      >$</a
+      ><a name="481"
+      > </a
+      ><a name="482" href="Sets.Sets.Separation.html#555" class="Function"
+      >replace-cond</a
+      ><a name="494"
+      > </a
+      ><a name="495" href="Sets.Topology.Closure.html#448" class="Bound"
+      >X</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="Sets.Topology.Closure.html#450" class="Bound"
+      >X:closed</a
+      ><a name="505"
+      >
+
+    </a
+      ><a name="511" href="Sets.Topology.Closure.html#511" class="Function"
+      >closed-open</a
+      ><a name="522"
+      > </a
+      ><a name="523" class="Symbol"
+      >:</a
+      ><a name="524"
+      > </a
+      ><a name="525" class="Symbol"
+      >&#8704;</a
+      ><a name="526"
+      > </a
+      ><a name="527" class="Symbol"
+      >{</a
+      ><a name="528" href="Sets.Topology.Closure.html#528" class="Bound"
+      >X</a
+      ><a name="529" class="Symbol"
+      >}</a
+      ><a name="530"
+      > </a
+      ><a name="531" class="Symbol"
+      >&#8594;</a
+      ><a name="532"
+      > </a
+      ><a name="533" href="Sets.Topology.Closure.html#528" class="Bound"
+      >X</a
+      ><a name="534"
+      > </a
+      ><a name="535" href="Sets.Sets.Basic.html#6989" class="Postulate Operator"
+      >&#8712;</a
+      ><a name="536"
+      > </a
+      ><a name="537" href="Sets.Topology.Closure.html#311" class="Function"
+      >Closed</a
+      ><a name="543"
+      > </a
+      ><a name="544" class="Symbol"
+      >&#8594;</a
+      ><a name="545"
+      > </a
+      ><a name="546" class="Symbol"
+      >(</a
+      ><a name="547" href="Sets.Topology.Topology.html#218" class="Function"
+      >set</a
+      ><a name="550"
+      > </a
+      ><a name="551" href="Sets.Sets.Separation.html#4700" class="Function Operator"
+      >\\</a
+      ><a name="553"
+      > </a
+      ><a name="554" href="Sets.Topology.Closure.html#528" class="Bound"
+      >X</a
+      ><a name="555" class="Symbol"
+      >)</a
+      ><a name="556"
+      > </a
+      ><a name="557" href="Sets.Sets.Basic.html#6989" class="Postulate Operator"
+      >&#8712;</a
+      ><a name="558"
+      > </a
+      ><a name="559" href="Sets.Topology.Topology.html#232" class="Function"
+      >Open</a
+      ><a name="563"
+      >
+    </a
+      ><a name="568" href="Sets.Topology.Closure.html#511" class="Function"
+      >closed-open</a
+      ><a name="579"
+      > </a
+      ><a name="580" class="Symbol"
+      >{</a
+      ><a name="581" href="Sets.Topology.Closure.html#581" class="Bound"
+      >X</a
+      ><a name="582" class="Symbol"
+      >}</a
+      ><a name="583"
+      > </a
+      ><a name="584" href="Sets.Topology.Closure.html#584" class="Bound"
+      >X:closed</a
+      ><a name="592"
+      > </a
+      ><a name="593" class="Symbol"
+      >=</a
+      ><a name="594"
+      > </a
+      ><a name="595" href="Data.Product.html#539" class="Field"
+      >&#8743;-right</a
+      ><a name="602"
+      > </a
+      ><a name="603" href="Function.html#1835" class="Function Operator"
+      >$</a
+      ><a name="604"
+      > </a
+      ><a name="605" href="Sets.Sets.Separation.html#555" class="Function"
+      >replace-cond</a
+      ><a name="617"
+      > </a
+      ><a name="618" href="Sets.Topology.Closure.html#581" class="Bound"
+      >X</a
+      ><a name="619"
+      > </a
+      ><a name="620" href="Sets.Topology.Closure.html#584" class="Bound"
+      >X:closed</a
+      ><a name="628"
+      >
+
+  </a
+      ><a name="632" class="Keyword"
+      >module</a
+      ><a name="638"
+      > </a
+      ><a name="639" href="Sets.Topology.Closure.html#639" class="Module"
+      >Closed-lemmas</a
+      ><a name="652"
+      > </a
+      ><a name="653" class="Keyword"
+      >where</a
+      ><a name="658"
+      >
+    </a
+      ><a name="663" href="Sets.Topology.Closure.html#663" class="Function"
+      >all-closed</a
+      ><a name="673"
+      > </a
+      ><a name="674" class="Symbol"
+      >:</a
+      ><a name="675"
+      > </a
+      ><a name="676" href="Sets.Topology.Topology.html#218" class="Function"
+      >set</a
+      ><a name="679"
+      > </a
+      ><a name="680" href="Sets.Sets.Basic.html#6989" class="Postulate Operator"
+      >&#8712;</a
+      ><a name="681"
+      > </a
+      ><a name="682" href="Sets.Topology.Closure.html#311" class="Function"
+      >Closed</a
+      ><a name="688"
+      >
+    </a
+      ><a name="693" href="Sets.Topology.Closure.html#663" class="Function"
+      >all-closed</a
+      ><a name="703"
+      > </a
+      ><a name="704" class="Symbol"
+      >=</a
+      ><a name="705"
+      > </a
+      ><a name="706" href="Sets.Sets.Separation.html#691" class="Function"
+      >satisfy-cond</a
+      ><a name="718"
+      > </a
+      ><a name="719" href="Sets.Topology.Topology.html#218" class="Function"
+      >set</a
+      ><a name="722"
+      > </a
+      ><a name="723" href="Function.html#1835" class="Function Operator"
+      >$</a
+      ><a name="724"
+      > </a
+      ><a name="725" href="Sets.Sets.Power.html#442" class="Function"
+      >&#8838;-&#8712;-power</a
+      ><a name="734"
+      > </a
+      ><a name="735" href="Sets.Sets.Extensionality.html#837" class="Function"
+      >&#8838;-refl</a
+      ><a name="741"
+      > </a
+      ><a name="742" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="743"
+      > </a
+      ><a name="744" href="Sets.Sets.Basic.html#7123" class="Function"
+      >&#8801;-&#8712;</a
+      ><a name="747"
+      > </a
+      ><a name="748" class="Symbol"
+      >(</a
+      ><a name="749" href="Relation.Binary.PropositionalEquality.Core.html#565" class="Function"
+      >&#8801;-sym</a
+      ><a name="754"
+      > </a
+      ><a name="755" href="Sets.Sets.Separation.html#4778" class="Function"
+      >A\\A&#8801;&#8709;</a
+      ><a name="761" class="Symbol"
+      >)</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="Sets.Topology.Topology.html#296" class="Function"
+      >&#8709;-open</a
+      ><a name="769"
+      >
+
+    </a
+      ><a name="775" href="Sets.Topology.Closure.html#775" class="Function"
+      >&#8709;-closed</a
+      ><a name="783"
+      > </a
+      ><a name="784" class="Symbol"
+      >:</a
+      ><a name="785"
+      > </a
+      ><a name="786" href="Sets.Sets.Extensionality.html#1732" class="Function"
+      >&#8709;</a
+      ><a name="787"
+      > </a
+      ><a name="788" href="Sets.Sets.Basic.html#6989" class="Postulate Operator"
+      >&#8712;</a
+      ><a name="789"
+      > </a
+      ><a name="790" href="Sets.Topology.Closure.html#311" class="Function"
+      >Closed</a
+      ><a name="796"
+      >
+    </a
+      ><a name="801" href="Sets.Topology.Closure.html#775" class="Function"
+      >&#8709;-closed</a
+      ><a name="809"
+      > </a
+      ><a name="810" class="Symbol"
+      >=</a
+      ><a name="811"
+      > </a
+      ><a name="812" href="Sets.Sets.Separation.html#691" class="Function"
+      >satisfy-cond</a
+      ><a name="824"
+      > </a
+      ><a name="825" href="Sets.Sets.Extensionality.html#1732" class="Function"
+      >&#8709;</a
+      ><a name="826"
+      > </a
+      ><a name="827" href="Function.html#1835" class="Function Operator"
+      >$</a
+      ><a name="828"
+      > </a
+      ><a name="829" href="Sets.Sets.Power.html#442" class="Function"
+      >&#8838;-&#8712;-power</a
+      ><a name="838"
+      > </a
+      ><a name="839" class="Symbol"
+      >(</a
+      ><a name="840" href="Sets.Sets.Extensionality.html#2226" class="Function"
+      >&#8709;-&#8838;</a
+      ><a name="843"
+      > </a
+      ><a name="844" href="Sets.Topology.Topology.html#218" class="Function"
+      >set</a
+      ><a name="847" class="Symbol"
+      >)</a
+      ><a name="848"
+      > </a
+      ><a name="849" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="850"
+      > </a
+      ><a name="851" href="Sets.Sets.Basic.html#7123" class="Function"
+      >&#8801;-&#8712;</a
+      ><a name="854"
+      > </a
+      ><a name="855" class="Symbol"
+      >(</a
+      ><a name="856" href="Relation.Binary.PropositionalEquality.Core.html#565" class="Function"
+      >&#8801;-sym</a
+      ><a name="861"
+      > </a
+      ><a name="862" href="Sets.Sets.Separation.html#5071" class="Function"
+      >\\-&#8709;</a
+      ><a name="866" class="Symbol"
+      >)</a
+      ><a name="867"
+      > </a
+      ><a name="868" href="Sets.Topology.Topology.html#318" class="Function"
+      >all-open</a
+      ><a name="876"
+      >
+
+    </a
+      ><a name="882" href="Sets.Topology.Closure.html#882" class="Function"
+      >&#8746;-closed</a
+      ><a name="890"
+      > </a
+      ><a name="891" class="Symbol"
+      >:</a
+      ><a name="892"
+      > </a
+      ><a name="893" class="Symbol"
+      >{</a
+      ><a name="894" href="Sets.Topology.Closure.html#894" class="Bound"
+      >A</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="Sets.Topology.Closure.html#896" class="Bound"
+      >B</a
+      ><a name="897"
+      > </a
+      ><a name="898" class="Symbol"
+      >:</a
+      ><a name="899"
+      > </a
+      ><a name="900" class="PrimitiveType"
+      >Set</a
+      ><a name="903" class="Symbol"
+      >}</a
+      ><a name="904"
+      > </a
+      ><a name="905" class="Symbol"
+      >&#8594;</a
+      ><a name="906"
+      > </a
+      ><a name="907" href="Sets.Topology.Closure.html#894" class="Bound"
+      >A</a
+      ><a name="908"
+      > </a
+      ><a name="909" href="Sets.Sets.Basic.html#6989" class="Postulate Operator"
+      >&#8712;</a
+      ><a name="910"
+      > </a
+      ><a name="911" href="Sets.Topology.Closure.html#311" class="Function"
+      >Closed</a
+      ><a name="917"
+      > </a
+      ><a name="918" class="Symbol"
+      >&#8594;</a
+      ><a name="919"
+      > </a
+      ><a name="920" href="Sets.Topology.Closure.html#896" class="Bound"
+      >B</a
+      ><a name="921"
+      > </a
+      ><a name="922" href="Sets.Sets.Basic.html#6989" class="Postulate Operator"
+      >&#8712;</a
+      ><a name="923"
+      > </a
+      ><a name="924" href="Sets.Topology.Closure.html#311" class="Function"
+      >Closed</a
+      ><a name="930"
+      > </a
+      ><a name="931" class="Symbol"
+      >&#8594;</a
+      ><a name="932"
+      > </a
+      ><a name="933" href="Sets.Topology.Closure.html#894" class="Bound"
+      >A</a
+      ><a name="934"
+      > </a
+      ><a name="935" href="Sets.Sets.Union.html#377" class="Function Operator"
+      >&#8746;</a
+      ><a name="936"
+      > </a
+      ><a name="937" href="Sets.Topology.Closure.html#896" class="Bound"
+      >B</a
+      ><a name="938"
+      > </a
+      ><a name="939" href="Sets.Sets.Basic.html#6989" class="Postulate Operator"
+      >&#8712;</a
+      ><a name="940"
+      > </a
+      ><a name="941" href="Sets.Topology.Closure.html#311" class="Function"
+      >Closed</a
+      ><a name="947"
+      >
+    </a
+      ><a name="952" href="Sets.Topology.Closure.html#882" class="Function"
+      >&#8746;-closed</a
+      ><a name="960"
+      > </a
+      ><a name="961" class="Symbol"
+      >{</a
+      ><a name="962" href="Sets.Topology.Closure.html#962" class="Bound"
+      >A</a
+      ><a name="963" class="Symbol"
+      >}</a
+      ><a name="964"
+      > </a
+      ><a name="965" class="Symbol"
+      >{</a
+      ><a name="966" href="Sets.Topology.Closure.html#966" class="Bound"
+      >B</a
+      ><a name="967" class="Symbol"
+      >}</a
+      ><a name="968"
+      > </a
+      ><a name="969" href="Sets.Topology.Closure.html#969" class="Bound"
+      >A:closed</a
+      ><a name="977"
+      > </a
+      ><a name="978" href="Sets.Topology.Closure.html#978" class="Bound"
+      >B:closed</a
+      ><a name="986"
+      > </a
+      ><a name="987" class="Symbol"
+      >=</a
+      ><a name="988"
+      > </a
+      ><a name="989" href="Sets.Sets.Separation.html#691" class="Function"
+      >satisfy-cond</a
+      ><a name="1001"
+      > </a
+      ><a name="1002" class="Symbol"
+      >(</a
+      ><a name="1003" href="Sets.Topology.Closure.html#962" class="Bound"
+      >A</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" href="Sets.Sets.Union.html#377" class="Function Operator"
+      >&#8746;</a
+      ><a name="1006"
+      > </a
+      ><a name="1007" href="Sets.Topology.Closure.html#966" class="Bound"
+      >B</a
+      ><a name="1008" class="Symbol"
+      >)</a
+      ><a name="1009"
+      > </a
+      ><a name="1010" href="Function.html#1835" class="Function Operator"
+      >$</a
+      ><a name="1011"
+      > </a
+      ><a name="1012" href="Sets.Sets.Power.html#442" class="Function"
+      >&#8838;-&#8712;-power</a
+      ><a name="1021"
+      > </a
+      ><a name="1022" class="Symbol"
+      >(</a
+      ><a name="1023" href="Sets.Sets.Extensionality.html#886" class="Function"
+      >&#8838;-cong</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >&#8801;-refl</a
+      ><a name="1036"
+      > </a
+      ><a name="1037" href="Sets.Sets.Union.html#2808" class="Function"
+      >&#8746;-idempotent</a
+      ><a name="1049"
+      > </a
+      ><a name="1050" href="Function.html#1835" class="Function Operator"
+      >$</a
+      ><a name="1051"
+      >
+      </a
+      ><a name="1058" href="Sets.Sets.Union.html#2567" class="Function"
+      >&#8838;-cong-&#8746;</a
+      ><a name="1066"
+      > </a
+      ><a name="1067" class="Symbol"
+      >(</a
+      ><a name="1068" href="Sets.Topology.Closure.html#387" class="Function"
+      >in-Closed-set</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" href="Sets.Topology.Closure.html#962" class="Bound"
+      >A</a
+      ><a name="1083"
+      > </a
+      ><a name="1084" href="Sets.Topology.Closure.html#969" class="Bound"
+      >A:closed</a
+      ><a name="1092" class="Symbol"
+      >)</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" class="Symbol"
+      >(</a
+      ><a name="1095" href="Sets.Topology.Closure.html#387" class="Function"
+      >in-Closed-set</a
+      ><a name="1108"
+      > </a
+      ><a name="1109" href="Sets.Topology.Closure.html#966" class="Bound"
+      >B</a
+      ><a name="1110"
+      > </a
+      ><a name="1111" href="Sets.Topology.Closure.html#978" class="Bound"
+      >B:closed</a
+      ><a name="1119" class="Symbol"
+      >))</a
+      ><a name="1121"
+      > </a
+      ><a name="1122" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1123"
+      >
+      </a
+      ><a name="1130" class="Symbol"
+      >(</a
+      ><a name="1131" href="Sets.Sets.Basic.html#7123" class="Function"
+      >&#8801;-&#8712;</a
+      ><a name="1134"
+      > </a
+      ><a name="1135" class="Symbol"
+      >(</a
+      ><a name="1136" href="Relation.Binary.PropositionalEquality.Core.html#565" class="Function"
+      >&#8801;-sym</a
+      ><a name="1141"
+      > </a
+      ><a name="1142" href="Sets.Sets.Separation.html#5184" class="Function"
+      >de-Morgan-&#8746;</a
+      ><a name="1153" class="Symbol"
+      >)</a
+      ><a name="1154"
+      > </a
+      ><a name="1155" href="Function.html#1835" class="Function Operator"
+      >$</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" href="Sets.Topology.Topology.html#391" class="Function"
+      >&#8745;-open</a
+      ><a name="1163"
+      > </a
+      ><a name="1164" class="Symbol"
+      >(</a
+      ><a name="1165" href="Sets.Topology.Closure.html#511" class="Function"
+      >closed-open</a
+      ><a name="1176"
+      > </a
+      ><a name="1177" href="Sets.Topology.Closure.html#969" class="Bound"
+      >A:closed</a
+      ><a name="1185" class="Symbol"
+      >)</a
+      ><a name="1186"
+      > </a
+      ><a name="1187" class="Symbol"
+      >(</a
+      ><a name="1188" href="Sets.Topology.Closure.html#511" class="Function"
+      >closed-open</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" href="Sets.Topology.Closure.html#978" class="Bound"
+      >B:closed</a
+      ><a name="1208" class="Symbol"
+      >))</a
+      ><a name="1210"
+      >
+
+</a
+      ><a name="1212" class="Comment"
+      >--    &#8898;-closed : {F : Set} &#8594; F &#8838; Closed &#8594; &#8898; F &#8712; Closed</a
+      ><a name="1266"
+      >
+</a
+      ><a name="1267" class="Comment"
+      >--    &#8898;-closed {F} F&#8838;Closed = satisfy-cond (&#8898; F) $ &#8838;-&#8712;-power {!!} , {!!}</a
+      ><a name="1339"
+      >
+
+  </a
+      ><a name="1343" href="Sets.Topology.Closure.html#1343" class="Function"
+      >Closure-set</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" class="Symbol"
+      >:</a
+      ><a name="1356"
+      > </a
+      ><a name="1357" class="Symbol"
+      >&#8704;</a
+      ><a name="1358"
+      > </a
+      ><a name="1359" href="Sets.Topology.Closure.html#1359" class="Bound"
+      >U</a
+      ><a name="1360"
+      > </a
+      ><a name="1361" class="Symbol"
+      >&#8594;</a
+      ><a name="1362"
+      > </a
+      ><a name="1363" class="PrimitiveType"
+      >Set</a
+      ><a name="1366"
+      >
+  </a
+      ><a name="1369" href="Sets.Topology.Closure.html#1343" class="Function"
+      >Closure-set</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" href="Sets.Topology.Closure.html#1381" class="Bound"
+      >U</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" class="Symbol"
+      >=</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" href="Sets.Sets.Separation.html#396" class="Function"
+      >&#10214;</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" href="Sets.Topology.Closure.html#1387" class="Bound"
+      >V</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" href="Sets.Sets.Separation.html#396" class="Function"
+      >&#8712;</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" href="Sets.Topology.Closure.html#311" class="Function"
+      >Closed</a
+      ><a name="1397"
+      > </a
+      ><a name="1398" href="Sets.Sets.Separation.html#396" class="Function"
+      >&#8739;</a
+      ><a name="1399"
+      > </a
+      ><a name="1400" href="Sets.Topology.Closure.html#1387" class="Bound"
+      >V</a
+      ><a name="1401"
+      > </a
+      ><a name="1402" href="Sets.Sets.Basic.html#7345" class="Function Operator"
+      >&#8838;</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="Sets.Topology.Closure.html#1381" class="Bound"
+      >U</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="Sets.Sets.Separation.html#396" class="Function"
+      >&#10215;</a
+      ><a name="1407"
+      >
+
+  </a
+      ><a name="1411" href="Sets.Topology.Closure.html#1411" class="Function"
+      >Closure</a
+      ><a name="1418"
+      > </a
+      ><a name="1419" class="Symbol"
+      >:</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" class="Symbol"
+      >&#8704;</a
+      ><a name="1422"
+      > </a
+      ><a name="1423" href="Sets.Topology.Closure.html#1423" class="Bound"
+      >U</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" class="Symbol"
+      >&#8594;</a
+      ><a name="1426"
+      > </a
+      ><a name="1427" class="PrimitiveType"
+      >Set</a
+      ><a name="1430"
+      >
+  </a
+      ><a name="1433" href="Sets.Topology.Closure.html#1411" class="Function"
+      >Closure</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" href="Sets.Topology.Closure.html#1441" class="Bound"
+      >U</a
+      ><a name="1442"
+      > </a
+      ><a name="1443" class="Symbol"
+      >=</a
+      ><a name="1444"
+      > </a
+      ><a name="1445" href="Sets.Sets.Union.html#436" class="Function Operator"
+      >&#8899;</a
+      ><a name="1446"
+      > </a
+      ><a name="1447" href="Sets.Topology.Closure.html#1343" class="Function"
+      >Closure-set</a
+      ><a name="1458"
+      > </a
+      ><a name="1459" href="Sets.Topology.Closure.html#1441" class="Bound"
+      >U</a
+      ><a name="1460"
+      >
+
+  </a
+      ><a name="1464" class="Comment"
+      >-- Closure (set - M) &#8801; set - (Int M)</a
+      ><a name="1500"
+      >
+  </a
+      ><a name="1503" class="Comment"
+      >-- Closure-props</a
+      ><a name="1519"
+      >
+
+  </a
+      ><a name="1523" class="Keyword"
+      >module</a
+      ><a name="1529"
+      > </a
+      ><a name="1530" href="Sets.Topology.Closure.html#1530" class="Module"
+      >Interior-Closed</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" class="Keyword"
+      >where</a
+      ><a name="1551"
+      >
+    </a
+      ><a name="1556" class="Keyword"
+      >open</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" href="Sets.Topology.Interior.html#227" class="Module"
+      >Interior</a
+      ><a name="1569"
+      > </a
+      ><a name="1570" href="Sets.Topology.Closure.html#270" class="Bound"
+      >X</a
+      ><a name="1571"
+      >
+
+</a
+      ><a name="1573" class="Comment"
+      >--    Closure-Int : &#8704; M &#8594; M &#8838; set &#8594; Closure (set \\ M) &#8801; set \\ (Int M)</a
+      ><a name="1644"
+      >
+</a
+      ><a name="1645" class="Comment"
+      >--    Closure-Int M M&#8838;set = &#8838;-antisym (\x x-in &#8594; let ex = replace-in-union x x-in ; U = proj&#8321; ex ; U-cond = proj&#8322; ex in satisfy-cond x $ {!!} , {!!}) {!!}</a
+      ><a name="1799"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
