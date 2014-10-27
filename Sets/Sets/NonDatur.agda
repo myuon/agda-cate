@@ -99,5 +99,30 @@ non-datur {P} = P∨¬P
     P∨¬P = ∨-→-reflˡ ¬P $ proj⃗ (∨-comm _ _) $ lemma-2
 
 ¬¬-elim : ∀ {P : Set₁} → ¬ (¬ P) → P
-¬¬-elim {P} ¬¬P = ∨-¬right-left non-datur ¬¬P
+¬¬-elim ¬¬P = ∨-¬right-left non-datur ¬¬P
 
+¬¬-intro : ∀ {P : Set₁} → P → ¬ (¬ P)
+¬¬-intro P = \np → np P
+
+module proposition where
+  ∃⇒¬∀¬ : {P : Set → Set₁} → ∃ P → ¬ (∀ x → ¬ P x)
+  ∃⇒¬∀¬ (x , y) p = p x y
+
+  ∀⇒¬∃¬ : {P : Set → Set₁} → (∀ x → P x) → ¬ ∃ \x → ¬ P x
+  ∀⇒¬∃¬ p (x , np) = np $ p x
+
+  ¬∃⇒∀¬ : {P : Set → Set₁} → ¬ ∃ (\x → P x) → ∀ x → ¬ P x
+  ¬∃⇒∀¬ p x px = p $ x , px
+
+  ∀¬⇒¬∃ : {P : Set → Set₁} → (∀ x → ¬ P x) → ¬ ∃ P
+  ∀¬⇒¬∃ np (x , px) = np x px
+
+  ∃¬⇒¬∀ : {P : Set → Set₁} → ∃ (\x → ¬ P x) → ¬ (∀ x → P x)
+  ∃¬⇒¬∀ = flip ∀⇒¬∃¬
+
+  ¬∀⇒∃¬ : {P : Set → Set₁} → ¬ (∀ x → P x) → ∃ λ x → ¬ P x
+  ¬∀⇒∃¬ {P} np = ¬¬-elim $ contraposition ¬∃⇒∀¬ $ lemma np
+    where
+    lemma : ¬ (∀ x → P x) → ¬ (∀ x → ¬ (¬ P x))
+    lemma np = \q → np $ \x → ¬¬-elim $ q x
+open proposition public

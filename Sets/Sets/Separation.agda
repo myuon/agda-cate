@@ -27,28 +27,6 @@ module replacement-lemmas where
   satisfy-cond {A} {P} Z cond = proj⃖ (proj₂ (separation A P) Z) cond
 open replacement-lemmas public
 
-{-
-private
-  prop-1-4 : {A : Set} → let B = ⟦ X ∈ A ∣ X ∉ X ⟧ in B ∉ A
-  prop-1-4 {A} p = ¬Q∧Q p non-datur
-    where
-      B = ⟦ X ∈ A ∣ X ∉ X ⟧
-      P = B ∈ A
-      Q = B ∈ B
-      prop = proj₂ (separation A (\X → X ∉ X))
-
-      lemma : P → (¬ Q) ⇔ Q
-      lemma P = (\notQ → proj⃖ (prop B) $ P , notQ)
-              , (\q → proj⃖ (⇔-contraposition (prop B)) $ \and → ∧-right and q)
-
-      ¬Q∧Q : P → (Q ∨ (¬ Q)) → ⊥
-      ¬Q∧Q p (∨-left q) = proj⃖ (lemma p) q $ q
-      ¬Q∧Q p (∨-right nq) = nq $ proj⃗ (lemma p) nq
-
-  cor-1-4 : (A : Set) → ∃ \B → B ∉ A
-  cor-1-4 A = ⟦ X ∈ A ∣ X ∉ X ⟧ , prop-1-4
--}
-
 infixr 7 _∩_
 _∩_ : (A B : Set) → Set
 A ∩ B = ⟦ X ∈ A ∣ X ∈ B ⟧
@@ -114,7 +92,7 @@ module ∩-lemmas where
   ∩-∅ : {A : Set} → A ∩ ∅ ≡ ∅
   ∩-∅ {A} = ⇔-extensionality $ \X →
     (\X∈A∩∅ → ∧-right $ ∩-∧ X X∈A∩∅) ,
-    (\X∈∅ → ∧-∩ X $ (∅-⊆ A X X∈∅) , X∈∅)
+    (\X∈∅ → ∧-∩ X $ (∅-⊆ X X∈∅) , X∈∅)
 
   ∩-≡ : {A B C D : Set} → A ≡ C → B ≡ D → A ∩ B ≡ C ∩ D
   ∩-≡ A≡C B≡D = ⇔-extensionality $ \X →
@@ -145,7 +123,7 @@ A \\ B = ⟦ X ∈ A ∣ X ∉ B ⟧
 
 module \\-lemmas where
   A\\A≡∅ : {A : Set} → A \\ A ≡ ∅
-  A\\A≡∅ {A} = antisym (\x x∈A\\A → let and = replace-cond x x∈A\\A in ⊥-elim $ ∧-right and $ ∧-left and) (∅-⊆ (A \\ A))
+  A\\A≡∅ {A} = antisym (\x x∈A\\A → let and = replace-cond x x∈A\\A in ⊥-elim $ ∧-right and $ ∧-left and) ∅-⊆
     where
       open IsPartialOrder ⊆-isPartialOrder
 

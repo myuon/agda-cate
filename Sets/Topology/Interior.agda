@@ -128,7 +128,7 @@ module Interior (X : TopSpace) where
         { set = set
         ; Open = Open-set
         ; OpenFamily = ⊆-∈-power (\x x:open → ∧-left $ replace-cond x x:open)
-        ; ∅-open = satisfy-cond ∅ $ (⊆-∈-power $ ∅-⊆ set) , ∅-⊆ set , ⊆-∅ (Int′ ∅) (cond-2 ∅)
+        ; ∅-open = satisfy-cond ∅ $ ⊆-∈-power ∅-⊆ , ∅-⊆ , ⊆-∅ (cond-2 ∅)
         ; all-open = satisfy-cond set $ (⊆-∈-power ⊆-refl) , ⊆-refl , cond-1
         ; ⋃-open = ⋃-open-Int
         ; ∩-open = ∩-open-Int

@@ -23,11 +23,15 @@ open import Relation.Binary.PropositionalEquality
   public
 open import Relation.Binary.PropositionalEquality
 
-module case where
-  infix 0 ∨-case_of_
-  ∨-case_of_ : ∀{a b} {A B : Set a} {C : Set b} → A ∨ B → (A ∨ B → C) → C
-  ∨-case x of f = case x of f
-open case public
+infix 0 ∨-case_of_
+∨-case_of_ : ∀{a b} {A B : Set a} {C : Set b} → A ∨ B → (A ∨ B → C) → C
+∨-case x of f = case x of f
+
+∧-map : ∀{a b p q} {A : Set a} {B : Set b} {P : Set p} {Q : Set q} → (A → B) → (P → Q) → Σ A (\_ → P) → Σ B (\_ → Q)
+∧-map f g (x , y) = (f x , g y)
+
+≢-sym : ∀ {a} {A B : Set a} → A ≢ B → B ≢ A
+≢-sym neq = \eq → neq $ ≡-sym eq
 
 module iff where
   infix 1 _⇔_
@@ -243,5 +247,8 @@ module Map where
 
   _⟨∘⟩_ : ∀ {A B C} → B ⟶ C → A ⟶ B → A ⟶ C
   _⟨∘⟩_ f g x = ⟨ f ⟩ (⟨ g ⟩ x) , (proj₂ (f $ ⟨ g ⟩ x) ∘ proj₂ (g x))
+
+  Image-∈ : ∀ {A B} (f : A ⟶ B) → ∀ x → x ∈ A → ⟨ f ⟩ x ∈ B
+  Image-∈ f x x∈A = proj₂ (f x) x∈A
 open Map public
 

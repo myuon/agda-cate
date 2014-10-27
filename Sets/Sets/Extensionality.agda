@@ -73,9 +73,12 @@ module ∅-lemmas where
     lemma : ∃-empty-prop → (A : Set) → ⊥ ⊆ A
     lemma P A x x∈⊥ = ⊥-elim $ elem-∈ x x∈⊥
 
-  ∅-⊆ : (A : Set) → ∅ ⊆ A
-  ∅-⊆ = proj⃗ ∅⇔⊆ ∃-empty
+  ∅-⊆ : {A : Set} → ∅ ⊆ A
+  ∅-⊆ {A} = proj⃗ ∅⇔⊆ ∃-empty A
 
-  ⊆-∅ : ∀ A → A ⊆ ∅ → A ≡ ∅
-  ⊆-∅ A A⊆∅ = ⊆-antisym A⊆∅ (∅-⊆ A)
+  ⊆-∅ : {A : Set} → A ⊆ ∅ → A ≡ ∅
+  ⊆-∅ A⊆∅ = ⊆-antisym A⊆∅ ∅-⊆
 open ∅-lemmas public
+
+-- ¬∀⟶∃¬ : ∀ n {p} (P : Fin n → Set p) → Decidable P →
+--        ¬ (∀ i → P i) → ∃ λ i → ¬ P i

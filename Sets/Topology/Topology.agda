@@ -26,7 +26,7 @@ Discrete X = record
   ; Open = P[ X ]
 
   ; OpenFamily = ⊆-∈-power (\_ → id)
-  ; ∅-open = ⊆-∈-power (∅-⊆ X)
+  ; ∅-open = ⊆-∈-power ∅-⊆
   ; all-open = ⊆-∈-power (\_ → id)
   ; ⋃-open = \{F} F⊆P[X] → ⊆-∈-power (⊆-≡-reflˡ ⋃-power $ ⋃-cong F⊆P[X])
   ; ∩-open = \{A} {B} A∈P[X] B∈P[X] → ⊆-∈-power (\x x∈A∩B → ∈-≡ ⋃-power (⋃-∈-⊆ A∈P[X] x $ ∩-⊆ˡ x x∈A∩B))
@@ -48,12 +48,12 @@ Indiscrete X = record
     open IsPartialOrder ⊆-isPartialOrder
 
     ∈-P[X] : ∀ Y → (Y ≡ ∅) ∨ (Y ≡ X) → Y ∈ P[ X ]
-    ∈-P[X] Y (∨-left Y≡∅) = ⊆-∈-power (\z z∈Y → ∅-⊆ X z $ ∈-≡ Y≡∅ z∈Y)
+    ∈-P[X] Y (∨-left Y≡∅) = ⊆-∈-power (\z z∈Y → ∅-⊆ z $ ∈-≡ Y≡∅ z∈Y)
     ∈-P[X] Y (∨-right Y≡X) = ⊆-∈-power (\z z∈Y → ∈-≡ Y≡X z∈Y)
 
     ∩-lemma : ∀{A B} → (A ≡ ∅) ∨ (A ≡ X) → (B ≡ ∅) ∨ (B ≡ X) → (A ∩ B ≡ ∅) ∨ (A ∩ B ≡ X)
-    ∩-lemma {A} {B} _ (∨-left B≡∅) = ∨-left $ antisym (\X X∈A∩B → proj⃗ (app-extensionality ∩-∅ X) (∧-∩ X $ ∧-→-reflˡ (∈-≡ B≡∅) $ ∩-∧ X X∈A∩B)) (∅-⊆ $ A ∩ B)
-    ∩-lemma {A} {B} (∨-left A≡∅) _ = ∨-left $ antisym (\X X∈A∩B → proj⃗ (app-extensionality ∩-∅ X) (∧-∩ X $ ∧-→-reflˡ (∈-≡ A≡∅) $ proj⃗ (∧-comm _ _) $ ∩-∧ X X∈A∩B)) (∅-⊆ $ A ∩ B)
+    ∩-lemma {A} {B} _ (∨-left B≡∅) = ∨-left $ antisym (\X X∈A∩B → proj⃗ (app-extensionality ∩-∅ X) (∧-∩ X $ ∧-→-reflˡ (∈-≡ B≡∅) $ ∩-∧ X X∈A∩B)) ∅-⊆
+    ∩-lemma {A} {B} (∨-left A≡∅) _ = ∨-left $ antisym (\X X∈A∩B → proj⃗ (app-extensionality ∩-∅ X) (∧-∩ X $ ∧-→-reflˡ (∈-≡ A≡∅) $ proj⃗ (∧-comm _ _) $ ∩-∧ X X∈A∩B)) ∅-⊆
     ∩-lemma {A} {B} (∨-right A≡X) (∨-right B≡X) = ∨-right $ ⇔-extensionality $ \Y →
       (\Y∈A∩B → ∈-≡ (≡-trans (∩-≡ A≡X B≡X) ∩-idempotent) $ Y∈A∩B) ,
       (\Y∈X → ∈-≡ (≡-sym $ ≡-trans (∩-≡ A≡X B≡X) ∩-idempotent) Y∈X)
@@ -76,4 +76,4 @@ Indiscrete X = record
           (\Y Y∈∪F → let ex = proj⃗ (proj₂ (∃-union F) Y) Y∈∪F
                          Z = proj₁ ex ; Z∈F∧Y∈Z = proj₂ ex in
               lemma Y Z X∉F Z∈F∧Y∈Z $ in-[A,B] Z $ F⊆[∅,X] Z (∧-left Z∈F∧Y∈Z)
-          ) (∅-⊆ $ ⋃ F)
+          ) ∅-⊆

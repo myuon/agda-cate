@@ -48,14 +48,9 @@ import Categories.Adjoint
 -- Kan Extension
 import Categories.KanExtension
 
--- Sets
+-- Examples of Categories
 import Categories.Categories.Sets
-
--- Cat
 import Categories.Categories.Cat
-
--- Poset
 import Categories.Categories.Poset
-
--- index category
+import Categories.Categories.Lattice
 import Categories.Categories.Index

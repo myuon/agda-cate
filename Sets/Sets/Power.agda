@@ -23,6 +23,9 @@ module power-lemmas where
   ∈-⊆-power : {X A : Set} → A ∈ P[ X ] → A ⊆ X
   ∈-⊆-power {X} {A} = proj⃗ (proj₂ (powerset X) A)
 
+  ∈-refl-power : {X : Set} → X ∈ P[ X ]
+  ∈-refl-power = ⊆-∈-power ⊆-refl
+
   ⋃-power : {X : Set} → ⋃ P[ X ] ≡ X
   ⋃-power {X} = antisym
     (\Y Y∈∪P → let ex = y∈P[X] Y Y∈∪P in y∈X Y (proj₁ ex) (proj₂ ex))
