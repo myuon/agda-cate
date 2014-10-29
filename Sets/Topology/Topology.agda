@@ -8,11 +8,7 @@ open import Relation.Binary
 
 open import Sets.Sets
 
-record TopSpace : Set₁ where
-  field
-    set : Set
-    Open : Set
-  
+record IsTopology (set : Set) (Open : Set) : Set₁ where
   field
     OpenFamily : Open ∈ P[ P[ set ] ]
     ∅-open : ∅ ∈ Open
@@ -20,28 +16,43 @@ record TopSpace : Set₁ where
     ⋃-open : {F : Set} → F ⊆ Open → ⋃ F ∈ Open
     ∩-open : {A B : Set} → A ∈ Open → B ∈ Open → A ∩ B ∈ Open
 
-Discrete : (X : Set) → TopSpace
-Discrete X = record
-  { set = X
-  ; Open = P[ X ]
+record TopSpace : Set₁ where
+  field
+    set : Set
+    Open : Set
+  
+  field
+    isTopology : IsTopology set Open
 
-  ; OpenFamily = ⊆-∈-power (\_ → id)
+  open IsTopology isTopology public
+
+Discrete-is-Topology : ∀ X → IsTopology X P[ X ]
+Discrete-is-Topology X = record
+  { OpenFamily = ⊆-∈-power (\_ → id)
   ; ∅-open = ⊆-∈-power ∅-⊆
   ; all-open = ⊆-∈-power (\_ → id)
   ; ⋃-open = \{F} F⊆P[X] → ⊆-∈-power (⊆-≡-reflˡ ⋃-power $ ⋃-cong F⊆P[X])
   ; ∩-open = \{A} {B} A∈P[X] B∈P[X] → ⊆-∈-power (\x x∈A∩B → ∈-≡ ⋃-power (⋃-∈-⊆ A∈P[X] x $ ∩-⊆ˡ x x∈A∩B))
   }
 
+Discrete : (X : Set) → TopSpace
+Discrete X = record
+  { set = X
+  ; Open = P[ X ]
+  ; isTopology = Discrete-is-Topology X
+  }
+
 Indiscrete : (X : Set) → TopSpace
 Indiscrete X = record
   { set = X
   ; Open = [ ∅ , X ]
-
-  ; OpenFamily = ⊆-∈-power (\Y Y∈pair → ∈-P[X] Y $ in-[A,B] Y Y∈pair)
-  ; ∅-open = A∈[A,B]
-  ; all-open = B∈[A,B]
-  ; ⋃-open = ∪-lemma
-  ; ∩-open = \{A} {B} A:open B:open → proj⃖ (proj₂ (∃-pairing ∅ X) (A ∩ B)) $ ∩-lemma (in-[A,B] A A:open) (in-[A,B] B B:open)
+  ; isTopology = record
+    { OpenFamily = ⊆-∈-power (\Y Y∈pair → ∈-P[X] Y $ in-[A,B] Y Y∈pair)
+    ; ∅-open = A∈[A,B]
+    ; all-open = B∈[A,B]
+    ; ⋃-open = ∪-lemma
+    ; ∩-open = \{A} {B} A:open B:open → proj⃖ (proj₂ (∃-pairing ∅ X) (A ∩ B)) $ ∩-lemma (in-[A,B] A A:open) (in-[A,B] B B:open)
+    }
   }
   where
     open paring-lemmas

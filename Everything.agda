@@ -10,6 +10,7 @@ import Sets.Sets.Power
 import Sets.Sets.Natural
 import Sets.Sets.Choice
 import Sets.Sets.NonDatur
+import Sets.Sets.Map
 
 import Sets.Sets
 
@@ -18,6 +19,7 @@ import Sets.Topology.Topology
 import Sets.Topology.Interior
 import Sets.Topology.Closure
 import Sets.Topology.Neighborhood
+import Sets.Topology.Base
 
 import Sets.Topology
 

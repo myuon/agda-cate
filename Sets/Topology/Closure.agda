@@ -26,7 +26,7 @@ module Closure (X : TopSpace) where
     all-closed = satisfy-cond set $ ⊆-∈-power ⊆-refl , ≡-∈ (≡-sym A\\A≡∅) ∅-open
 
     ∅-closed : ∅ ∈ Closed
-    ∅-closed = satisfy-cond ∅ $ ⊆-∈-power (∅-⊆ set) , ≡-∈ (≡-sym \\-∅) all-open
+    ∅-closed = satisfy-cond ∅ $ ⊆-∈-power ∅-⊆ , ≡-∈ (≡-sym \\-∅) all-open
 
     ∪-closed : {A B : Set} → A ∈ Closed → B ∈ Closed → A ∪ B ∈ Closed
     ∪-closed {A} {B} A:closed B:closed = satisfy-cond (A ∪ B) $ ⊆-∈-power (⊆-cong ≡-refl ∪-idempotent $

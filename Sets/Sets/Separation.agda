@@ -31,9 +31,6 @@ infixr 7 _∩_
 _∩_ : (A B : Set) → Set
 A ∩ B = ⟦ X ∈ A ∣ X ∈ B ⟧
 
-⋂ : (F : Set) → Set
-⋂ F = ⟦ X ∈ ⋃ F ∣ (∀ Y → Y ∈ F → X ∈ Y) ⟧
-
 module ∩-Hetero where
   ∩⇔∧ : {A B : Set} → ∀ X → X ∈ A ∩ B ⇔ (X ∈ A) ∧ (X ∈ B)
   ∩⇔∧ {A} {B} X = X∈A∧X∈B , X∈A∩B
@@ -61,7 +58,6 @@ module ∩-Hetero where
 
   ∩-cong : {A B C D : Set} → A ≡ B → C ≡ D → A ∩ C ≡ B ∩ D
   ∩-cong A≡B C≡D rewrite A≡B | C≡D = ≡-refl
-
 open ∩-Hetero public
 
 module ∩-lemmas where
@@ -101,6 +97,7 @@ module ∩-lemmas where
     where
       open ⇔-Reasoning
 
+{-
   ⋂-2-∩ : {A B : Set} → ⋂ [ A , B ] ≡ A ∩ B
   ⋂-2-∩ {A} {B} = ⊆-antisym
     (\x x-in → let and = replace-cond x x-in in ∧-∩ x $ ∧-right and A A∈[A,B] , ∧-right and B B∈[A,B])
@@ -112,6 +109,7 @@ module ∩-lemmas where
       lemma : ∀ x Y → x ∈ A ∩ B → (Y ≡ A) ∨ (Y ≡ B) → x ∈ Y
       lemma x Y x-in (∨-left Y≡A) rewrite Y≡A = ∧-left $ ∩-∧ x x-in
       lemma x Y x-in (∨-right Y≡B) rewrite Y≡B = ∧-right $ ∩-∧ x x-in
+-}
 
 --  ⋂-cong : {A B : Set} → A ⊆ B → ⋂ B ⊆ ⋂ A
 --  ⋂-cong A⊆B x x∈⋂B =

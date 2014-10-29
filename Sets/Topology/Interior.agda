@@ -127,11 +127,13 @@ module Interior (X : TopSpace) where
       Topology-from-Interior Int′ (cond-1 , cond-2 , cond-3 , cond-4) = record
         { set = set
         ; Open = Open-set
-        ; OpenFamily = ⊆-∈-power (\x x:open → ∧-left $ replace-cond x x:open)
-        ; ∅-open = satisfy-cond ∅ $ ⊆-∈-power ∅-⊆ , ∅-⊆ , ⊆-∅ (cond-2 ∅)
-        ; all-open = satisfy-cond set $ (⊆-∈-power ⊆-refl) , ⊆-refl , cond-1
-        ; ⋃-open = ⋃-open-Int
-        ; ∩-open = ∩-open-Int
+        ; isTopology = record
+          { OpenFamily = ⊆-∈-power (\x x:open → ∧-left $ replace-cond x x:open)
+          ; ∅-open = satisfy-cond ∅ $ ⊆-∈-power ∅-⊆ , ∅-⊆ , ⊆-∅ (cond-2 ∅)
+          ; all-open = satisfy-cond set $ (⊆-∈-power ⊆-refl) , ⊆-refl , cond-1
+          ; ⋃-open = ⋃-open-Int
+          ; ∩-open = ∩-open-Int
+          }
         }
         where
           Open-set = ⟦ M ∈ P[ set ] ∣ M ⊆ set ∧ Int′ M ≡ M ⟧

@@ -85,11 +85,13 @@ module Neighborhoods-decides-Topology (X : TopSpace) where
   Topology-from-Neighborhoods Neighborhoods′ non-∅ (cond-1 , cond-2 , cond-3 , cond-4) = record
     { set = set
     ; Open = Open-set
-    ; OpenFamily = ⊆-∈-power (\O O:open → ∧-left $ replace-cond O O:open)
-    ; ∅-open = satisfy-cond ∅ $ ⊆-∈-power ∅-⊆ , (\x x∈∅ → ⊥-elim $ elem-∈ x x∈∅)
-    ; all-open = satisfy-cond set $ ∈-refl-power , set-neighbor
-    ; ⋃-open = \F⊆Open → satisfy-cond _ $ ⋃F:open F⊆Open
-    ; ∩-open = \A:open B:open → satisfy-cond _ $ A∩B:open A:open B:open
+    ; isTopology = record
+      { OpenFamily = ⊆-∈-power (\O O:open → ∧-left $ replace-cond O O:open)
+      ; ∅-open = satisfy-cond ∅ $ ⊆-∈-power ∅-⊆ , (\x x∈∅ → ⊥-elim $ elem-∈ x x∈∅)
+      ; all-open = satisfy-cond set $ ∈-refl-power , set-neighbor
+      ; ⋃-open = \F⊆Open → satisfy-cond _ $ ⋃F:open F⊆Open
+      ; ∩-open = \A:open B:open → satisfy-cond _ $ A∩B:open A:open B:open
+      }
     }
     where
       Open-set = ⟦ O ∈ P[ set ] ∣ (∀ x → x ∈ O → O ∈ ⟨ Neighborhoods′ ⟩ x) ⟧

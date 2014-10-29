@@ -244,11 +244,5 @@ module Map where
 
   ⟨_⟩ : ∀ {A B} → A ⟶ B → ∀ x → Set
   ⟨_⟩ f x = proj₁ (f x)
-
-  _⟨∘⟩_ : ∀ {A B C} → B ⟶ C → A ⟶ B → A ⟶ C
-  _⟨∘⟩_ f g x = ⟨ f ⟩ (⟨ g ⟩ x) , (proj₂ (f $ ⟨ g ⟩ x) ∘ proj₂ (g x))
-
-  Image-∈ : ∀ {A B} (f : A ⟶ B) → ∀ x → x ∈ A → ⟨ f ⟩ x ∈ B
-  Image-∈ f x x∈A = proj₂ (f x) x∈A
 open Map public
 
