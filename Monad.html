@@ -1,0 +1,3615 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Monad</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Keyword"
+      >module</a
+      ><a name="7"
+      > </a
+      ><a name="8" href="Monad.html#1" class="Module"
+      >Monad</a
+      ><a name="13"
+      > </a
+      ><a name="14" class="Keyword"
+      >where</a
+      ><a name="19"
+      >
+
+</a
+      ><a name="21" class="Keyword"
+      >open</a
+      ><a name="25"
+      > </a
+      ><a name="26" class="Keyword"
+      >import</a
+      ><a name="32"
+      > </a
+      ><a name="33" href="Level.html#1" class="Module"
+      >Level</a
+      ><a name="38"
+      >
+
+</a
+      ><a name="40" class="Keyword"
+      >open</a
+      ><a name="44"
+      > </a
+      ><a name="45" class="Keyword"
+      >import</a
+      ><a name="51"
+      > </a
+      ><a name="52" href="Category.html#1" class="Module"
+      >Category</a
+      ><a name="60"
+      >
+</a
+      ><a name="61" class="Keyword"
+      >import</a
+      ><a name="67"
+      > </a
+      ><a name="68" href="Functor.html#1" class="Module"
+      >Functor</a
+      ><a name="75"
+      >
+</a
+      ><a name="76" class="Keyword"
+      >import</a
+      ><a name="82"
+      > </a
+      ><a name="83" href="Nat.html#1" class="Module"
+      >Nat</a
+      ><a name="86"
+      >
+</a
+      ><a name="87" class="Keyword"
+      >import</a
+      ><a name="93"
+      > </a
+      ><a name="94" href="Adjoint.html#1" class="Module"
+      >Adjoint</a
+      ><a name="101"
+      >
+
+</a
+      ><a name="103" class="Keyword"
+      >open</a
+      ><a name="107"
+      > </a
+      ><a name="108" href="Category.html#8" class="Module"
+      >Category.</a
+      ><a name="117" href="Category.html#244" class="Module"
+      >Category</a
+      ><a name="125"
+      >
+</a
+      ><a name="126" class="Keyword"
+      >open</a
+      ><a name="130"
+      > </a
+      ><a name="131" href="Functor.html#8" class="Module"
+      >Functor.</a
+      ><a name="139" href="Functor.html#133" class="Module"
+      >Functor</a
+      ><a name="146"
+      >
+</a
+      ><a name="147" class="Keyword"
+      >open</a
+      ><a name="151"
+      > </a
+      ><a name="152" href="Nat.html#8" class="Module"
+      >Nat.</a
+      ><a name="156" href="Nat.html#7876" class="Module"
+      >Export</a
+      ><a name="162"
+      >
+</a
+      ><a name="163" class="Keyword"
+      >open</a
+      ><a name="167"
+      > </a
+      ><a name="168" href="Nat.html#8" class="Module"
+      >Nat.</a
+      ><a name="172" href="Nat.html#182" class="Module"
+      >Nat</a
+      ><a name="175"
+      >
+</a
+      ><a name="176" class="Keyword"
+      >open</a
+      ><a name="180"
+      > </a
+      ><a name="181" href="Adjoint.html#8" class="Module"
+      >Adjoint.</a
+      ><a name="189" href="Adjoint.html#12256" class="Module"
+      >Export</a
+      ><a name="195"
+      >
+
+</a
+      ><a name="197" class="Keyword"
+      >record</a
+      ><a name="203"
+      > </a
+      ><a name="204" href="Monad.html#204" class="Record"
+      >Monad</a
+      ><a name="209"
+      > </a
+      ><a name="210" class="Symbol"
+      >{</a
+      ><a name="211" href="Monad.html#211" class="Bound"
+      >c&#8320;</a
+      ><a name="213"
+      > </a
+      ><a name="214" href="Monad.html#214" class="Bound"
+      >c&#8321;</a
+      ><a name="216"
+      > </a
+      ><a name="217" href="Monad.html#217" class="Bound"
+      >&#8467;</a
+      ><a name="218" class="Symbol"
+      >}</a
+      ><a name="219"
+      > </a
+      ><a name="220" class="Symbol"
+      >(</a
+      ><a name="221" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="222"
+      > </a
+      ><a name="223" class="Symbol"
+      >:</a
+      ><a name="224"
+      > </a
+      ><a name="225" href="Category.html#244" class="Record"
+      >Category</a
+      ><a name="233"
+      > </a
+      ><a name="234" href="Monad.html#211" class="Bound"
+      >c&#8320;</a
+      ><a name="236"
+      > </a
+      ><a name="237" href="Monad.html#214" class="Bound"
+      >c&#8321;</a
+      ><a name="239"
+      > </a
+      ><a name="240" href="Monad.html#217" class="Bound"
+      >&#8467;</a
+      ><a name="241" class="Symbol"
+      >)</a
+      ><a name="242"
+      > </a
+      ><a name="243" class="Symbol"
+      >:</a
+      ><a name="244"
+      > </a
+      ><a name="245" class="PrimitiveType"
+      >Set</a
+      ><a name="248"
+      > </a
+      ><a name="249" class="Symbol"
+      >(</a
+      ><a name="250" href="Agda.Primitive.html#596" class="Primitive"
+      >suc</a
+      ><a name="253"
+      > </a
+      ><a name="254" class="Symbol"
+      >(</a
+      ><a name="255" href="Monad.html#211" class="Bound"
+      >c&#8320;</a
+      ><a name="257"
+      > </a
+      ><a name="258" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="259"
+      > </a
+      ><a name="260" href="Monad.html#214" class="Bound"
+      >c&#8321;</a
+      ><a name="262"
+      > </a
+      ><a name="263" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="264"
+      > </a
+      ><a name="265" href="Monad.html#217" class="Bound"
+      >&#8467;</a
+      ><a name="266" class="Symbol"
+      >))</a
+      ><a name="268"
+      > </a
+      ><a name="269" class="Keyword"
+      >where</a
+      ><a name="274"
+      >
+  </a
+      ><a name="277" class="Keyword"
+      >field</a
+      ><a name="282"
+      >
+    </a
+      ><a name="287" href="Monad.html#287" class="Field"
+      >MFunctor</a
+      ><a name="295"
+      > </a
+      ><a name="296" class="Symbol"
+      >:</a
+      ><a name="297"
+      > </a
+      ><a name="298" href="Functor.html#133" class="Record"
+      >Functor.Functor</a
+      ><a name="313"
+      > </a
+      ><a name="314" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="315"
+      > </a
+      ><a name="316" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="317"
+      >
+    </a
+      ><a name="322" href="Monad.html#322" class="Field"
+      >Mjoin</a
+      ><a name="327"
+      > </a
+      ><a name="328" class="Symbol"
+      >:</a
+      ><a name="329"
+      > </a
+      ><a name="330" href="Nat.html#182" class="Record"
+      >Nat.Nat</a
+      ><a name="337"
+      > </a
+      ><a name="338" class="Symbol"
+      >(</a
+      ><a name="339" href="Functor.html#2142" class="Function"
+      >Functor.exp</a
+      ><a name="350"
+      > </a
+      ><a name="351" href="Monad.html#287" class="Bound"
+      >MFunctor</a
+      ><a name="359"
+      > </a
+      ><a name="360" class="Number"
+      >2</a
+      ><a name="361" class="Symbol"
+      >)</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="Monad.html#287" class="Bound"
+      >MFunctor</a
+      ><a name="371"
+      >
+    </a
+      ><a name="376" href="Monad.html#376" class="Field"
+      >Munit</a
+      ><a name="381"
+      > </a
+      ><a name="382" class="Symbol"
+      >:</a
+      ><a name="383"
+      > </a
+      ><a name="384" href="Nat.html#182" class="Record"
+      >Nat.Nat</a
+      ><a name="391"
+      > </a
+      ><a name="392" class="Symbol"
+      >(</a
+      ><a name="393" href="Functor.html#1885" class="Function"
+      >Functor.identity</a
+      ><a name="409"
+      > </a
+      ><a name="410" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="411" class="Symbol"
+      >)</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="Monad.html#287" class="Bound"
+      >MFunctor</a
+      ><a name="421"
+      >
+
+  </a
+      ><a name="425" class="Keyword"
+      >field</a
+      ><a name="430"
+      >
+    </a
+      ><a name="435" href="Monad.html#435" class="Field Operator"
+      >join_join</a
+      ><a name="444"
+      > </a
+      ><a name="445" class="Symbol"
+      >:</a
+      ><a name="446"
+      > </a
+      ><a name="447" class="Symbol"
+      >{</a
+      ><a name="448" href="Monad.html#448" class="Bound"
+      >A</a
+      ><a name="449"
+      > </a
+      ><a name="450" class="Symbol"
+      >:</a
+      ><a name="451"
+      > </a
+      ><a name="452" href="Category.html#315" class="Field"
+      >Obj</a
+      ><a name="455"
+      > </a
+      ><a name="456" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="457" class="Symbol"
+      >}</a
+      ><a name="458"
+      > </a
+      ><a name="459" class="Symbol"
+      >&#8594;</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="462"
+      > </a
+      ><a name="463" href="Category.html#1738" class="Function Operator"
+      >[</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="466"
+      > </a
+      ><a name="467" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="468"
+      > </a
+      ><a name="469" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="478"
+      > </a
+      ><a name="479" href="Monad.html#322" class="Bound"
+      >Mjoin</a
+      ><a name="484"
+      > </a
+      ><a name="485" href="Monad.html#448" class="Bound"
+      >A</a
+      ><a name="486"
+      > </a
+      ><a name="487" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="488"
+      > </a
+      ><a name="489" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="498"
+      > </a
+      ><a name="499" href="Monad.html#322" class="Bound"
+      >Mjoin</a
+      ><a name="504"
+      > </a
+      ><a name="505" class="Symbol"
+      >(</a
+      ><a name="506" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="510"
+      > </a
+      ><a name="511" href="Monad.html#287" class="Bound"
+      >MFunctor</a
+      ><a name="519"
+      > </a
+      ><a name="520" href="Monad.html#448" class="Bound"
+      >A</a
+      ><a name="521" class="Symbol"
+      >)</a
+      ><a name="522"
+      > </a
+      ><a name="523" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="524"
+      > </a
+      ><a name="525" href="Category.html#1738" class="Function Operator"
+      >&#8776;</a
+      ><a name="526"
+      > </a
+      ><a name="527" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="528"
+      > </a
+      ><a name="529" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="540"
+      > </a
+      ><a name="541" href="Monad.html#322" class="Bound"
+      >Mjoin</a
+      ><a name="546"
+      > </a
+      ><a name="547" href="Monad.html#448" class="Bound"
+      >A</a
+      ><a name="548"
+      > </a
+      ><a name="549" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="550"
+      > </a
+      ><a name="551" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="555"
+      > </a
+      ><a name="556" href="Monad.html#287" class="Bound"
+      >MFunctor</a
+      ><a name="564"
+      > </a
+      ><a name="565" class="Symbol"
+      >(</a
+      ><a name="566" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="575"
+      > </a
+      ><a name="576" href="Monad.html#322" class="Bound"
+      >Mjoin</a
+      ><a name="581"
+      > </a
+      ><a name="582" href="Monad.html#448" class="Bound"
+      >A</a
+      ><a name="583" class="Symbol"
+      >)</a
+      ><a name="584"
+      > </a
+      ><a name="585" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="586"
+      > </a
+      ><a name="587" href="Category.html#1738" class="Function Operator"
+      >]</a
+      ><a name="588"
+      >
+    </a
+      ><a name="593" href="Monad.html#593" class="Field Operator"
+      >unit_MFunctor</a
+      ><a name="606"
+      > </a
+      ><a name="607" class="Symbol"
+      >:</a
+      ><a name="608"
+      > </a
+      ><a name="609" class="Symbol"
+      >{</a
+      ><a name="610" href="Monad.html#610" class="Bound"
+      >A</a
+      ><a name="611"
+      > </a
+      ><a name="612" class="Symbol"
+      >:</a
+      ><a name="613"
+      > </a
+      ><a name="614" href="Category.html#315" class="Field"
+      >Obj</a
+      ><a name="617"
+      > </a
+      ><a name="618" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="619" class="Symbol"
+      >}</a
+      ><a name="620"
+      > </a
+      ><a name="621" class="Symbol"
+      >&#8594;</a
+      ><a name="622"
+      > </a
+      ><a name="623" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="624"
+      > </a
+      ><a name="625" href="Category.html#1738" class="Function Operator"
+      >[</a
+      ><a name="626"
+      > </a
+      ><a name="627" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="628"
+      > </a
+      ><a name="629" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="630"
+      > </a
+      ><a name="631" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="640"
+      > </a
+      ><a name="641" href="Monad.html#322" class="Bound"
+      >Mjoin</a
+      ><a name="646"
+      > </a
+      ><a name="647" href="Monad.html#610" class="Bound"
+      >A</a
+      ><a name="648"
+      > </a
+      ><a name="649" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="660"
+      > </a
+      ><a name="661" href="Monad.html#376" class="Bound"
+      >Munit</a
+      ><a name="666"
+      > </a
+      ><a name="667" class="Symbol"
+      >(</a
+      ><a name="668" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="672"
+      > </a
+      ><a name="673" href="Monad.html#287" class="Bound"
+      >MFunctor</a
+      ><a name="681"
+      > </a
+      ><a name="682" href="Monad.html#610" class="Bound"
+      >A</a
+      ><a name="683" class="Symbol"
+      >)</a
+      ><a name="684"
+      > </a
+      ><a name="685" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="686"
+      > </a
+      ><a name="687" href="Category.html#1738" class="Function Operator"
+      >&#8776;</a
+      ><a name="688"
+      > </a
+      ><a name="689" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="691"
+      > </a
+      ><a name="692" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="693"
+      > </a
+      ><a name="694" href="Category.html#1738" class="Function Operator"
+      >]</a
+      ><a name="695"
+      >
+    </a
+      ><a name="700" href="Monad.html#700" class="Field Operator"
+      >MFunctor_unit</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >:</a
+      ><a name="715"
+      > </a
+      ><a name="716" class="Symbol"
+      >{</a
+      ><a name="717" href="Monad.html#717" class="Bound"
+      >A</a
+      ><a name="718"
+      > </a
+      ><a name="719" class="Symbol"
+      >:</a
+      ><a name="720"
+      > </a
+      ><a name="721" href="Category.html#315" class="Field"
+      >Obj</a
+      ><a name="724"
+      > </a
+      ><a name="725" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="726" class="Symbol"
+      >}</a
+      ><a name="727"
+      > </a
+      ><a name="728" class="Symbol"
+      >&#8594;</a
+      ><a name="729"
+      > </a
+      ><a name="730" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="731"
+      > </a
+      ><a name="732" href="Category.html#1738" class="Function Operator"
+      >[</a
+      ><a name="733"
+      > </a
+      ><a name="734" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="735"
+      > </a
+      ><a name="736" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="737"
+      > </a
+      ><a name="738" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="747"
+      > </a
+      ><a name="748" href="Monad.html#322" class="Bound"
+      >Mjoin</a
+      ><a name="753"
+      > </a
+      ><a name="754" href="Monad.html#717" class="Bound"
+      >A</a
+      ><a name="755"
+      > </a
+      ><a name="756" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="757"
+      > </a
+      ><a name="758" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="Monad.html#287" class="Bound"
+      >MFunctor</a
+      ><a name="771"
+      > </a
+      ><a name="772" class="Symbol"
+      >(</a
+      ><a name="773" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="782"
+      > </a
+      ><a name="783" href="Monad.html#376" class="Bound"
+      >Munit</a
+      ><a name="788"
+      > </a
+      ><a name="789" href="Monad.html#717" class="Bound"
+      >A</a
+      ><a name="790" class="Symbol"
+      >)</a
+      ><a name="791"
+      > </a
+      ><a name="792" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="793"
+      > </a
+      ><a name="794" href="Category.html#1738" class="Function Operator"
+      >&#8776;</a
+      ><a name="795"
+      > </a
+      ><a name="796" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="798"
+      > </a
+      ><a name="799" href="Monad.html#221" class="Bound"
+      >C</a
+      ><a name="800"
+      > </a
+      ><a name="801" href="Category.html#1738" class="Function Operator"
+      >]</a
+      ><a name="802"
+      >
+
+</a
+      ><a name="804" href="Monad.html#804" class="Function"
+      >Adjoint-Monad</a
+      ><a name="817"
+      > </a
+      ><a name="818" class="Symbol"
+      >:</a
+      ><a name="819"
+      > </a
+      ><a name="820" class="Symbol"
+      >&#8704;</a
+      ><a name="821"
+      > </a
+      ><a name="822" class="Symbol"
+      >{</a
+      ><a name="823" href="Monad.html#823" class="Bound"
+      >C&#8320;</a
+      ><a name="825"
+      > </a
+      ><a name="826" href="Monad.html#826" class="Bound"
+      >C&#8321;</a
+      ><a name="828"
+      > </a
+      ><a name="829" href="Monad.html#829" class="Bound"
+      >&#8467;</a
+      ><a name="830" class="Symbol"
+      >}</a
+      ><a name="831"
+      > </a
+      ><a name="832" class="Symbol"
+      >{</a
+      ><a name="833" href="Monad.html#833" class="Bound"
+      >C</a
+      ><a name="834"
+      > </a
+      ><a name="835" href="Monad.html#835" class="Bound"
+      >D</a
+      ><a name="836"
+      > </a
+      ><a name="837" class="Symbol"
+      >:</a
+      ><a name="838"
+      > </a
+      ><a name="839" href="Category.html#244" class="Record"
+      >Category</a
+      ><a name="847"
+      > </a
+      ><a name="848" href="Monad.html#823" class="Bound"
+      >C&#8320;</a
+      ><a name="850"
+      > </a
+      ><a name="851" href="Monad.html#826" class="Bound"
+      >C&#8321;</a
+      ><a name="853"
+      > </a
+      ><a name="854" href="Monad.html#829" class="Bound"
+      >&#8467;</a
+      ><a name="855" class="Symbol"
+      >}</a
+      ><a name="856"
+      > </a
+      ><a name="857" class="Symbol"
+      >{</a
+      ><a name="858" href="Monad.html#858" class="Bound"
+      >F</a
+      ><a name="859"
+      > </a
+      ><a name="860" class="Symbol"
+      >:</a
+      ><a name="861"
+      > </a
+      ><a name="862" href="Functor.html#133" class="Record"
+      >Functor.Functor</a
+      ><a name="877"
+      > </a
+      ><a name="878" href="Monad.html#833" class="Bound"
+      >C</a
+      ><a name="879"
+      > </a
+      ><a name="880" href="Monad.html#835" class="Bound"
+      >D</a
+      ><a name="881" class="Symbol"
+      >}</a
+      ><a name="882"
+      > </a
+      ><a name="883" class="Symbol"
+      >{</a
+      ><a name="884" href="Monad.html#884" class="Bound"
+      >G</a
+      ><a name="885"
+      > </a
+      ><a name="886" class="Symbol"
+      >:</a
+      ><a name="887"
+      > </a
+      ><a name="888" href="Functor.html#133" class="Record"
+      >Functor.Functor</a
+      ><a name="903"
+      > </a
+      ><a name="904" href="Monad.html#835" class="Bound"
+      >D</a
+      ><a name="905"
+      > </a
+      ><a name="906" href="Monad.html#833" class="Bound"
+      >C</a
+      ><a name="907" class="Symbol"
+      >}</a
+      ><a name="908"
+      > </a
+      ><a name="909" class="Symbol"
+      >&#8594;</a
+      ><a name="910"
+      > </a
+      ><a name="911" href="Monad.html#858" class="Bound"
+      >F</a
+      ><a name="912"
+      > </a
+      ><a name="913" href="Adjoint.html#12271" class="Function Operator"
+      >&#8867;</a
+      ><a name="914"
+      > </a
+      ><a name="915" href="Monad.html#884" class="Bound"
+      >G</a
+      ><a name="916"
+      > </a
+      ><a name="917" class="Symbol"
+      >&#8594;</a
+      ><a name="918"
+      > </a
+      ><a name="919" href="Monad.html#204" class="Record"
+      >Monad</a
+      ><a name="924"
+      > </a
+      ><a name="925" href="Monad.html#833" class="Bound"
+      >C</a
+      ><a name="926"
+      >
+</a
+      ><a name="927" href="Monad.html#804" class="Function"
+      >Adjoint-Monad</a
+      ><a name="940"
+      > </a
+      ><a name="941" class="Symbol"
+      >{</a
+      ><a name="942" class="Argument"
+      >C</a
+      ><a name="943"
+      > </a
+      ><a name="944" class="Symbol"
+      >=</a
+      ><a name="945"
+      > </a
+      ><a name="946" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="947" class="Symbol"
+      >}</a
+      ><a name="948"
+      > </a
+      ><a name="949" class="Symbol"
+      >{</a
+      ><a name="950" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="951" class="Symbol"
+      >}</a
+      ><a name="952"
+      > </a
+      ><a name="953" class="Symbol"
+      >{</a
+      ><a name="954" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="955" class="Symbol"
+      >}</a
+      ><a name="956"
+      > </a
+      ><a name="957" class="Symbol"
+      >{</a
+      ><a name="958" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="959" class="Symbol"
+      >}</a
+      ><a name="960"
+      > </a
+      ><a name="961" href="Monad.html#961" class="Bound"
+      >F&#8867;G</a
+      ><a name="964"
+      > </a
+      ><a name="965" class="Symbol"
+      >=</a
+      ><a name="966"
+      > </a
+      ><a name="967" class="Keyword"
+      >record</a
+      ><a name="973"
+      > </a
+      ><a name="974" class="Symbol"
+      >{</a
+      ><a name="975"
+      >
+  </a
+      ><a name="978" class="Field"
+      >MFunctor</a
+      ><a name="986"
+      > </a
+      ><a name="987" class="Symbol"
+      >=</a
+      ><a name="988"
+      > </a
+      ><a name="989" href="Monad.html#3598" class="Function"
+      >T</a
+      ><a name="990" class="Symbol"
+      >;</a
+      ><a name="991"
+      >
+  </a
+      ><a name="994" class="Field"
+      >Mjoin</a
+      ><a name="999"
+      > </a
+      ><a name="1000" class="Symbol"
+      >=</a
+      ><a name="1001"
+      > </a
+      ><a name="1002" class="Keyword"
+      >record</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" class="Symbol"
+      >{</a
+      ><a name="1010"
+      >
+    </a
+      ><a name="1015" class="Field"
+      >component</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" class="Symbol"
+      >=</a
+      ><a name="1026"
+      > </a
+      ><a name="1027" class="Symbol"
+      >&#955;</a
+      ><a name="1028"
+      > </a
+      ><a name="1029" href="Monad.html#1029" class="Bound"
+      >X</a
+      ><a name="1030"
+      > </a
+      ><a name="1031" class="Symbol"
+      >&#8594;</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1042"
+      > </a
+      ><a name="1043" class="Symbol"
+      >(</a
+      ><a name="1044" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1045"
+      > </a
+      ><a name="1046" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="1049"
+      > </a
+      ><a name="1050" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1051"
+      > </a
+      ><a name="1052" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="1055"
+      > </a
+      ><a name="1056" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1057" class="Symbol"
+      >)</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" href="Monad.html#1029" class="Bound"
+      >X</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" class="Symbol"
+      >;</a
+      ><a name="1062"
+      >
+    </a
+      ><a name="1067" class="Field"
+      >naturality</a
+      ><a name="1077"
+      > </a
+      ><a name="1078" class="Symbol"
+      >=</a
+      ><a name="1079"
+      > </a
+      ><a name="1080" class="Symbol"
+      >&#955;</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" class="Symbol"
+      >{</a
+      ><a name="1083" href="Monad.html#1083" class="Bound"
+      >a</a
+      ><a name="1084" class="Symbol"
+      >}</a
+      ><a name="1085"
+      > </a
+      ><a name="1086" class="Symbol"
+      >{</a
+      ><a name="1087" href="Monad.html#1087" class="Bound"
+      >b</a
+      ><a name="1088" class="Symbol"
+      >}</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" class="Symbol"
+      >{</a
+      ><a name="1091" href="Monad.html#1091" class="Bound"
+      >f</a
+      ><a name="1092" class="Symbol"
+      >}</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" class="Symbol"
+      >&#8594;</a
+      ><a name="1095"
+      > </a
+      ><a name="1096" href="Category.html#4160" class="Function Operator"
+      >begin&#10216;</a
+      ><a name="1102"
+      > </a
+      ><a name="1103" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" href="Category.html#4160" class="Function Operator"
+      >&#10217;</a
+      ><a name="1106"
+      >
+      </a
+      ><a name="1113" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="1114"
+      > </a
+      ><a name="1115" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1126"
+      > </a
+      ><a name="1127" class="Symbol"
+      >(</a
+      ><a name="1128" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1141" class="Symbol"
+      >)</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="Monad.html#1087" class="Bound"
+      >b</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="1146"
+      > </a
+      ><a name="1147" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1151"
+      > </a
+      ><a name="1152" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1153"
+      > </a
+      ><a name="1154" class="Symbol"
+      >(</a
+      ><a name="1155" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1159"
+      > </a
+      ><a name="1160" class="Symbol"
+      >(</a
+      ><a name="1161" href="Functor.html#946" class="Function"
+      >Functor.compose</a
+      ><a name="1176"
+      > </a
+      ><a name="1177" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1178"
+      > </a
+      ><a name="1179" href="Monad.html#3598" class="Function"
+      >T</a
+      ><a name="1180" class="Symbol"
+      >)</a
+      ><a name="1181"
+      > </a
+      ><a name="1182" href="Monad.html#1091" class="Bound"
+      >f</a
+      ><a name="1183" class="Symbol"
+      >)</a
+      ><a name="1184"
+      > </a
+      ><a name="1185" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="1186"
+      > </a
+      ><a name="1187" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" href="Category.html#2223" class="Function"
+      >sym-hom</a
+      ><a name="1197"
+      > </a
+      ><a name="1198" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" class="Symbol"
+      >(</a
+      ><a name="1201" href="Functor.html#582" class="Field"
+      >preserveComp</a
+      ><a name="1213"
+      > </a
+      ><a name="1214" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1215" class="Symbol"
+      >)</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="1218"
+      >
+      </a
+      ><a name="1225" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" class="Symbol"
+      >(</a
+      ><a name="1233" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="1234"
+      > </a
+      ><a name="1235" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="1236"
+      > </a
+      ><a name="1237" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1246"
+      > </a
+      ><a name="1247" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1248"
+      > </a
+      ><a name="1249" class="Symbol"
+      >(</a
+      ><a name="1250" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="1254"
+      > </a
+      ><a name="1255" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1256"
+      > </a
+      ><a name="1257" href="Monad.html#1087" class="Bound"
+      >b</a
+      ><a name="1258" class="Symbol"
+      >)</a
+      ><a name="1259"
+      > </a
+      ><a name="1260" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="1261"
+      > </a
+      ><a name="1262" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1266"
+      > </a
+      ><a name="1267" class="Symbol"
+      >(</a
+      ><a name="1268" href="Functor.html#946" class="Function"
+      >Functor.compose</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1285"
+      > </a
+      ><a name="1286" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1287" class="Symbol"
+      >)</a
+      ><a name="1288"
+      > </a
+      ><a name="1289" class="Symbol"
+      >(</a
+      ><a name="1290" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1294"
+      > </a
+      ><a name="1295" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1296"
+      > </a
+      ><a name="1297" href="Monad.html#1091" class="Bound"
+      >f</a
+      ><a name="1298" class="Symbol"
+      >)</a
+      ><a name="1299"
+      > </a
+      ><a name="1300" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="1301" class="Symbol"
+      >)</a
+      ><a name="1302"
+      > </a
+      ><a name="1303" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" href="Functor.html#713" class="Function"
+      >Functor.preserveEq</a
+      ><a name="1324"
+      > </a
+      ><a name="1325" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" class="Symbol"
+      >(</a
+      ><a name="1328" href="Nat.html#406" class="Field"
+      >naturality</a
+      ><a name="1338"
+      > </a
+      ><a name="1339" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1340" class="Symbol"
+      >)</a
+      ><a name="1341"
+      > </a
+      ><a name="1342" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="1343"
+      >
+      </a
+      ><a name="1350" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1356"
+      > </a
+      ><a name="1357" class="Symbol"
+      >(</a
+      ><a name="1358" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="1361"
+      > </a
+      ><a name="1362" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1366"
+      > </a
+      ><a name="1367" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1368"
+      > </a
+      ><a name="1369" href="Monad.html#1091" class="Bound"
+      >f</a
+      ><a name="1370"
+      > </a
+      ><a name="1371" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="1372"
+      > </a
+      ><a name="1373" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" class="Symbol"
+      >(</a
+      ><a name="1386" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" href="Monad.html#1083" class="Bound"
+      >a</a
+      ><a name="1394" class="Symbol"
+      >)</a
+      ><a name="1395"
+      > </a
+      ><a name="1396" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="1397" class="Symbol"
+      >)</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="1401"
+      > </a
+      ><a name="1402" href="Functor.html#582" class="Field"
+      >preserveComp</a
+      ><a name="1414"
+      > </a
+      ><a name="1415" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1416"
+      > </a
+      ><a name="1417" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="1418"
+      >
+      </a
+      ><a name="1425" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="1426"
+      > </a
+      ><a name="1427" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1433"
+      > </a
+      ><a name="1434" href="Monad.html#3598" class="Function"
+      >T</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" href="Monad.html#1091" class="Bound"
+      >f</a
+      ><a name="1437"
+      > </a
+      ><a name="1438" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="1439"
+      > </a
+      ><a name="1440" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" class="Symbol"
+      >(</a
+      ><a name="1451" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="1456"
+      > </a
+      ><a name="1457" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1458"
+      > </a
+      ><a name="1459" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="1462"
+      > </a
+      ><a name="1463" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1464" class="Symbol"
+      >)</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" href="Monad.html#1083" class="Bound"
+      >a</a
+      ><a name="1467"
+      > </a
+      ><a name="1468" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="1469"
+      >
+      </a
+      ><a name="1476" href="Category.html#4325" class="Function Operator"
+      >&#8718;</a
+      ><a name="1477"
+      > </a
+      ><a name="1478" class="Symbol"
+      >};</a
+      ><a name="1480"
+      >
+  </a
+      ><a name="1483" class="Field"
+      >Munit</a
+      ><a name="1488"
+      > </a
+      ><a name="1489" class="Symbol"
+      >=</a
+      ><a name="1490"
+      > </a
+      ><a name="1491" href="Adjoint.html#6233" class="Function"
+      >Adjoint.unit</a
+      ><a name="1503"
+      > </a
+      ><a name="1504" href="Monad.html#961" class="Bound"
+      >F&#8867;G</a
+      ><a name="1507" class="Symbol"
+      >;</a
+      ><a name="1508"
+      >
+  </a
+      ><a name="1511" class="Field Operator"
+      >join_join</a
+      ><a name="1520"
+      > </a
+      ><a name="1521" class="Symbol"
+      >=</a
+      ><a name="1522"
+      > </a
+      ><a name="1523" class="Symbol"
+      >&#955;</a
+      ><a name="1524"
+      > </a
+      ><a name="1525" class="Symbol"
+      >{</a
+      ><a name="1526" href="Monad.html#1526" class="Bound"
+      >A</a
+      ><a name="1527" class="Symbol"
+      >}</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" class="Symbol"
+      >&#8594;</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" href="Category.html#4160" class="Function Operator"
+      >begin&#10216;</a
+      ><a name="1537"
+      > </a
+      ><a name="1538" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" href="Category.html#4160" class="Function Operator"
+      >&#10217;</a
+      ><a name="1541"
+      >
+    </a
+      ><a name="1546" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="1547"
+      > </a
+      ><a name="1548" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="1549"
+      > </a
+      ><a name="1550" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" class="Symbol"
+      >(</a
+      ><a name="1561" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1562"
+      > </a
+      ><a name="1563" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="1572"
+      > </a
+      ><a name="1573" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1574" class="Symbol"
+      >)</a
+      ><a name="1575"
+      > </a
+      ><a name="1576" href="Monad.html#1526" class="Bound"
+      >A</a
+      ><a name="1577"
+      > </a
+      ><a name="1578" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1589"
+      > </a
+      ><a name="1590" class="Symbol"
+      >(</a
+      ><a name="1591" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1592"
+      > </a
+      ><a name="1593" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="1596"
+      > </a
+      ><a name="1597" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1598"
+      > </a
+      ><a name="1599" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="1602"
+      > </a
+      ><a name="1603" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1604" class="Symbol"
+      >)</a
+      ><a name="1605"
+      > </a
+      ><a name="1606" class="Symbol"
+      >(</a
+      ><a name="1607" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" href="Monad.html#3598" class="Function"
+      >T</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" href="Monad.html#1526" class="Bound"
+      >A</a
+      ><a name="1615" class="Symbol"
+      >)</a
+      ><a name="1616"
+      > </a
+      ><a name="1617" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="1618"
+      > </a
+      ><a name="1619" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="1621"
+      > </a
+      ><a name="1622" href="Category.html#2223" class="Function"
+      >sym-hom</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" class="Symbol"
+      >(</a
+      ><a name="1633" href="Functor.html#582" class="Field"
+      >preserveComp</a
+      ><a name="1645"
+      > </a
+      ><a name="1646" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1647" class="Symbol"
+      >)</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="1650"
+      >
+    </a
+      ><a name="1655" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1659"
+      > </a
+      ><a name="1660" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1661"
+      > </a
+      ><a name="1662" class="Symbol"
+      >(</a
+      ><a name="1663" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="1664"
+      > </a
+      ><a name="1665" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="1666"
+      > </a
+      ><a name="1667" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1678"
+      > </a
+      ><a name="1679" class="Symbol"
+      >(</a
+      ><a name="1680" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1686"
+      > </a
+      ><a name="1687" href="Monad.html#1526" class="Bound"
+      >A</a
+      ><a name="1688" class="Symbol"
+      >)</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="1691"
+      > </a
+      ><a name="1692" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1701"
+      > </a
+      ><a name="1702" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1703"
+      > </a
+      ><a name="1704" class="Symbol"
+      >(</a
+      ><a name="1705" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" class="Symbol"
+      >(</a
+      ><a name="1711" href="Functor.html#946" class="Function"
+      >Functor.compose</a
+      ><a name="1726"
+      > </a
+      ><a name="1727" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1728"
+      > </a
+      ><a name="1729" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1730" class="Symbol"
+      >)</a
+      ><a name="1731"
+      > </a
+      ><a name="1732" class="Symbol"
+      >(</a
+      ><a name="1733" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="1737"
+      > </a
+      ><a name="1738" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="Monad.html#1526" class="Bound"
+      >A</a
+      ><a name="1741" class="Symbol"
+      >))</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="1745" class="Symbol"
+      >)</a
+      ><a name="1746"
+      > </a
+      ><a name="1747" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="1749"
+      > </a
+      ><a name="1750" href="Functor.html#713" class="Function"
+      >Functor.preserveEq</a
+      ><a name="1768"
+      > </a
+      ><a name="1769" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1770"
+      > </a
+      ><a name="1771" class="Symbol"
+      >(</a
+      ><a name="1772" href="Category.html#2223" class="Function"
+      >sym-hom</a
+      ><a name="1779"
+      > </a
+      ><a name="1780" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="1781"
+      > </a
+      ><a name="1782" class="Symbol"
+      >(</a
+      ><a name="1783" href="Nat.html#406" class="Field"
+      >naturality</a
+      ><a name="1793"
+      > </a
+      ><a name="1794" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1795" class="Symbol"
+      >))</a
+      ><a name="1797"
+      > </a
+      ><a name="1798" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="1799"
+      >
+    </a
+      ><a name="1804" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1808"
+      > </a
+      ><a name="1809" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1810"
+      > </a
+      ><a name="1811" class="Symbol"
+      >(</a
+      ><a name="1812" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="1813"
+      > </a
+      ><a name="1814" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="1815"
+      > </a
+      ><a name="1816" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1827"
+      > </a
+      ><a name="1828" class="Symbol"
+      >(</a
+      ><a name="1829" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="1833"
+      > </a
+      ><a name="1834" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1835"
+      > </a
+      ><a name="1836" href="Monad.html#1526" class="Bound"
+      >A</a
+      ><a name="1837" class="Symbol"
+      >)</a
+      ><a name="1838"
+      > </a
+      ><a name="1839" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="1840"
+      > </a
+      ><a name="1841" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1845"
+      > </a
+      ><a name="1846" class="Symbol"
+      >(</a
+      ><a name="1847" href="Functor.html#946" class="Function"
+      >Functor.compose</a
+      ><a name="1862"
+      > </a
+      ><a name="1863" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1864"
+      > </a
+      ><a name="1865" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1866" class="Symbol"
+      >)</a
+      ><a name="1867"
+      > </a
+      ><a name="1868" class="Symbol"
+      >(</a
+      ><a name="1869" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1880"
+      > </a
+      ><a name="1881" class="Symbol"
+      >(</a
+      ><a name="1882" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="1886"
+      > </a
+      ><a name="1887" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" href="Monad.html#1526" class="Bound"
+      >A</a
+      ><a name="1890" class="Symbol"
+      >))</a
+      ><a name="1892"
+      > </a
+      ><a name="1893" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="1894" class="Symbol"
+      >)</a
+      ><a name="1895"
+      > </a
+      ><a name="1896" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="1898"
+      > </a
+      ><a name="1899" href="Functor.html#582" class="Field"
+      >preserveComp</a
+      ><a name="1911"
+      > </a
+      ><a name="1912" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1913"
+      > </a
+      ><a name="1914" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="1915"
+      >
+    </a
+      ><a name="1920" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="1921"
+      > </a
+      ><a name="1922" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="1923"
+      > </a
+      ><a name="1924" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1933"
+      > </a
+      ><a name="1934" class="Symbol"
+      >(</a
+      ><a name="1935" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1936"
+      > </a
+      ><a name="1937" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="1940"
+      > </a
+      ><a name="1941" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1942"
+      > </a
+      ><a name="1943" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="1946"
+      > </a
+      ><a name="1947" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1948" class="Symbol"
+      >)</a
+      ><a name="1949"
+      > </a
+      ><a name="1950" href="Monad.html#1526" class="Bound"
+      >A</a
+      ><a name="1951"
+      > </a
+      ><a name="1952" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="1953"
+      > </a
+      ><a name="1954" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="1958"
+      > </a
+      ><a name="1959" href="Monad.html#3598" class="Function"
+      >T</a
+      ><a name="1960"
+      > </a
+      ><a name="1961" class="Symbol"
+      >(</a
+      ><a name="1962" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="1971"
+      > </a
+      ><a name="1972" class="Symbol"
+      >(</a
+      ><a name="1973" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="1974"
+      > </a
+      ><a name="1975" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="1978"
+      > </a
+      ><a name="1979" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="1980"
+      > </a
+      ><a name="1981" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="1984"
+      > </a
+      ><a name="1985" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="1986" class="Symbol"
+      >)</a
+      ><a name="1987"
+      > </a
+      ><a name="1988" href="Monad.html#1526" class="Bound"
+      >A</a
+      ><a name="1989" class="Symbol"
+      >)</a
+      ><a name="1990"
+      > </a
+      ><a name="1991" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="1992"
+      >
+    </a
+      ><a name="1997" href="Category.html#4325" class="Function Operator"
+      >&#8718;</a
+      ><a name="1998"
+      > </a
+      ><a name="1999" class="Symbol"
+      >;</a
+      ><a name="2000"
+      >
+  </a
+      ><a name="2003" class="Field Operator"
+      >unit_MFunctor</a
+      ><a name="2016"
+      > </a
+      ><a name="2017" class="Symbol"
+      >=</a
+      ><a name="2018"
+      > </a
+      ><a name="2019" class="Symbol"
+      >&#955;</a
+      ><a name="2020"
+      > </a
+      ><a name="2021" class="Symbol"
+      >{</a
+      ><a name="2022" href="Monad.html#2022" class="Bound"
+      >A</a
+      ><a name="2023" class="Symbol"
+      >}</a
+      ><a name="2024"
+      > </a
+      ><a name="2025" class="Symbol"
+      >&#8594;</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" href="Category.html#4160" class="Function Operator"
+      >begin&#10216;</a
+      ><a name="2033"
+      > </a
+      ><a name="2034" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2035"
+      > </a
+      ><a name="2036" href="Category.html#4160" class="Function Operator"
+      >&#10217;</a
+      ><a name="2037"
+      >
+    </a
+      ><a name="2042" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2043"
+      > </a
+      ><a name="2044" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="2045"
+      > </a
+      ><a name="2046" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2055"
+      > </a
+      ><a name="2056" class="Symbol"
+      >(</a
+      ><a name="2057" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2058"
+      > </a
+      ><a name="2059" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="2062"
+      > </a
+      ><a name="2063" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="2064"
+      > </a
+      ><a name="2065" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="2068"
+      > </a
+      ><a name="2069" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2070" class="Symbol"
+      >)</a
+      ><a name="2071"
+      > </a
+      ><a name="2072" href="Monad.html#2022" class="Bound"
+      >A</a
+      ><a name="2073"
+      > </a
+      ><a name="2074" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="2075"
+      > </a
+      ><a name="2076" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2085"
+      > </a
+      ><a name="2086" href="Monad.html#3626" class="Function"
+      >&#951;</a
+      ><a name="2087"
+      > </a
+      ><a name="2088" class="Symbol"
+      >(</a
+      ><a name="2089" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="2093"
+      > </a
+      ><a name="2094" href="Monad.html#3598" class="Function"
+      >T</a
+      ><a name="2095"
+      > </a
+      ><a name="2096" href="Monad.html#2022" class="Bound"
+      >A</a
+      ><a name="2097" class="Symbol"
+      >)</a
+      ><a name="2098"
+      > </a
+      ><a name="2099" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="2100"
+      > </a
+      ><a name="2101" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="2103"
+      > </a
+      ><a name="2104" href="Category.html#2091" class="Function"
+      >refl-hom</a
+      ><a name="2112"
+      > </a
+      ><a name="2113" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2114"
+      > </a
+      ><a name="2115" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="2116"
+      >
+    </a
+      ><a name="2121" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2122"
+      > </a
+      ><a name="2123" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="2124"
+      > </a
+      ><a name="2125" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2134"
+      > </a
+      ><a name="2135" class="Symbol"
+      >(</a
+      ><a name="2136" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2137"
+      > </a
+      ><a name="2138" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="2141"
+      > </a
+      ><a name="2142" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="2143" class="Symbol"
+      >)</a
+      ><a name="2144"
+      > </a
+      ><a name="2145" class="Symbol"
+      >(</a
+      ><a name="2146" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="2150"
+      > </a
+      ><a name="2151" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2152"
+      > </a
+      ><a name="2153" href="Monad.html#2022" class="Bound"
+      >A</a
+      ><a name="2154" class="Symbol"
+      >)</a
+      ><a name="2155"
+      > </a
+      ><a name="2156" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="2157"
+      > </a
+      ><a name="2158" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2167"
+      > </a
+      ><a name="2168" class="Symbol"
+      >(</a
+      ><a name="2169" href="Monad.html#3626" class="Function"
+      >&#951;</a
+      ><a name="2170"
+      > </a
+      ><a name="2171" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="2174"
+      > </a
+      ><a name="2175" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2176" class="Symbol"
+      >)</a
+      ><a name="2177"
+      > </a
+      ><a name="2178" class="Symbol"
+      >(</a
+      ><a name="2179" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="2183"
+      > </a
+      ><a name="2184" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2185"
+      > </a
+      ><a name="2186" href="Monad.html#2022" class="Bound"
+      >A</a
+      ><a name="2187" class="Symbol"
+      >)</a
+      ><a name="2188"
+      > </a
+      ><a name="2189" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="2190"
+      > </a
+      ><a name="2191" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="2193"
+      > </a
+      ><a name="2194" href="Category.html#2223" class="Function"
+      >sym-hom</a
+      ><a name="2201"
+      > </a
+      ><a name="2202" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2203"
+      > </a
+      ><a name="2204" class="Symbol"
+      >(</a
+      ><a name="2205" href="Category.html#887" class="Field"
+      >&#8776;-composite</a
+      ><a name="2216"
+      > </a
+      ><a name="2217" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2218"
+      > </a
+      ><a name="2219" class="Symbol"
+      >(</a
+      ><a name="2220" href="Category.html#640" class="Field"
+      >leftId</a
+      ><a name="2226"
+      > </a
+      ><a name="2227" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2228" class="Symbol"
+      >)</a
+      ><a name="2229"
+      > </a
+      ><a name="2230" class="Symbol"
+      >(</a
+      ><a name="2231" href="Category.html#2368" class="Function"
+      >trans-hom</a
+      ><a name="2240"
+      > </a
+      ><a name="2241" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2242"
+      > </a
+      ><a name="2243" class="Symbol"
+      >(</a
+      ><a name="2244" href="Category.html#640" class="Field"
+      >leftId</a
+      ><a name="2250"
+      > </a
+      ><a name="2251" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2252" class="Symbol"
+      >)</a
+      ><a name="2253"
+      > </a
+      ><a name="2254" class="Symbol"
+      >(</a
+      ><a name="2255" href="Category.html#701" class="Field"
+      >rightId</a
+      ><a name="2262"
+      > </a
+      ><a name="2263" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2264" class="Symbol"
+      >)))</a
+      ><a name="2267"
+      > </a
+      ><a name="2268" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="2269"
+      >
+    </a
+      ><a name="2274" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2275"
+      > </a
+      ><a name="2276" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="2277"
+      > </a
+      ><a name="2278" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2279"
+      > </a
+      ><a name="2280" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="2281"
+      > </a
+      ><a name="2282" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="2284"
+      > </a
+      ><a name="2285" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2286"
+      > </a
+      ><a name="2287" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="2288"
+      > </a
+      ><a name="2289" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2298"
+      > </a
+      ><a name="2299" class="Symbol"
+      >(</a
+      ><a name="2300" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2301"
+      > </a
+      ><a name="2302" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="2305"
+      > </a
+      ><a name="2306" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="2307" class="Symbol"
+      >)</a
+      ><a name="2308"
+      > </a
+      ><a name="2309" class="Symbol"
+      >(</a
+      ><a name="2310" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="2314"
+      > </a
+      ><a name="2315" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2316"
+      > </a
+      ><a name="2317" href="Monad.html#2022" class="Bound"
+      >A</a
+      ><a name="2318" class="Symbol"
+      >)</a
+      ><a name="2319"
+      > </a
+      ><a name="2320" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="2321"
+      > </a
+      ><a name="2322" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="2323"
+      > </a
+      ><a name="2324" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2325"
+      > </a
+      ><a name="2326" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="2327"
+      > </a
+      ><a name="2328" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="2330"
+      > </a
+      ><a name="2331" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2332"
+      > </a
+      ><a name="2333" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="2334"
+      > </a
+      ><a name="2335" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2336"
+      > </a
+      ><a name="2337" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="2338"
+      > </a
+      ><a name="2339" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2348"
+      > </a
+      ><a name="2349" class="Symbol"
+      >(</a
+      ><a name="2350" href="Monad.html#3626" class="Function"
+      >&#951;</a
+      ><a name="2351"
+      > </a
+      ><a name="2352" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="2355"
+      > </a
+      ><a name="2356" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2357" class="Symbol"
+      >)</a
+      ><a name="2358"
+      > </a
+      ><a name="2359" class="Symbol"
+      >(</a
+      ><a name="2360" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="2364"
+      > </a
+      ><a name="2365" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2366"
+      > </a
+      ><a name="2367" href="Monad.html#2022" class="Bound"
+      >A</a
+      ><a name="2368" class="Symbol"
+      >)</a
+      ><a name="2369"
+      > </a
+      ><a name="2370" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="2371"
+      > </a
+      ><a name="2372" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="2374"
+      > </a
+      ><a name="2375" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2376"
+      > </a
+      ><a name="2377" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="2378"
+      > </a
+      ><a name="2379" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="2380"
+      > </a
+      ><a name="2381" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="2382"
+      > </a
+      ><a name="2383" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="2385"
+      > </a
+      ><a name="2386" href="Category.html#2091" class="Function"
+      >refl-hom</a
+      ><a name="2394"
+      > </a
+      ><a name="2395" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2396"
+      > </a
+      ><a name="2397" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="2398"
+      >
+    </a
+      ><a name="2403" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" class="Symbol"
+      >(</a
+      ><a name="2414" href="Nat.html#788" class="Function"
+      >Nat.compose</a
+      ><a name="2425"
+      > </a
+      ><a name="2426" class="Symbol"
+      >(</a
+      ><a name="2427" href="Nat.html#788" class="Function"
+      >Nat.compose</a
+      ><a name="2438"
+      > </a
+      ><a name="2439" class="Symbol"
+      >{</a
+      ><a name="2440" class="Argument"
+      >H</a
+      ><a name="2441"
+      > </a
+      ><a name="2442" class="Symbol"
+      >=</a
+      ><a name="2443"
+      > </a
+      ><a name="2444" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2445" class="Symbol"
+      >}</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" href="Nat.html#7263" class="Function"
+      >Nat.rightIdNat&#8594;</a
+      ><a name="2462"
+      > </a
+      ><a name="2463" class="Symbol"
+      >(</a
+      ><a name="2464" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2465"
+      > </a
+      ><a name="2466" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="2469"
+      > </a
+      ><a name="2470" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="2471" class="Symbol"
+      >))</a
+      ><a name="2473"
+      > </a
+      ><a name="2474" class="Symbol"
+      >(</a
+      ><a name="2475" href="Nat.html#788" class="Function"
+      >Nat.compose</a
+      ><a name="2486"
+      > </a
+      ><a name="2487" class="Symbol"
+      >(</a
+      ><a name="2488" href="Nat.html#5737" class="Function"
+      >Nat.assocNat&#8594;</a
+      ><a name="2501"
+      > </a
+      ><a name="2502" class="Symbol"
+      >{</a
+      ><a name="2503" class="Argument"
+      >F</a
+      ><a name="2504"
+      > </a
+      ><a name="2505" class="Symbol"
+      >=</a
+      ><a name="2506"
+      > </a
+      ><a name="2507" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2508" class="Symbol"
+      >}</a
+      ><a name="2509"
+      > </a
+      ><a name="2510" class="Symbol"
+      >{</a
+      ><a name="2511" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2512" class="Symbol"
+      >}</a
+      ><a name="2513"
+      > </a
+      ><a name="2514" class="Symbol"
+      >{</a
+      ><a name="2515" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2516" class="Symbol"
+      >})</a
+      ><a name="2518"
+      > </a
+      ><a name="2519" class="Symbol"
+      >(</a
+      ><a name="2520" href="Nat.html#788" class="Function"
+      >Nat.compose</a
+      ><a name="2531"
+      > </a
+      ><a name="2532" class="Symbol"
+      >(</a
+      ><a name="2533" href="Monad.html#3626" class="Function"
+      >&#951;</a
+      ><a name="2534"
+      > </a
+      ><a name="2535" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="2538"
+      > </a
+      ><a name="2539" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2540" class="Symbol"
+      >)</a
+      ><a name="2541"
+      > </a
+      ><a name="2542" href="Nat.html#6962" class="Function"
+      >Nat.leftIdNat&#8592;</a
+      ><a name="2556" class="Symbol"
+      >)))</a
+      ><a name="2559"
+      > </a
+      ><a name="2560" class="Symbol"
+      >(</a
+      ><a name="2561" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="2565"
+      > </a
+      ><a name="2566" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2567"
+      > </a
+      ><a name="2568" href="Monad.html#2022" class="Bound"
+      >A</a
+      ><a name="2569" class="Symbol"
+      >)</a
+      ><a name="2570"
+      > </a
+      ><a name="2571" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="2573"
+      > </a
+      ><a name="2574" href="Adjoint.html#11408" class="Function"
+      >Adjoint.triangularR</a
+      ><a name="2593"
+      > </a
+      ><a name="2594" href="Monad.html#961" class="Bound"
+      >F&#8867;G</a
+      ><a name="2597"
+      > </a
+      ><a name="2598" class="Symbol"
+      >{</a
+      ><a name="2599" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="2603"
+      > </a
+      ><a name="2604" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2605"
+      > </a
+      ><a name="2606" href="Monad.html#2022" class="Bound"
+      >A</a
+      ><a name="2607" class="Symbol"
+      >}</a
+      ><a name="2608"
+      > </a
+      ><a name="2609" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="2610"
+      >
+    </a
+      ><a name="2615" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2624"
+      > </a
+      ><a name="2625" class="Symbol"
+      >(</a
+      ><a name="2626" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="2628"
+      > </a
+      ><a name="2629" href="Nat.html#8066" class="Function Operator"
+      >[</a
+      ><a name="2630"
+      > </a
+      ><a name="2631" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="2632"
+      > </a
+      ><a name="2633" href="Nat.html#8066" class="Function Operator"
+      >,</a
+      ><a name="2634"
+      > </a
+      ><a name="2635" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2636"
+      > </a
+      ><a name="2637" href="Nat.html#8066" class="Function Operator"
+      >]</a
+      ><a name="2638"
+      > </a
+      ><a name="2639" class="Symbol"
+      >{</a
+      ><a name="2640" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2641" class="Symbol"
+      >})</a
+      ><a name="2643"
+      > </a
+      ><a name="2644" class="Symbol"
+      >(</a
+      ><a name="2645" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="2649"
+      > </a
+      ><a name="2650" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2651"
+      > </a
+      ><a name="2652" href="Monad.html#2022" class="Bound"
+      >A</a
+      ><a name="2653" class="Symbol"
+      >)</a
+      ><a name="2654"
+      > </a
+      ><a name="2655" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="2657"
+      > </a
+      ><a name="2658" href="Category.html#2091" class="Function"
+      >refl-hom</a
+      ><a name="2666"
+      > </a
+      ><a name="2667" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2668"
+      > </a
+      ><a name="2669" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="2670"
+      >
+    </a
+      ><a name="2675" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="2677"
+      > </a
+      ><a name="2678" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2679"
+      >
+    </a
+      ><a name="2684" href="Category.html#4325" class="Function Operator"
+      >&#8718;</a
+      ><a name="2685"
+      > </a
+      ><a name="2686" class="Symbol"
+      >;</a
+      ><a name="2687"
+      >
+  </a
+      ><a name="2690" class="Field Operator"
+      >MFunctor_unit</a
+      ><a name="2703"
+      > </a
+      ><a name="2704" class="Symbol"
+      >=</a
+      ><a name="2705"
+      > </a
+      ><a name="2706" class="Symbol"
+      >&#955;</a
+      ><a name="2707"
+      > </a
+      ><a name="2708" class="Symbol"
+      >{</a
+      ><a name="2709" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="2710" class="Symbol"
+      >}</a
+      ><a name="2711"
+      > </a
+      ><a name="2712" class="Symbol"
+      >&#8594;</a
+      ><a name="2713"
+      > </a
+      ><a name="2714" href="Category.html#4160" class="Function Operator"
+      >begin&#10216;</a
+      ><a name="2720"
+      > </a
+      ><a name="2721" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2722"
+      > </a
+      ><a name="2723" href="Category.html#4160" class="Function Operator"
+      >&#10217;</a
+      ><a name="2724"
+      >
+    </a
+      ><a name="2729" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2730"
+      > </a
+      ><a name="2731" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="2732"
+      > </a
+      ><a name="2733" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2742"
+      > </a
+      ><a name="2743" class="Symbol"
+      >(</a
+      ><a name="2744" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2745"
+      > </a
+      ><a name="2746" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="2749"
+      > </a
+      ><a name="2750" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="2751"
+      > </a
+      ><a name="2752" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="2755"
+      > </a
+      ><a name="2756" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2757" class="Symbol"
+      >)</a
+      ><a name="2758"
+      > </a
+      ><a name="2759" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="2760"
+      > </a
+      ><a name="2761" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="2762"
+      > </a
+      ><a name="2763" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="2767"
+      > </a
+      ><a name="2768" href="Monad.html#3598" class="Function"
+      >T</a
+      ><a name="2769"
+      > </a
+      ><a name="2770" class="Symbol"
+      >(</a
+      ><a name="2771" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2780"
+      > </a
+      ><a name="2781" href="Monad.html#3626" class="Function"
+      >&#951;</a
+      ><a name="2782"
+      > </a
+      ><a name="2783" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="2784" class="Symbol"
+      >)</a
+      ><a name="2785"
+      > </a
+      ><a name="2786" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="2787"
+      > </a
+      ><a name="2788" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="2790"
+      > </a
+      ><a name="2791" href="Category.html#2091" class="Function"
+      >refl-hom</a
+      ><a name="2799"
+      > </a
+      ><a name="2800" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2801"
+      > </a
+      ><a name="2802" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="2803"
+      >
+    </a
+      ><a name="2808" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2809"
+      > </a
+      ><a name="2810" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="2811"
+      > </a
+      ><a name="2812" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="2816"
+      > </a
+      ><a name="2817" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2818"
+      > </a
+      ><a name="2819" class="Symbol"
+      >(</a
+      ><a name="2820" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2829"
+      > </a
+      ><a name="2830" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="2831"
+      > </a
+      ><a name="2832" class="Symbol"
+      >(</a
+      ><a name="2833" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="2837"
+      > </a
+      ><a name="2838" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2839"
+      > </a
+      ><a name="2840" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="2841" class="Symbol"
+      >))</a
+      ><a name="2843"
+      > </a
+      ><a name="2844" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="2845"
+      > </a
+      ><a name="2846" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="2850"
+      > </a
+      ><a name="2851" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2852"
+      > </a
+      ><a name="2853" class="Symbol"
+      >(</a
+      ><a name="2854" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="2858"
+      > </a
+      ><a name="2859" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2860"
+      > </a
+      ><a name="2861" class="Symbol"
+      >(</a
+      ><a name="2862" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2871"
+      > </a
+      ><a name="2872" href="Monad.html#3626" class="Function"
+      >&#951;</a
+      ><a name="2873"
+      > </a
+      ><a name="2874" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="2875" class="Symbol"
+      >))</a
+      ><a name="2877"
+      > </a
+      ><a name="2878" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="2879"
+      > </a
+      ><a name="2880" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="2882"
+      > </a
+      ><a name="2883" href="Category.html#2223" class="Function"
+      >sym-hom</a
+      ><a name="2890"
+      > </a
+      ><a name="2891" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="2892"
+      > </a
+      ><a name="2893" class="Symbol"
+      >(</a
+      ><a name="2894" href="Functor.html#582" class="Field"
+      >preserveComp</a
+      ><a name="2906"
+      > </a
+      ><a name="2907" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2908" class="Symbol"
+      >)</a
+      ><a name="2909"
+      > </a
+      ><a name="2910" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="2911"
+      >
+    </a
+      ><a name="2916" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="2920"
+      > </a
+      ><a name="2921" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="2922"
+      > </a
+      ><a name="2923" class="Symbol"
+      >(</a
+      ><a name="2924" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="2925"
+      > </a
+      ><a name="2926" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="2927"
+      > </a
+      ><a name="2928" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2937"
+      > </a
+      ><a name="2938" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="2939"
+      > </a
+      ><a name="2940" class="Symbol"
+      >(</a
+      ><a name="2941" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="2945"
+      > </a
+      ><a name="2946" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2947"
+      > </a
+      ><a name="2948" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="2949" class="Symbol"
+      >)</a
+      ><a name="2950"
+      > </a
+      ><a name="2951" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="2952"
+      > </a
+      ><a name="2953" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="2957"
+      > </a
+      ><a name="2958" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="2959"
+      > </a
+      ><a name="2960" class="Symbol"
+      >(</a
+      ><a name="2961" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="2970"
+      > </a
+      ><a name="2971" href="Monad.html#3626" class="Function"
+      >&#951;</a
+      ><a name="2972"
+      > </a
+      ><a name="2973" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="2974" class="Symbol"
+      >)</a
+      ><a name="2975"
+      > </a
+      ><a name="2976" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="2977" class="Symbol"
+      >)</a
+      ><a name="2978"
+      > </a
+      ><a name="2979" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="2981"
+      > </a
+      ><a name="2982" href="Functor.html#713" class="Function"
+      >Functor.preserveEq</a
+      ><a name="3000"
+      > </a
+      ><a name="3001" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="3002"
+      > </a
+      ><a name="3003" class="Symbol"
+      >(</a
+      ><a name="3004" href="Category.html#887" class="Field"
+      >&#8776;-composite</a
+      ><a name="3015"
+      > </a
+      ><a name="3016" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3017"
+      > </a
+      ><a name="3018" class="Symbol"
+      >(</a
+      ><a name="3019" href="Category.html#2223" class="Function"
+      >sym-hom</a
+      ><a name="3026"
+      > </a
+      ><a name="3027" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3028"
+      > </a
+      ><a name="3029" class="Symbol"
+      >(</a
+      ><a name="3030" href="Category.html#640" class="Field"
+      >leftId</a
+      ><a name="3036"
+      > </a
+      ><a name="3037" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3038" class="Symbol"
+      >))</a
+      ><a name="3040"
+      > </a
+      ><a name="3041" class="Symbol"
+      >(</a
+      ><a name="3042" href="Category.html#2223" class="Function"
+      >sym-hom</a
+      ><a name="3049"
+      > </a
+      ><a name="3050" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3051"
+      > </a
+      ><a name="3052" class="Symbol"
+      >(</a
+      ><a name="3053" href="Category.html#2368" class="Function"
+      >trans-hom</a
+      ><a name="3062"
+      > </a
+      ><a name="3063" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3064"
+      > </a
+      ><a name="3065" class="Symbol"
+      >(</a
+      ><a name="3066" href="Category.html#640" class="Field"
+      >leftId</a
+      ><a name="3072"
+      > </a
+      ><a name="3073" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3074" class="Symbol"
+      >)</a
+      ><a name="3075"
+      > </a
+      ><a name="3076" class="Symbol"
+      >(</a
+      ><a name="3077" href="Category.html#701" class="Field"
+      >rightId</a
+      ><a name="3084"
+      > </a
+      ><a name="3085" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3086" class="Symbol"
+      >))))</a
+      ><a name="3090"
+      > </a
+      ><a name="3091" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="3092"
+      >
+    </a
+      ><a name="3097" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="3101"
+      > </a
+      ><a name="3102" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="3103"
+      > </a
+      ><a name="3104" class="Symbol"
+      >(</a
+      ><a name="3105" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3106"
+      > </a
+      ><a name="3107" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="3108"
+      > </a
+      ><a name="3109" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3110"
+      > </a
+      ><a name="3111" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="3112"
+      > </a
+      ><a name="3113" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="3115"
+      > </a
+      ><a name="3116" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3117"
+      > </a
+      ><a name="3118" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="3119"
+      > </a
+      ><a name="3120" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="3129"
+      > </a
+      ><a name="3130" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="3131"
+      > </a
+      ><a name="3132" class="Symbol"
+      >(</a
+      ><a name="3133" href="Functor.html#272" class="Field"
+      >fobj</a
+      ><a name="3137"
+      > </a
+      ><a name="3138" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="3139"
+      > </a
+      ><a name="3140" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="3141" class="Symbol"
+      >)</a
+      ><a name="3142"
+      > </a
+      ><a name="3143" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="3144"
+      > </a
+      ><a name="3145" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="3146"
+      > </a
+      ><a name="3147" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3148"
+      > </a
+      ><a name="3149" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="3150"
+      > </a
+      ><a name="3151" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="3153"
+      > </a
+      ><a name="3154" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3155"
+      > </a
+      ><a name="3156" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="3157"
+      > </a
+      ><a name="3158" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3159"
+      > </a
+      ><a name="3160" href="Category.html#1501" class="Function Operator"
+      >[</a
+      ><a name="3161"
+      > </a
+      ><a name="3162" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="3166"
+      > </a
+      ><a name="3167" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="3168"
+      > </a
+      ><a name="3169" class="Symbol"
+      >(</a
+      ><a name="3170" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="3179"
+      > </a
+      ><a name="3180" href="Monad.html#3626" class="Function"
+      >&#951;</a
+      ><a name="3181"
+      > </a
+      ><a name="3182" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="3183" class="Symbol"
+      >)</a
+      ><a name="3184"
+      > </a
+      ><a name="3185" href="Category.html#1501" class="Function Operator"
+      >&#8728;</a
+      ><a name="3186"
+      > </a
+      ><a name="3187" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="3189"
+      > </a
+      ><a name="3190" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3191"
+      > </a
+      ><a name="3192" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="3193"
+      > </a
+      ><a name="3194" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="3195"
+      > </a
+      ><a name="3196" href="Category.html#1501" class="Function Operator"
+      >]</a
+      ><a name="3197" class="Symbol"
+      >)</a
+      ><a name="3198"
+      > </a
+      ><a name="3199" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="3201"
+      > </a
+      ><a name="3202" href="Functor.html#713" class="Function"
+      >Functor.preserveEq</a
+      ><a name="3220"
+      > </a
+      ><a name="3221" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="3222"
+      > </a
+      ><a name="3223" class="Symbol"
+      >(</a
+      ><a name="3224" href="Category.html#2091" class="Function"
+      >refl-hom</a
+      ><a name="3232"
+      > </a
+      ><a name="3233" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3234" class="Symbol"
+      >)</a
+      ><a name="3235"
+      > </a
+      ><a name="3236" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="3237"
+      >
+    </a
+      ><a name="3242" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="3246"
+      > </a
+      ><a name="3247" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="3248"
+      > </a
+      ><a name="3249" class="Symbol"
+      >(</a
+      ><a name="3250" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="3259"
+      > </a
+      ><a name="3260" class="Symbol"
+      >(</a
+      ><a name="3261" href="Nat.html#788" class="Function"
+      >Nat.compose</a
+      ><a name="3272"
+      > </a
+      ><a name="3273" class="Symbol"
+      >(</a
+      ><a name="3274" href="Nat.html#788" class="Function"
+      >Nat.compose</a
+      ><a name="3285"
+      > </a
+      ><a name="3286" href="Nat.html#6661" class="Function"
+      >Nat.leftIdNat&#8594;</a
+      ><a name="3300"
+      > </a
+      ><a name="3301" class="Symbol"
+      >(</a
+      ><a name="3302" href="Adjoint.html#7005" class="Function"
+      >Adjoint.counit</a
+      ><a name="3316"
+      > </a
+      ><a name="3317" href="Monad.html#961" class="Bound"
+      >F&#8867;G</a
+      ><a name="3320"
+      > </a
+      ><a name="3321" href="Nat.html#7934" class="Function Operator"
+      >N&#8728;F</a
+      ><a name="3324"
+      > </a
+      ><a name="3325" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="3326" class="Symbol"
+      >))</a
+      ><a name="3328"
+      > </a
+      ><a name="3329" class="Symbol"
+      >(</a
+      ><a name="3330" href="Nat.html#788" class="Function"
+      >Nat.compose</a
+      ><a name="3341"
+      > </a
+      ><a name="3342" class="Symbol"
+      >{</a
+      ><a name="3343" class="Argument"
+      >F</a
+      ><a name="3344"
+      > </a
+      ><a name="3345" class="Symbol"
+      >=</a
+      ><a name="3346"
+      > </a
+      ><a name="3347" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="3348" class="Symbol"
+      >}</a
+      ><a name="3349"
+      > </a
+      ><a name="3350" class="Symbol"
+      >(</a
+      ><a name="3351" href="Nat.html#6199" class="Function"
+      >Nat.assocNat&#8592;</a
+      ><a name="3364"
+      > </a
+      ><a name="3365" class="Symbol"
+      >{</a
+      ><a name="3366" class="Argument"
+      >F</a
+      ><a name="3367"
+      > </a
+      ><a name="3368" class="Symbol"
+      >=</a
+      ><a name="3369"
+      > </a
+      ><a name="3370" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="3371" class="Symbol"
+      >}</a
+      ><a name="3372"
+      > </a
+      ><a name="3373" class="Symbol"
+      >{</a
+      ><a name="3374" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="3375" class="Symbol"
+      >}</a
+      ><a name="3376"
+      > </a
+      ><a name="3377" class="Symbol"
+      >{</a
+      ><a name="3378" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="3379" class="Symbol"
+      >})</a
+      ><a name="3381"
+      > </a
+      ><a name="3382" class="Symbol"
+      >(</a
+      ><a name="3383" href="Nat.html#788" class="Function"
+      >Nat.compose</a
+      ><a name="3394"
+      > </a
+      ><a name="3395" class="Symbol"
+      >{</a
+      ><a name="3396" class="Argument"
+      >F</a
+      ><a name="3397"
+      > </a
+      ><a name="3398" class="Symbol"
+      >=</a
+      ><a name="3399"
+      > </a
+      ><a name="3400" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="3401" class="Symbol"
+      >}</a
+      ><a name="3402"
+      > </a
+      ><a name="3403" class="Symbol"
+      >(</a
+      ><a name="3404" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="3405"
+      > </a
+      ><a name="3406" href="Nat.html#7914" class="Function Operator"
+      >F&#8728;N</a
+      ><a name="3409"
+      > </a
+      ><a name="3410" href="Adjoint.html#6233" class="Function"
+      >Adjoint.unit</a
+      ><a name="3422"
+      > </a
+      ><a name="3423" href="Monad.html#961" class="Bound"
+      >F&#8867;G</a
+      ><a name="3426" class="Symbol"
+      >)</a
+      ><a name="3427"
+      > </a
+      ><a name="3428" href="Nat.html#7566" class="Function"
+      >Nat.rightIdNat&#8592;</a
+      ><a name="3443" class="Symbol"
+      >)))</a
+      ><a name="3446"
+      > </a
+      ><a name="3447" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="3448"
+      > </a
+      ><a name="3449" class="Symbol"
+      >)</a
+      ><a name="3450"
+      > </a
+      ><a name="3451" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="3453"
+      > </a
+      ><a name="3454" href="Functor.html#713" class="Function"
+      >Functor.preserveEq</a
+      ><a name="3472"
+      > </a
+      ><a name="3473" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="3474"
+      > </a
+      ><a name="3475" class="Symbol"
+      >(</a
+      ><a name="3476" href="Adjoint.html#10549" class="Function"
+      >Adjoint.triangularL</a
+      ><a name="3495"
+      > </a
+      ><a name="3496" href="Monad.html#961" class="Bound"
+      >F&#8867;G</a
+      ><a name="3499"
+      > </a
+      ><a name="3500" class="Symbol"
+      >{</a
+      ><a name="3501" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="3502" class="Symbol"
+      >})</a
+      ><a name="3504"
+      > </a
+      ><a name="3505" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="3506"
+      >
+    </a
+      ><a name="3511" href="Functor.html#387" class="Function"
+      >fmap</a
+      ><a name="3515"
+      > </a
+      ><a name="3516" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="3517"
+      > </a
+      ><a name="3518" class="Symbol"
+      >(</a
+      ><a name="3519" href="Nat.html#339" class="Field"
+      >component</a
+      ><a name="3528"
+      > </a
+      ><a name="3529" class="Symbol"
+      >(</a
+      ><a name="3530" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="3532"
+      > </a
+      ><a name="3533" href="Nat.html#8066" class="Function Operator"
+      >[</a
+      ><a name="3534"
+      > </a
+      ><a name="3535" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="3536"
+      > </a
+      ><a name="3537" href="Nat.html#8066" class="Function Operator"
+      >,</a
+      ><a name="3538"
+      > </a
+      ><a name="3539" href="Monad.html#950" class="Bound"
+      >D</a
+      ><a name="3540"
+      > </a
+      ><a name="3541" href="Nat.html#8066" class="Function Operator"
+      >]</a
+      ><a name="3542"
+      > </a
+      ><a name="3543" class="Symbol"
+      >{</a
+      ><a name="3544" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="3545" class="Symbol"
+      >})</a
+      ><a name="3547"
+      > </a
+      ><a name="3548" href="Monad.html#2709" class="Bound"
+      >A</a
+      ><a name="3549" class="Symbol"
+      >)</a
+      ><a name="3550"
+      > </a
+      ><a name="3551" href="Category.html#4461" class="Function Operator"
+      >&#8776;&#10216;</a
+      ><a name="3553"
+      > </a
+      ><a name="3554" href="Functor.html#513" class="Field"
+      >preserveId</a
+      ><a name="3564"
+      > </a
+      ><a name="3565" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="3566"
+      > </a
+      ><a name="3567" href="Category.html#4461" class="Function Operator"
+      >&#10217;</a
+      ><a name="3568"
+      >
+    </a
+      ><a name="3573" href="Category.html#602" class="Field"
+      >id</a
+      ><a name="3575"
+      > </a
+      ><a name="3576" href="Monad.html#946" class="Bound"
+      >C</a
+      ><a name="3577"
+      >
+    </a
+      ><a name="3582" href="Category.html#4325" class="Function Operator"
+      >&#8718;</a
+      ><a name="3583"
+      > </a
+      ><a name="3584" class="Symbol"
+      >}</a
+      ><a name="3585"
+      >
+  </a
+      ><a name="3588" class="Keyword"
+      >where</a
+      ><a name="3593"
+      >
+    </a
+      ><a name="3598" href="Monad.html#3598" class="Function"
+      >T</a
+      ><a name="3599"
+      > </a
+      ><a name="3600" class="Symbol"
+      >=</a
+      ><a name="3601"
+      > </a
+      ><a name="3602" href="Functor.html#946" class="Function"
+      >Functor.compose</a
+      ><a name="3617"
+      > </a
+      ><a name="3618" href="Monad.html#958" class="Bound"
+      >G</a
+      ><a name="3619"
+      > </a
+      ><a name="3620" href="Monad.html#954" class="Bound"
+      >F</a
+      ><a name="3621"
+      >
+    </a
+      ><a name="3626" href="Monad.html#3626" class="Function"
+      >&#951;</a
+      ><a name="3627"
+      > </a
+      ><a name="3628" class="Symbol"
+      >=</a
+      ><a name="3629"
+      > </a
+      ><a name="3630" href="Adjoint.html#6233" class="Function"
+      >Adjoint.unit</a
+      ><a name="3642"
+      > </a
+      ><a name="3643" href="Monad.html#961" class="Bound"
+      >F&#8867;G</a
+      ><a name="3646"
+      >
+    </a
+      ><a name="3651" href="Monad.html#3651" class="Function"
+      >&#949;</a
+      ><a name="3652"
+      > </a
+      ><a name="3653" class="Symbol"
+      >=</a
+      ><a name="3654"
+      > </a
+      ><a name="3655" href="Adjoint.html#7005" class="Function"
+      >Adjoint.counit</a
+      ><a name="3669"
+      > </a
+      ><a name="3670" href="Monad.html#961" class="Bound"
+      >F&#8867;G</a
+      ><a name="3673"
+      >
+
+</a
+      ></pre
+    ></body
+  ></html
+>
