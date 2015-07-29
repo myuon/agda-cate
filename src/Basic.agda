@@ -26,3 +26,23 @@ module Map where
 
   subst : ∀{c₀ ℓ} {A B : Setoid c₀ ℓ} {f g : Map A B} (a : Carrier A) → equality f g → eqSetoid B (mapping f a) (mapping g a)
   subst a eq = eq a
+
+LiftSetoid : ∀ {a b ℓ ℓ′} (A : Setoid a ℓ) → Setoid (a ⊔ b) (ℓ ⊔ ℓ′)
+LiftSetoid {a} {b} {ℓ} {ℓ′} A = record {
+  Carrier = Lift {a} {b} (Carrier A) ;
+  _≈_ = λ x x₁ → Lift {ℓ} {ℓ′} (eqSetoid A (lower x) (lower x₁)) ;
+  isEquivalence = record {
+    refl = lift (refl A) ;
+    sym = λ x → lift (sym A (lower x)) ;
+    trans = λ x x₁ → lift (trans A (lower x) (lower x₁)) } }
+
+liftMap : {c₀ c₀′ d ℓ ℓ′ ℓ″ : Level} {A : Setoid c₀ ℓ} {B : Setoid c₀′ ℓ′} → (f : Map.Map A B) → Map.Map (LiftSetoid {_} {c₀ ⊔ d} {_} {ℓ ⊔ ℓ″} A) (LiftSetoid {_} {c₀′ ⊔ d} {_} {ℓ′ ⊔ ℓ″} B)
+liftMap f = record {
+  mapping = λ x → lift (Map.mapping f (lower x)) ;
+  preserveEq = λ x≈y → lift (Map.preserveEq f (lower x≈y)) }
+
+lowerMap : {c₀ c₀′ d ℓ ℓ′ ℓ″ : Level} {A : Setoid c₀ ℓ} {B : Setoid c₀′ ℓ′} → (f : Map.Map (LiftSetoid {_} {c₀ ⊔ d} {_} {ℓ ⊔ ℓ″} A) (LiftSetoid {_} {c₀′ ⊔ d} {_} {ℓ′ ⊔ ℓ″} B)) → Map.Map A B
+lowerMap f = record {
+  mapping = λ x → lower (Map.mapping f (lift x)) ;
+  preserveEq = λ x≈y → lower (Map.preserveEq f (lift x≈y)) }
+

@@ -29,15 +29,6 @@ yoneda C = record {
   preserveComp = λ x → assoc C
   }
 
-LiftSetoid : ∀ {a b ℓ ℓ′} (A : Setoid a ℓ) → Setoid (a ⊔ b) (ℓ ⊔ ℓ′)
-LiftSetoid {a} {b} {ℓ} {ℓ′} A = record {
-  Carrier = Lift {a} {b} (Carrier A) ;
-  _≈_ = λ x x₁ → Lift {ℓ} {ℓ′} (eqSetoid A (lower x) (lower x₁)) ;
-  isEquivalence = record {
-    refl = lift (refl A) ;
-    sym = λ x → lift (sym A (lower x)) ;
-    trans = λ x x₁ → lift (trans A (lower x) (lower x₁)) } }
-
 YonedaLemma : ∀{C₀ C₁ ℓ} {C : Category C₀ C₁ ℓ} {F : Obj PSh[ C ]} {X : Obj C} → Setoids [ Homsetoid [ op C , Setoids ] (fobj (yoneda C) X) F ≅ LiftSetoid {C₁} {suc (suc ℓ) ⊔ (suc (suc C₁) ⊔ suc C₀)} {ℓ} {C₀ ⊔ C₁ ⊔ ℓ} (fobj F X) ]
 YonedaLemma {C₀} {C₁} {ℓ} {C} {F} {X} = record {
   map-→ = nat→obj ;

@@ -64,3 +64,4 @@ Adjoint-Monad {C = C} {D} {F} {G} F⊣G = record {
     η = Adjoint.unit F⊣G
     ε = Adjoint.counit F⊣G
 
+
