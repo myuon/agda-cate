@@ -15,6 +15,7 @@ open import Monad
 open Category.Category
 open Functor.Functor
 open Nat.Nat
+open Nat.Export
 open Adjoint.Export
 open Monad.Monad
 
@@ -25,7 +26,7 @@ record TAlgebra {C₀ C₁ ℓ} {C : Category C₀ C₁ ℓ} (T : Monad C) : Set
 
   field
     join-fmap-alg : C [ C [ Tmap ∘ component (Mjoin T) Tobj ] ≈ C [ Tmap ∘ fmap (MFunctor T) Tmap ] ]
-    alg-unit : C [ C [ Tmap ∘ component (Munit T) Tobj ] ≈ id C ]
+    map-unit : C [ C [ Tmap ∘ component (Munit T) Tobj ] ≈ id C ]
 
 open TAlgebra
 
@@ -81,7 +82,7 @@ Free-TAlg {C = C} T = record {
     Tobj = fobj (MFunctor T) x ;
     Tmap = component (Mjoin T) x ;
     join-fmap-alg = join_join T ;
-    alg-unit = unit_MFunctor T } ;
+    map-unit = unit_MFunctor T } ;
   fmapsetoid = λ {a} {b} → record {
     mapping = λ x → record {
       Thom = fmap (MFunctor T) x ;
@@ -98,12 +99,33 @@ Forgetful-TAlg {C = C} T = record {
   preserveComp = refl-hom C }
 
 Free⊣Forgetful-TAlg : ∀ {C₀ C₁ ℓ} {C : Category C₀ C₁ ℓ} (T : Monad C) → Free-TAlg T ⊣ Forgetful-TAlg T
-Free⊣Forgetful-TAlg T = record {
-  adjunction = λ {x} {a} → record {
-    map-→ = record {
-      mapping = λ Tx→a → lift {!  fmap (MFunctor T) Tx→a!} ;
-      preserveEq = {!!} } ;
-    map-← = {!!} ; proof = {!!} } ;
-  natural-in-→-C = {!!} ;
-  natural-in-→-D = {!!} }
+Free⊣Forgetful-TAlg {C = C} T = Adjoint.unit-triangular-holds-adjoint {C = C} {D = T-Algs T} {FT} {GT} ηT εT triL (λ {a} → triR {a})
+  where
+    FT = Free-TAlg T
+    GT = Forgetful-TAlg T
+    ηT = record {
+      component = component (Munit T) ;
+      naturality = naturality (Munit T) }
+    εT = record {
+      component = λ X → record {
+        Thom = Tmap X ;
+        hom-comm = sym-hom C (join-fmap-alg X) } ;
+      naturality = λ {a} {b} {f} → hom-comm f }
+
+    triL : [ C , T-Algs T ] [ Nat.compose (Nat.compose Nat.leftIdNat→ (εT N∘F FT)) (Nat.compose (Nat.assocNat← {F = FT} {GT} {FT}) (Nat.compose (FT F∘N ηT) Nat.rightIdNat←)) ≈ id [ C , T-Algs T ] ]
+    triL = λ {a} → begin⟨ C ⟩
+      C [ C [ id C ∘ Thom (component εT (fobj FT a)) ] ∘ C [ id C ∘ C [ Thom (fmap FT (component ηT a)) ∘ id C ] ] ] ≈⟨ ≈-composite C (leftId C) (trans-hom C (leftId C) (rightId C)) ⟩
+      C [ component (Mjoin T) a ∘ fmap (MFunctor T) (component (Munit T) a) ] ≈⟨ MFunctor_unit T ⟩
+      id C
+      ∎
+
+    triR : [ T-Algs T , C ] [ Nat.compose (Nat.compose Nat.rightIdNat→ (GT F∘N εT)) (Nat.compose (Nat.assocNat→ {F = GT} {FT} {GT}) (Nat.compose (ηT N∘F GT) Nat.leftIdNat←)) ≈ id [ T-Algs T , C ] ]
+    triR = λ {a} → begin⟨ C ⟩
+      C [ C [ id C ∘ fmap GT (component εT a) ] ∘ C [ id C ∘ C [ component ηT (fobj GT a) ∘ id C ] ] ] ≈⟨ ≈-composite C (leftId C) (trans-hom C (leftId C) (rightId C)) ⟩
+      C [ fmap GT (component εT a) ∘ component ηT (fobj GT a) ] ≈⟨ refl-hom C ⟩
+      C [ component (GT F∘N εT) a ∘ component (Munit T) (Tobj a) ] ≈⟨ map-unit a ⟩
+      id C
+      ∎
+
+
 

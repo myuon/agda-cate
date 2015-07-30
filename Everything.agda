@@ -7,3 +7,4 @@ import Nat
 import Yoneda
 import Adjoint
 import Monad
+import TAlgebra
